@@ -8,25 +8,14 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "RefCounted",
-"class": &"ResourceAsyncLoader",
-"language": &"GDScript",
-"path": "res://Autoloads/ResourceAsyncLoader.gd"
-}]
-_global_script_class_icons={
-"ResourceAsyncLoader": ""
-}
-
 [application]
 
 config/name="godot-game-template"
+run/main_scene="res://demo/Demo.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalTimer="*res://Autoload/GlobalTimer.gd"
-Game="*res://Autoload/Game.gd"
-ResourceAsyncLoader="*res://Autoload/ResourceAsyncLoader.gd"
-ScreenFade="*res://Autoloads/ScreenFade.tscn"
+Game="*res://Autoloads/Game.gd"
+GlobalTimer="*res://Autoloads/GlobalTimer.gd"

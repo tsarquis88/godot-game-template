@@ -1,55 +1,30 @@
 extends Node2D
 
-signal NewGame		#You choose how to use it
-signal Continue		#You choose how to use it
-signal Resume		#You choose how to use it
-signal Restart		#Reloads current scene
-signal ChangeScene	#Pass location of next scene file
-signal Exit			#Triggers closing the game
 
-@onready var CurrentScene = null
-var NextScene
+signal ChangeScene
+signal Exit
 
-var loader: = ResourceAsyncLoader.new()
 
-@onready var difficulty = 2 # Easy
-@onready var pacific_mode = false
-@onready var gore_enabled = true
+@onready var currentScene = null
+var nextScene
+
 
 func _ready()->void:
-	connect("Exit",			self.on_Exit)
-	connect("ChangeScene",	self.on_ChangeScene)
-	connect("Restart", 		self.restart_scene)
+	connect("Exit", self.on_Exit)
+	connect("ChangeScene", self.on_ChangeScene)
+
 
 func on_ChangeScene(scene)->void:
-	if ScreenFade.state != ScreenFade.IDLE:
-		return
-	ScreenFade.state = ScreenFade.OUT
-	if loader.can_async:
-		NextScene = await loader.load_start( [scene] )[0].completed
-	else:
-		NextScene = loader.load_start( [scene] )[0]
-	if NextScene == null:
-		print(' Game.gd 36 - Loaded.resource is null')
-		return
-	if ScreenFade.state != ScreenFade.BLACK:
-		await ScreenFade.fade_complete
+	nextScene = scene 
 	switch_scene()
-	ScreenFade.state = ScreenFade.IN
 
-func switch_scene()->void: 														#handles actual scene change
-	CurrentScene = NextScene
-	NextScene = null
-	get_tree().change_scene_to(CurrentScene)
 
-func restart_scene()->void:
-	if ScreenFade.state != ScreenFade.IDLE:
-		return
-	get_tree().reload_current_scene()
+func switch_scene()->void:
+	currentScene = nextScene
+	nextScene = null
+	get_tree().change_scene_to_file(currentScene)
 
 
 func on_Exit()->void:
-	if ScreenFade.state != ScreenFade.IDLE:
-		return
 	get_tree().quit()
 
