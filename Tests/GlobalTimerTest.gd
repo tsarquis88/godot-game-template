@@ -40,7 +40,8 @@ func delete_timeout():
 		print("Timer: ",timers[timer_val]," about to be deleted.")
 		$Control/Timers/ItemList.remove_item(timer_val)
 		GlobalTimer.delete_timeout(timers[timer_val])
+		timers.pop_at(timer_val)
 
 
 func print_text():
-	print_debug("Printing text")
+	$Control/Panel/Console.append_text("Timer")
