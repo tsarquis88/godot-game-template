@@ -5,7 +5,6 @@ signal ChangeScene
 signal Exit
 
 
-@onready var currentScene = null
 var nextScene
 
 
@@ -20,9 +19,7 @@ func on_ChangeScene(scene)->void:
 
 
 func switch_scene()->void:
-	currentScene = nextScene
-	nextScene = null
-	get_tree().change_scene_to_file(currentScene)
+	get_tree().change_scene_to_file(nextScene)
 
 
 func on_Exit()->void:
