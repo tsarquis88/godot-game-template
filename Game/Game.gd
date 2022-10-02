@@ -6,7 +6,7 @@ signal Exit
 
 
 @export var firstScene = "Demo.tscn"
-@onready var fadeScreen = find_child("FadeScreen")
+@onready var transition = find_child("Transition")
 @onready var nextScene = firstScene
 @onready var currentSceneNode = null
 
@@ -14,7 +14,7 @@ signal Exit
 func _ready()->void:
 	connect("Exit", self.on_Exit)
 	connect("ChangeScene", self.on_ChangeScene)
-	fadeScreen.connect("Waiting", self.instantiateCurrentScene)
+	transition.connect("Transition", self.instantiateCurrentScene)
 	instantiateCurrentScene()
 
 
@@ -27,7 +27,9 @@ func instantiateCurrentScene():
 
 
 func on_ChangeScene(newScene)->void:
-	fadeScreen.init()
+	# transition.fadeScreenTransition()
+	# transition.leftRightTransition()
+	transition.upBottomTransition()
 	nextScene = newScene
 
 
