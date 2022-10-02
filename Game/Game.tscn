@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpgff0k85knbm"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Autoloads/Game.gd" id="1_lpcdd"]
+[ext_resource type="Script" path="res://Game/Game.gd" id="1_lpcdd"]
 [ext_resource type="PackedScene" uid="uid://b5bsij2qefq23" path="res://Transitions/FadeScreen.tscn" id="2_y0ila"]
 
 [node name="Game" type="Node2D"]
