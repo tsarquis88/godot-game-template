@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwiht33e11gjk"]
+
+[ext_resource type="Script" path="res://Tests/Transition/White.gd" id="1_ddw2q"]
+
+[node name="White" type="ColorRect"]
+custom_minimum_size = Vector2i(1152, 648)
+script = ExtResource("1_ddw2q")
