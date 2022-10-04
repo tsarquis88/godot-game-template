@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4mlq4brnsoj"]
+
+[ext_resource type="Script" path="res://OptionsMenu/OptionsMenu.gd" id="1_ihb7f"]
+[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syunc"]
+bg_color = Color(0.411765, 0.627451, 0.792157, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_offset = Vector2(4, -4)
+
+[node name="OptionsMenu" type="BoxContainer"]
+custom_minimum_size = Vector2i(1152, 648)
+script = ExtResource("1_ihb7f")
+
+[node name="BG" type="ColorRect" parent="."]
+custom_minimum_size = Vector2i(1152, 648)
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.333333, 0.439216, 0.788235, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="BG/VBoxContainer"]
+custom_minimum_size = Vector2i(0, 125)
+layout_mode = 2
+offset_right = 1158.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 65
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/VBoxContainer"]
+layout_mode = 2
+offset_top = 129.0
+offset_right = 1158.0
+offset_bottom = 777.0
+
+[node name="LeftMargin" type="Control" parent="BG/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2i(40, 0)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 648.0
+
+[node name="LeftVbox" type="VBoxContainer" parent="BG/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2i(501, 0)
+layout_mode = 2
+offset_left = 44.0
+offset_right = 545.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="BG/VBoxContainer/HBoxContainer/LeftVbox"]
+custom_minimum_size = Vector2i(0, 473)
+layout_mode = 2
+offset_right = 501.0
+offset_bottom = 473.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_syunc")
+
+[node name="MiddleMargin" type="Control" parent="BG/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2i(50, 0)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 549.0
+offset_right = 599.0
+offset_bottom = 648.0
+
+[node name="RightVBox" type="VBoxContainer" parent="BG/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2i(501, 0)
+layout_mode = 2
+offset_left = 603.0
+offset_right = 1104.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="BG/VBoxContainer/HBoxContainer/RightVBox"]
+custom_minimum_size = Vector2i(0, 473)
+layout_mode = 2
+offset_right = 501.0
+offset_bottom = 473.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_syunc")
+
+[node name="RightMargin" type="Control" parent="BG/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2i(50, 648)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 1108.0
+offset_right = 1158.0
+offset_bottom = 648.0
