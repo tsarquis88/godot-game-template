@@ -29,8 +29,7 @@ func on_optionsButton_pressed():
 
 
 func on_creditsButton_pressed():
-	# TODO
-	print("Credits")
+	Game.emit_signal("ChangeScene", "res://Credits/Credits.tscn", GameSettings.TRANSITIONS.UP_BOTTOM)
 
 
 func on_exitButton_pressed():
