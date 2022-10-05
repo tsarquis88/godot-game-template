@@ -5,7 +5,7 @@ signal ChangeScene
 signal Exit
 
 
-@export var firstScene = "Demo.tscn"
+@export var firstScene = "res://SplashScreen/SplashScreen.tscn"
 @onready var transition = find_child("Transition")
 @onready var nextScene = firstScene
 @onready var currentSceneNode = null
@@ -26,10 +26,14 @@ func instantiateCurrentScene():
 	add_child(currentSceneNode)
 
 
-func on_ChangeScene(newScene)->void:
-	# transition.fadeScreenTransition()
-	# transition.leftRightTransition()
-	transition.upBottomTransition()
+func on_ChangeScene(newScene, transitionType)->void:
+	match transitionType:
+		GameSettings.TRANSITIONS.FADE_SCREEN:
+			transition.fadeScreenTransition()
+		GameSettings.TRANSITIONS.LEFT_RIGHT:
+			transition.leftRightTransition()
+		GameSettings.TRANSITIONS.UP_BOTTOM:
+			transition.upBottomTransition()
 	nextScene = newScene
 
 

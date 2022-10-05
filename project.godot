@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Language="*res://Autoloads/Language.gd"
+GlobalTimer="*res://Autoloads/GlobalTimer.gd"
+GameSettings="*res://Autoloads/GameSettings.gd"
 
 [internationalization]
 
