@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://btfmpehox3ovq"]
+
+[ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
+[ext_resource type="Texture2D" uid="uid://dwimksy4gffor" path="res://icon.svg" id="1_mnpbq"]
+[ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
+[ext_resource type="Texture2D" uid="uid://c33i8i2x1autj" path="res://Assets/Images/troll.png" id="3_eey3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wb6c"]
+size = Vector2(125, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndh3r"]
+size = Vector2(125, 150)
+
+[node name="Playable" type="Node2D"]
+script = ExtResource("1_cbvvx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2i(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.886275, 0.741176, 0.184314, 1)
+
+[node name="Margins" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2d" type="CollisionPolygon2D" parent="Margins"]
+build_mode = 1
+polygon = PackedVector2Array(-1, 6, 3, 651, 3, 651, 1151, 649, 1151, 649, 1154, 3, 1154, 3, 1205, 5, 1205, 5, 1200, 709, 1200, 709, -74, 702, -74, 702, -65, 0)
+
+[node name="Target" type="Area2D" parent="."]
+position = Vector2(894, 297)
+metadata/_edit_group_ = true
+
+[node name="Sprite2d" type="Sprite2D" parent="Target"]
+texture = ExtResource("1_mnpbq")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Target"]
+shape = SubResource("RectangleShape2D_0wb6c")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(126, 267)
+script = ExtResource("1_u3w0b")
+metadata/_edit_group_ = true
+
+[node name="Sprite2d" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_eey3u")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_ndh3r")
