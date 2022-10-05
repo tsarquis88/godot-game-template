@@ -1,0 +1,4 @@
+extends Node
+
+
+enum TRANSITIONS {FADE_SCREEN, LEFT_RIGHT, UP_BOTTOM}

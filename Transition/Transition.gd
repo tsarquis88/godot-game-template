@@ -18,11 +18,6 @@ var startFinalValue
 var endFinalValue
 
 
-# Try it
-#func _ready():
-#	fadeScreenTransition()
-
-
 func fadeScreenTransition():
 	blackBG.modulate.a = 0
 	blackBG.size.x = DisplayServer.screen_get_size().x
@@ -69,15 +64,7 @@ func startTween(finalValue, duration, callback):
 
 func wait():
 	emit_signal("Transition")
-	
-	###### TODO: GT
-	var timer = Timer.new()
-	timer.wait_time = WAIT_DURATION
-	timer.autostart = true
-	timer.one_shot = true
-	timer.connect("timeout", self.endTransition)
-	add_child(timer)
-	timer.start()
+	GlobalTimer.create_timeout(self.endTransition, WAIT_DURATION)
 
 
 func end():
