@@ -1,0 +1,150 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2rx58rph0k7e"]
+
+[ext_resource type="Texture2D" uid="uid://b51du00fkq15h" path="res://icon.svg" id="1_3ka5u"]
+[ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_ihb7f"]
+[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+
+[node name="MainMenu" type="BoxContainer"]
+custom_minimum_size = Vector2i(1152, 648)
+script = ExtResource("1_ihb7f")
+
+[node name="BG" type="ColorRect" parent="."]
+custom_minimum_size = Vector2i(1152, 648)
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.333333, 0.439216, 0.788235, 1)
+
+[node name="LeftVBox" type="VBoxContainer" parent="BG"]
+custom_minimum_size = Vector2i(384, 0)
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 648.0
+
+[node name="Control" type="Control" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(100, 100)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 384.0
+offset_bottom = 100.0
+
+[node name="Logo" type="TextureRect" parent="BG/LeftVBox"]
+layout_mode = 2
+offset_top = 104.0
+offset_right = 384.0
+offset_bottom = 232.0
+texture = ExtResource("1_3ka5u")
+stretch_mode = 3
+
+[node name="Control2" type="Control" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(100, 100)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 236.0
+offset_right = 384.0
+offset_bottom = 336.0
+
+[node name="NewGameButton" type="Button" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(150, 0)
+layout_mode = 2
+offset_left = 117.0
+offset_top = 340.0
+offset_right = 267.0
+offset_bottom = 371.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "New Game"
+
+[node name="Control3" type="Control" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(100, 5)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 375.0
+offset_right = 384.0
+offset_bottom = 380.0
+
+[node name="OptionsButton" type="Button" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(150, 0)
+layout_mode = 2
+offset_left = 117.0
+offset_top = 384.0
+offset_right = 267.0
+offset_bottom = 415.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Options
+"
+
+[node name="Control4" type="Control" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(100, 5)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 419.0
+offset_right = 384.0
+offset_bottom = 424.0
+
+[node name="CreditsButton" type="Button" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(150, 0)
+layout_mode = 2
+offset_left = 117.0
+offset_top = 428.0
+offset_right = 267.0
+offset_bottom = 459.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Credits
+"
+
+[node name="Control5" type="Control" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(100, 5)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 463.0
+offset_right = 384.0
+offset_bottom = 468.0
+
+[node name="ExitButton" type="Button" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(150, 0)
+layout_mode = 2
+offset_left = 117.0
+offset_top = 472.0
+offset_right = 267.0
+offset_bottom = 503.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Exit"
+
+[node name="Control6" type="Control" parent="BG/LeftVBox"]
+custom_minimum_size = Vector2i(100, 110)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 507.0
+offset_right = 384.0
+offset_bottom = 617.0
+
+[node name="MadeWithLabel" type="Label" parent="BG/LeftVBox"]
+layout_mode = 2
+offset_top = 621.0
+offset_right = 384.0
+offset_bottom = 654.0
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 20
+text = "Made with Godo Engine 4.0"
+
+[node name="CenterVBox" type="VBoxContainer" parent="BG"]
+custom_minimum_size = Vector2i(764, 0)
+layout_mode = 1
+offset_left = 388.0
+offset_right = 772.0
+offset_bottom = 648.0
+
+[node name="GameTitleLabel" type="Label" parent="BG/CenterVBox"]
+custom_minimum_size = Vector2i(0, 648)
+layout_mode = 2
+offset_right = 764.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 64
+text = "Godot Game Template"
+horizontal_alignment = 1
+vertical_alignment = 1
