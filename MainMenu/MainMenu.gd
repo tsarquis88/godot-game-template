@@ -19,8 +19,7 @@ func _ready():
 
 
 func on_newGameButton_pressed():
-	# TODO
-	print("New Game")
+	Game.emit_signal("ChangeScene", "res://Playable/Playable.tscn", GameSettings.TRANSITIONS.FADE_SCREEN)
 
 
 func on_optionsButton_pressed():
