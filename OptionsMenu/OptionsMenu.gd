@@ -1,37 +1,32 @@
 extends BoxContainer
 
 
-@onready var newGameButton = find_child("NewGameButton")
-@onready var optionsButton = find_child("OptionsButton")
-@onready var creditsButton = find_child("CreditsButton")
-@onready var exitButton = find_child("ExitButton")
+const MAINMENU_SCENE = "res://MainMenu/MainMenu.tscn"
+const ENGLISH_INDEX = 0
+const SPANISH_INDEX = 1
+
+@onready var returnButton = find_child("ReturnButton")
+@onready var languageButton = find_child("LanguageButton")
 @onready var Game = get_parent()
 
 
 func _ready():
-	# TODO: add retranslate mechanics
-	
-	newGameButton.connect("pressed", self.on_newGameButton_pressed)
-	optionsButton.connect("pressed", self.on_optionsButton_pressed)
-	creditsButton.connect("pressed", self.on_creditsButton_pressed)
-	exitButton.connect("pressed", self.on_exitButton_pressed)
+	returnButton.connect("pressed", self.on_returnButton_pressed)
+	languageButton.connect("item_selected", self.on_languageButton_item_selected)
+	Language.connect("ReTranslate", self.reTranslate)
+	reTranslate()
+
+func on_returnButton_pressed():
+	Game.emit_signal("ChangeScene", MAINMENU_SCENE, GameSettings.TRANSITIONS.UP_BOTTOM)
 
 
-func on_newGameButton_pressed():
-	# TODO
-	print("New Game")
+func on_languageButton_item_selected(index):
+	match index:
+		ENGLISH_INDEX:
+			Language.set_language("en")
+		SPANISH_INDEX:
+			Language.set_language("es")
 
 
-func on_optionsButton_pressed():
-	# TODO
-	print("Options")
-
-
-func on_creditsButton_pressed():
-	# TODO
-	print("Credits")
-
-
-func on_exitButton_pressed():
-	# TODO
-	print("Exit")
+func reTranslate():
+	returnButton.text = tr("RETURN")
