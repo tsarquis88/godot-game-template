@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://btfmpehox3ovq"]
+[gd_scene load_steps=8 format=3 uid="uid://btfmpehox3ovq"]
 
 [ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
 [ext_resource type="Texture2D" path="res://icon.svg" id="1_mnpbq"]
 [ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
 [ext_resource type="Texture2D" uid="uid://c33i8i2x1autj" path="res://Assets/Images/troll.png" id="3_eey3u"]
+[ext_resource type="PackedScene" uid="uid://cfwjwvq46xirt" path="res://PauseMenu/PauseMenu.tscn" id="5_dxwmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wb6c"]
 size = Vector2(125, 125)
@@ -46,3 +47,10 @@ texture = ExtResource("3_eey3u")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_ndh3r")
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_dxwmy")]
+visible = false
+offset_left = 424.0
+offset_top = 134.0
+offset_right = 674.0
+offset_bottom = 484.0
