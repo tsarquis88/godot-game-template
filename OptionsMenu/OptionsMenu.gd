@@ -14,9 +14,11 @@ const HARD_INDEX = 2
 @onready var languageButton = find_child("LanguageButton")
 @onready var difficultyButton = find_child("DifficultyButton")
 @onready var fullScreenButton = find_child("FullScreenButton")
+@onready var volumeSlider = find_child("VolumeSlider")
 @onready var languageLabel = find_child("LanguageLabel")
 @onready var difficultyLabel = find_child("DifficultyLabel")
 @onready var fullScreenLabel = find_child("FullScreenLabel")
+@onready var volumeLabel = find_child("VolumeLabel")
 @onready var Game = get_parent()
 
 
@@ -27,6 +29,7 @@ func _ready():
 	languageButton.connect("item_selected", self.on_languageButton_item_selected)
 	difficultyButton.connect("item_selected", self.on_difficultyButton_item_selected)
 	fullScreenButton.connect("toggled", self.on_fullScreenButton_toggled)
+	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
 	Language.connect("ReTranslate", self.reTranslate)
 
 
@@ -56,6 +59,11 @@ func on_fullScreenButton_toggled(fullScreen):
 	Game.emit_signal("FullScreen", fullScreen)
 
 
+func on_volumeSlider_value_changed(newValue):
+	# TODO: Sound manager autoload
+	pass
+
+
 func reTranslate():
 	difficultyButton.set_item_text(EASY_INDEX, tr("EASY"))
 	difficultyButton.set_item_text(NORMAL_INDEX, tr("NORMAL"))
@@ -64,7 +72,7 @@ func reTranslate():
 	languageLabel.text = tr("LANGUAGE")
 	difficultyLabel.text = tr("DIFFICULTY")
 	fullScreenLabel.text = tr("FULL-SCREEN")
-
+	volumeLabel.text = tr("VOLUME")
 
 func setDefaulValues():	
 	if Language.get_language() == "es":
