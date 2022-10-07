@@ -59,7 +59,7 @@ func on_fullScreenButton_toggled(fullScreen):
 	Game.emit_signal("FullScreen", fullScreen)
 
 
-func on_volumeSlider_value_changed(newValue):
+func on_volumeSlider_value_changed(_newValue):
 	# TODO: Sound manager autoload
 	pass
 
