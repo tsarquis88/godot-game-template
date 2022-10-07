@@ -1,6 +1,11 @@
 extends BoxContainer
 
 
+const PLAYABLE_SCENE = "res://Playable/Playable.tscn"
+const CREDITS_SCENE = "res://Credits/Credits.tscn"
+const OPTIONS_SCENE = "res://OptionsMenu/OptionsMenu.tscn"
+
+
 @onready var newGameButton = find_child("NewGameButton")
 @onready var optionsButton = find_child("OptionsButton")
 @onready var creditsButton = find_child("CreditsButton")
@@ -19,16 +24,15 @@ func _ready():
 
 
 func on_newGameButton_pressed():
-	Game.emit_signal("ChangeScene", "res://Playable/Playable.tscn", GameSettings.TRANSITIONS.FADE_SCREEN)
+	Game.emit_signal("ChangeScene", PLAYABLE_SCENE, GameSettings.TRANSITIONS.FADE_SCREEN)
 
 
 func on_optionsButton_pressed():
-	# TODO
-	print("Options")
+	Game.emit_signal("ChangeScene", OPTIONS_SCENE, GameSettings.TRANSITIONS.LEFT_RIGHT)
 
 
 func on_creditsButton_pressed():
-	Game.emit_signal("ChangeScene", "res://Credits/Credits.tscn", GameSettings.TRANSITIONS.UP_BOTTOM)
+	Game.emit_signal("ChangeScene", CREDITS_SCENE, GameSettings.TRANSITIONS.UP_BOTTOM)
 
 
 func on_exitButton_pressed():

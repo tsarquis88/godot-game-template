@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://btfmpehox3ovq"]
 
 [ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
-[ext_resource type="Texture2D" uid="uid://dwimksy4gffor" path="res://icon.svg" id="1_mnpbq"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="1_mnpbq"]
 [ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
 [ext_resource type="Texture2D" uid="uid://c33i8i2x1autj" path="res://Assets/Images/troll.png" id="3_eey3u"]
 
