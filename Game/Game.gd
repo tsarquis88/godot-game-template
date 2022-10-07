@@ -15,14 +15,19 @@ signal Exit
 @onready var scaleIncrement = Vector2()
 
 
+# Offset due to an unappropiate scaling
+const SCALE_INCREMENT_OFFSET = Vector2(0.065, 0.065)
+
+
 func _ready()->void:
 	connect("Exit", self.on_exit)
 	connect("ChangeScene", self.on_changeScene)
 	connect("FullScreen", self.on_fullScreen)
 	transition.connect("Transition", self.instantiateCurrentScene)
 	instantiateCurrentScene()
-	scaleIncrement.x = float(startScreenSize.x) / float(fullScreenSize.x) 
+	scaleIncrement.x = float(startScreenSize.x) / float(fullScreenSize.x)
 	scaleIncrement.y = float(startScreenSize.y) / float(fullScreenSize.y)
+	scaleIncrement += SCALE_INCREMENT_OFFSET
 
 
 func instantiateCurrentScene():
