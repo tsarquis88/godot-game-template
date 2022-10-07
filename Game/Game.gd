@@ -2,6 +2,7 @@ extends Node2D
 
 
 signal ChangeScene
+signal FullScreen
 signal Exit
 
 
@@ -9,13 +10,19 @@ signal Exit
 @onready var transition = find_child("Transition")
 @onready var nextScene = firstScene
 @onready var currentSceneNode = null
+@onready var fullScreenSize = DisplayServer.screen_get_size()
+@onready var startScreenSize = DisplayServer.window_get_size()
+@onready var scaleIncrement = Vector2()
 
 
 func _ready()->void:
-	connect("Exit", self.on_Exit)
-	connect("ChangeScene", self.on_ChangeScene)
+	connect("Exit", self.on_exit)
+	connect("ChangeScene", self.on_changeScene)
+	connect("FullScreen", self.on_fullScreen)
 	transition.connect("Transition", self.instantiateCurrentScene)
 	instantiateCurrentScene()
+	scaleIncrement.x = float(startScreenSize.x) / float(fullScreenSize.x) 
+	scaleIncrement.y = float(startScreenSize.y) / float(fullScreenSize.y)
 
 
 func instantiateCurrentScene():
@@ -26,7 +33,7 @@ func instantiateCurrentScene():
 	add_child(currentSceneNode)
 
 
-func on_ChangeScene(newScene, transitionType)->void:
+func on_changeScene(newScene, transitionType)->void:
 	match transitionType:
 		GameSettings.TRANSITIONS.FADE_SCREEN:
 			transition.fadeScreenTransition()
@@ -37,6 +44,16 @@ func on_ChangeScene(newScene, transitionType)->void:
 	nextScene = newScene
 
 
-func on_Exit()->void:
+func on_fullScreen(fullScreen):
+	GameSettings.fullScreen = fullScreen
+	if fullScreen:
+		scale += scaleIncrement
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		scale -= scaleIncrement
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func on_exit()->void:
 	get_tree().quit()
 
