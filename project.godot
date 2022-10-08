@@ -12,7 +12,7 @@ config_version=5
 
 config/name="godot-game-template"
 run/main_scene="res://Game/Game.tscn"
-config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
 [autoload]

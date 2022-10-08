@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://btfmpehox3ovq"]
+[gd_scene load_steps=9 format=3 uid="uid://btfmpehox3ovq"]
 
 [ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="1_mnpbq"]
+[ext_resource type="Texture2D" uid="uid://bipwgnvlaxrki" path="res://icon.svg" id="1_mnpbq"]
 [ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
 [ext_resource type="Texture2D" uid="uid://c33i8i2x1autj" path="res://Assets/Images/troll.png" id="3_eey3u"]
+[ext_resource type="PackedScene" uid="uid://cfwjwvq46xirt" path="res://PauseMenu/PauseMenu.tscn" id="5_dxwmy"]
+[ext_resource type="PackedScene" uid="uid://d8q36mc1y2fk" path="res://PauseMenuOptions/PauseMenuOptions.tscn" id="6_0wt76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wb6c"]
 size = Vector2(125, 125)
@@ -18,7 +20,7 @@ script = ExtResource("1_cbvvx")
 custom_minimum_size = Vector2i(1152, 648)
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0.886275, 0.741176, 0.184314, 1)
+color = Color(0.227451, 0.113725, 0.686275, 1)
 
 [node name="Margins" type="StaticBody2D" parent="."]
 
@@ -46,3 +48,37 @@ texture = ExtResource("3_eey3u")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_ndh3r")
+
+[node name="PauseMenuControl" type="Control" parent="."]
+custom_minimum_size = Vector2i(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseMenu" parent="PauseMenuControl" instance=ExtResource("5_dxwmy")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -112.5
+offset_right = 125.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenuOptions" parent="PauseMenuControl" instance=ExtResource("6_0wt76")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -175.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -19,20 +19,17 @@ script = ExtResource("1_ihb7f")
 
 [node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2i(1152, 648)
-layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.333333, 0.439216, 0.788235, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 custom_minimum_size = Vector2i(1152, 0)
-layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 578.0
 
 [node name="Title" type="Label" parent="Background/VBoxContainer"]
 custom_minimum_size = Vector2i(1152, 50)
-layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 101.0
 theme_override_fonts/font = ExtResource("2_j1t0p")
@@ -42,61 +39,55 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
-layout_mode = 2
 offset_top = 105.0
 offset_right = 1152.0
 offset_bottom = 598.0
 
 [node name="LeftMargin" type="Control" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2i(40, 0)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 493.0
 
 [node name="LeftVbox" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2i(1050, 0)
-layout_mode = 2
 offset_left = 44.0
 offset_right = 1094.0
 offset_bottom = 493.0
 
 [node name="Panel" type="Panel" parent="Background/VBoxContainer/HBoxContainer/LeftVbox"]
 custom_minimum_size = Vector2i(0, 400)
-layout_mode = 2
 offset_right = 1050.0
 offset_bottom = 400.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_syunc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel"]
 custom_minimum_size = Vector2i(1050, 400)
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
 custom_minimum_size = Vector2i(25, 0)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_right = 25.0
 offset_bottom = 400.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
 custom_minimum_size = Vector2i(250, 0)
-layout_mode = 2
 offset_left = 29.0
 offset_right = 279.0
 offset_bottom = 400.0
 
 [node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2i(0, 80)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_right = 250.0
 offset_bottom = 80.0
 
 [node name="LanguageLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 84.0
 offset_right = 250.0
 offset_bottom = 139.0
@@ -108,14 +99,13 @@ vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2i(0, 33)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_top = 143.0
 offset_right = 250.0
 offset_bottom = 176.0
 
 [node name="DifficultyLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 180.0
 offset_right = 250.0
 offset_bottom = 235.0
@@ -127,21 +117,19 @@ vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
 custom_minimum_size = Vector2i(200, 0)
-layout_mode = 2
 offset_left = 283.0
 offset_right = 483.0
 offset_bottom = 400.0
 
 [node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2i(0, 95)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 95.0
 
 [node name="LanguageButton" type="OptionButton" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2i(150, 0)
-layout_mode = 2
 offset_left = 25.0
 offset_top = 99.0
 offset_right = 175.0
@@ -157,7 +145,7 @@ popup/item_1/id = 1
 
 [node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2i(0, 60)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_top = 136.0
 offset_right = 200.0
@@ -165,7 +153,6 @@ offset_bottom = 196.0
 
 [node name="DifficultyButton" type="OptionButton" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2i(150, 0)
-layout_mode = 2
 offset_left = 25.0
 offset_top = 200.0
 offset_right = 175.0
@@ -183,7 +170,7 @@ popup/item_2/id = 2
 
 [node name="Control3" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
 custom_minimum_size = Vector2i(50, 0)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_left = 487.0
 offset_right = 537.0
@@ -191,20 +178,18 @@ offset_bottom = 400.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
 custom_minimum_size = Vector2i(300, 0)
-layout_mode = 2
 offset_left = 541.0
 offset_right = 841.0
 offset_bottom = 400.0
 
 [node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2i(0, 80)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_right = 300.0
 offset_bottom = 80.0
 
 [node name="FullScreenLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
 offset_top = 84.0
 offset_right = 300.0
 offset_bottom = 139.0
@@ -216,14 +201,13 @@ vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2i(0, 33)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_top = 143.0
 offset_right = 300.0
 offset_bottom = 176.0
 
 [node name="VolumeLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
 offset_top = 180.0
 offset_right = 300.0
 offset_bottom = 235.0
@@ -235,34 +219,31 @@ vertical_alignment = 1
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
 custom_minimum_size = Vector2i(150, 0)
-layout_mode = 2
 offset_left = 845.0
 offset_right = 995.0
 offset_bottom = 400.0
 
 [node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
 custom_minimum_size = Vector2i(0, 100)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 100.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
-layout_mode = 2
 offset_top = 104.0
 offset_right = 150.0
 offset_bottom = 128.0
 
 [node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4/HBoxContainer"]
 custom_minimum_size = Vector2i(50, 0)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_right = 50.0
 offset_bottom = 24.0
 
 [node name="FullScreenButton" type="CheckButton" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4/HBoxContainer"]
 layout_direction = 3
-layout_mode = 2
 offset_left = 52.0
 offset_right = 96.0
 offset_bottom = 24.0
@@ -270,21 +251,20 @@ theme_override_fonts/font = ExtResource("2_j1t0p")
 
 [node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
 custom_minimum_size = Vector2i(0, 75)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_top = 132.0
 offset_right = 150.0
 offset_bottom = 207.0
 
 [node name="VolumeSlider" type="HSlider" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
-layout_mode = 2
 offset_top = 211.0
 offset_right = 150.0
 offset_bottom = 227.0
 
 [node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
 custom_minimum_size = Vector2i(50, 0)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_left = 999.0
 offset_right = 1049.0
@@ -292,7 +272,7 @@ offset_bottom = 400.0
 
 [node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox"]
 custom_minimum_size = Vector2i(0, 25)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_top = 404.0
 offset_right = 1050.0
@@ -300,7 +280,6 @@ offset_bottom = 429.0
 
 [node name="ReturnButton" type="Button" parent="Background/VBoxContainer/HBoxContainer/LeftVbox"]
 custom_minimum_size = Vector2i(200, 50)
-layout_mode = 2
 offset_left = 425.0
 offset_top = 433.0
 offset_right = 625.0
@@ -313,7 +292,7 @@ text = "Return"
 
 [node name="MiddleMargin" type="Control" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2i(50, 0)
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_left = 1098.0
 offset_right = 1148.0

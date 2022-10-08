@@ -1,6 +1,9 @@
 extends BoxContainer
 
 
+signal FullScreen
+
+
 const MAINMENU_SCENE = "res://MainMenu/MainMenu.tscn"
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
@@ -9,7 +12,6 @@ const NORMAL_INDEX = 1
 const HARD_INDEX = 2
 
 
-@onready var background = find_child("Background")
 @onready var returnButton = find_child("ReturnButton")
 @onready var languageButton = find_child("LanguageButton")
 @onready var difficultyButton = find_child("DifficultyButton")
