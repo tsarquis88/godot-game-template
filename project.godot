@@ -11,10 +11,17 @@ config_version=5
 [application]
 
 config/name="godot-game-template"
-run/main_scene="res://demo.tscn"
-config/features=PackedStringArray("4.0", "Vulkan Clustered")
+run/main_scene="res://Game/Game.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalTimer="*res://Autoload/GlobalTimer.gd"
+GlobalTimer="*res://Autoload/GlobalTimer.gd"=======
+Language="*res://Autoloads/Language.gd"
+GlobalTimer="*res://Autoloads/GlobalTimer.gd"
+GameSettings="*res://Autoloads/GameSettings.gd"
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Localization/Localization.en.translation", "res://Localization/Localization.es.translation")

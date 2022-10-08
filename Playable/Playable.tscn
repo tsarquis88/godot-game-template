@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://btfmpehox3ovq"]
+
+[ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
+[ext_resource type="Texture2D" uid="uid://bipwgnvlaxrki" path="res://icon.svg" id="1_mnpbq"]
+[ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
+[ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Assets/Textures/spark.png" id="2_yx2bw"]
+[ext_resource type="PackedScene" uid="uid://cfwjwvq46xirt" path="res://PauseMenu/PauseMenu.tscn" id="5_dxwmy"]
+[ext_resource type="PackedScene" uid="uid://d8q36mc1y2fk" path="res://PauseMenuOptions/PauseMenuOptions.tscn" id="6_0wt76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wb6c"]
+size = Vector2(125, 125)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m3yox"]
+emission_shape = 1
+emission_sphere_radius = 100.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndh3r"]
+size = Vector2(125, 125)
+
+[node name="Playable" type="Node2D"]
+script = ExtResource("1_cbvvx")
+
+[node name="Playables" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Playables"]
+custom_minimum_size = Vector2i(1152, 648)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.498039, 0.054902, 0.188235, 1)
+
+[node name="Margins" type="StaticBody2D" parent="Playables"]
+
+[node name="CollisionPolygon2d" type="CollisionPolygon2D" parent="Playables/Margins"]
+build_mode = 1
+polygon = PackedVector2Array(-1, 6, 3, 651, 3, 651, 1151, 649, 1151, 649, 1154, 3, 1154, 3, 1205, 5, 1205, 5, 1200, 709, 1200, 709, -74, 702, -74, 702, -65, 0)
+
+[node name="Target" type="Area2D" parent="Playables"]
+position = Vector2(894, 297)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Playables/Target"]
+shape = SubResource("RectangleShape2D_0wb6c")
+
+[node name="CpuParticles2d" type="GPUParticles2D" parent="Playables/Target"]
+amount = 50
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_m3yox")
+texture = ExtResource("2_yx2bw")
+
+[node name="Player" type="CharacterBody2D" parent="Playables"]
+position = Vector2(126, 267)
+script = ExtResource("1_u3w0b")
+metadata/_edit_group_ = true
+
+[node name="Sprite2d" type="Sprite2D" parent="Playables/Player"]
+texture = ExtResource("1_mnpbq")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Playables/Player"]
+shape = SubResource("RectangleShape2D_ndh3r")
+
+[node name="PauseMenuControl" type="Control" parent="."]
+custom_minimum_size = Vector2i(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseMenu" parent="PauseMenuControl" instance=ExtResource("5_dxwmy")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -112.5
+offset_right = 125.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenuOptions" parent="PauseMenuControl" instance=ExtResource("6_0wt76")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -175.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2

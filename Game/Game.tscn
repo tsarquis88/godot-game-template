@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyfyghsh17qfy"]
+
+[ext_resource type="Script" path="res://Game/Game.gd" id="1_lpcdd"]
+[ext_resource type="PackedScene" uid="uid://u43ragl52rog" path="res://Transition/Transition.tscn" id="2_y0ila"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lpcdd")
+firstScene = "res://Launch/Launch.tscn"
+
+[node name="Transition" parent="." instance=ExtResource("2_y0ila")]
+z_index = 1
