@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://btfmpehox3ovq"]
+[gd_scene load_steps=11 format=3 uid="uid://btfmpehox3ovq"]
 
 [ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
 [ext_resource type="Texture2D" uid="uid://bipwgnvlaxrki" path="res://icon.svg" id="1_mnpbq"]
 [ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
+[ext_resource type="Script" path="res://Playable/Target.gd" id="2_81ifm"]
 [ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Assets/Textures/spark.png" id="2_yx2bw"]
 [ext_resource type="PackedScene" uid="uid://cfwjwvq46xirt" path="res://PauseMenu/PauseMenu.tscn" id="5_dxwmy"]
 [ext_resource type="PackedScene" uid="uid://d8q36mc1y2fk" path="res://PauseMenuOptions/PauseMenuOptions.tscn" id="6_0wt76"]
@@ -40,6 +41,7 @@ polygon = PackedVector2Array(-1, 6, 3, 651, 3, 651, 1151, 649, 1151, 649, 1154, 
 
 [node name="Target" type="Area2D" parent="Playables"]
 position = Vector2(894, 297)
+script = ExtResource("2_81ifm")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="Playables/Target"]

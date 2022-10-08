@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2rx58rph0k7e"]
 
-[ext_resource type="Texture2D" path="res://icon.svg" id="1_3ka5u"]
+[ext_resource type="Texture2D" uid="uid://bipwgnvlaxrki" path="res://icon.svg" id="1_3ka5u"]
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_ihb7f"]
 [ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
 

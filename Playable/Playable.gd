@@ -14,7 +14,9 @@ const nextScene = "res://MainMenu/MainMenu.tscn"
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		pauseMenu.visible = not pauseMenu.visible
+		pauseMenuOptions.visible = false
 		player.pause = pauseMenu.visible
+		target.setPause(pauseMenu.visible)
 
 
 func _ready():
@@ -37,6 +39,8 @@ func on_pauseMenu_exitGame():
 func on_pauseMenu_resume():
 	pauseMenu.visible = false
 	player.pause = false
+	target.setPause(false)
+
 
 func on_pauseMenu_options():
 	pauseMenu.visible = false
