@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfwjwvq46xirt"]
+[gd_scene load_steps=4 format=3 uid="uid://cfwjwvq46xirt"]
 
 [ext_resource type="Script" path="res://PauseMenu/PauseMenu.gd" id="1_5meyu"]
+[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs1th"]
+bg_color = Color(0.333333, 0.439216, 0.788235, 1)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
+border_color = Color(0.411765, 0.627451, 0.792157, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -15,30 +18,53 @@ shadow_size = 10
 shadow_offset = Vector2(5, -5)
 
 [node name="PauseMenu" type="Panel"]
-custom_minimum_size = Vector2i(250, 350)
+custom_minimum_size = Vector2i(250, 275)
+offset_right = 250.0
+offset_bottom = 225.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_bs1th")
 script = ExtResource("1_5meyu")
 
 [node name="LeftVBox" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2i(250, 350)
+custom_minimum_size = Vector2i(250, 150)
 layout_mode = 1
 offset_right = 250.0
-offset_bottom = 350.0
+offset_bottom = 150.0
 
 [node name="Control2" type="Control" parent="LeftVBox"]
-custom_minimum_size = Vector2i(100, 100)
+custom_minimum_size = Vector2i(100, 25)
 layout_mode = 2
 anchors_preset = 0
 offset_right = 250.0
-offset_bottom = 100.0
+offset_bottom = 25.0
+
+[node name="Title" type="Label" parent="LeftVBox"]
+layout_mode = 2
+offset_top = 29.0
+offset_right = 250.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("2_ktrah")
+theme_override_font_sizes/font_size = 24
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="LeftVBox"]
+custom_minimum_size = Vector2i(100, 25)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 73.0
+offset_right = 250.0
+offset_bottom = 98.0
 
 [node name="OptionsButton" type="Button" parent="LeftVBox"]
 custom_minimum_size = Vector2i(150, 0)
 layout_mode = 2
 offset_left = 50.0
-offset_top = 104.0
+offset_top = 102.0
 offset_right = 200.0
-offset_bottom = 135.0
+offset_bottom = 133.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Options
@@ -48,17 +74,36 @@ text = "Options
 custom_minimum_size = Vector2i(100, 5)
 layout_mode = 2
 anchors_preset = 0
-offset_top = 139.0
+offset_top = 137.0
 offset_right = 250.0
-offset_bottom = 144.0
+offset_bottom = 142.0
 
 [node name="ExitButton" type="Button" parent="LeftVBox"]
 custom_minimum_size = Vector2i(150, 0)
 layout_mode = 2
 offset_left = 50.0
-offset_top = 148.0
+offset_top = 146.0
 offset_right = 200.0
-offset_bottom = 179.0
+offset_bottom = 177.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit"
+
+[node name="Control5" type="Control" parent="LeftVBox"]
+custom_minimum_size = Vector2i(100, 30)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 181.0
+offset_right = 250.0
+offset_bottom = 211.0
+
+[node name="ResumeButton" type="Button" parent="LeftVBox"]
+custom_minimum_size = Vector2i(150, 0)
+layout_mode = 2
+offset_left = 50.0
+offset_top = 215.0
+offset_right = 200.0
+offset_bottom = 246.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume"
