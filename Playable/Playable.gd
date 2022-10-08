@@ -15,7 +15,6 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		pauseMenu.visible = not pauseMenu.visible
 		player.pause = pauseMenu.visible
-		
 
 
 func _ready():
