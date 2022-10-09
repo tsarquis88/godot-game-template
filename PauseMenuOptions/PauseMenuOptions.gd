@@ -5,8 +5,8 @@ signal FullScreen
 signal Return
 
 
-const SLIDER_SOUND_FILE = "volumeSlider.wav"
-const BUTTON_SOUND_FILE = "button.wav"
+const SLIDER_SOUND = "volumeSlider.wav"
+const BUTTON_SOUND = "button.wav"
 
 
 const ENGLISH_INDEX = 0
@@ -71,9 +71,9 @@ func on_returnButton_pressed():
 
 
 func on_button_pressed():
-	SfxManager.play(BUTTON_SOUND_FILE)
+	SfxManager.playSfx(BUTTON_SOUND)
 
 
 func on_volumeSlider_value_changed(newValue):
 	SfxManager.setMasterVolumeDb(newValue)
-	SfxManager.play(SLIDER_SOUND_FILE)
+	SfxManager.playSfx(SLIDER_SOUND)

@@ -1,8 +1,9 @@
 extends Node2D
 
 
-const WIN_SOUND_FILE = "win.wav"
-
+const WIN_SOUND = "win.wav"
+const GAME_MUSIC = "playable.ogg"
+const INIT_MUSIC = "init.ogg"
 
 @onready var target = find_child("Target")
 @onready var pauseMenu = find_child("PauseMenu")
@@ -29,10 +30,12 @@ func _ready():
 	pauseMenuOptions.connect("Return", self.on_pauseMenuOptions_return)
 	pauseMenuOptions.connect("FullScreen", self.on_pauseMenuOptions_fullScreen)
 	target.connect("body_entered", self.endGame)
+	SfxManager.playMusic(GAME_MUSIC)
 
 
 func endGame(_body):
-	SfxManager.play(WIN_SOUND_FILE)
+	SfxManager.playSfx(WIN_SOUND)
+	SfxManager.playMusic(INIT_MUSIC)
 	Game.emit_signal("ChangeScene", nextScene, GameSettings.TRANSITIONS.FADE_SCREEN)
 
 

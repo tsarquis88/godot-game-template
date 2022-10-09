@@ -6,7 +6,7 @@ signal Options
 signal Resume
 
 
-const BUTTON_SOUND_FILE = "button.wav"
+const BUTTON_SOUND = "button.wav"
 
 
 @onready var exitButton = find_child("ExitButton")
@@ -39,7 +39,7 @@ func on_resumeButton_pressed():
 
 
 func on_button_pressed():
-	SfxManager.play(BUTTON_SOUND_FILE)
+	SfxManager.playSfx(BUTTON_SOUND)
 
 
 func reTranslate():

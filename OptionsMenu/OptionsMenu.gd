@@ -10,8 +10,8 @@ const SPANISH_INDEX = 1
 const EASY_INDEX = 0
 const NORMAL_INDEX = 1
 const HARD_INDEX = 2
-const SLIDER_SOUND_FILE = "volumeSlider.wav"
-const BUTTON_SOUND_FILE = "button.wav"
+const SLIDER_SOUND = "volumeSlider.wav"
+const BUTTON_SOUND = "button.wav"
 
 
 @onready var returnButton = find_child("ReturnButton")
@@ -39,7 +39,7 @@ func _ready():
 
 func on_returnButton_pressed():
 	Game.emit_signal("ChangeScene", MAINMENU_SCENE, GameSettings.TRANSITIONS.UP_BOTTOM)
-	SfxManager.play(BUTTON_SOUND_FILE)
+	SfxManager.playSfx(BUTTON_SOUND)
 
 
 func on_languageButton_item_selected(index):
@@ -66,7 +66,7 @@ func on_fullScreenButton_toggled(fullScreen):
 
 func on_volumeSlider_value_changed(newValue):
 	SfxManager.setMasterVolumeDb(newValue)
-	SfxManager.play(SLIDER_SOUND_FILE)
+	SfxManager.playSfx(SLIDER_SOUND)
 
 
 func reTranslate():

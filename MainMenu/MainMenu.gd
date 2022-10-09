@@ -44,7 +44,7 @@ func on_exitButton_pressed():
 
 
 func on_button_pressed():
-	SfxManager.play(BUTTON_SOUND)
+	SfxManager.playSfx(BUTTON_SOUND)
 
 
 func reTranslate():
