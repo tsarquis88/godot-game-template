@@ -10,6 +10,8 @@ const SPANISH_INDEX = 1
 const EASY_INDEX = 0
 const NORMAL_INDEX = 1
 const HARD_INDEX = 2
+const SLIDER_SOUND_FILE = "volumeSlider.wav"
+const BUTTON_SOUND_FILE = "button.wav"
 
 
 @onready var returnButton = find_child("ReturnButton")
@@ -37,6 +39,7 @@ func _ready():
 
 func on_returnButton_pressed():
 	Game.emit_signal("ChangeScene", MAINMENU_SCENE, GameSettings.TRANSITIONS.UP_BOTTOM)
+	SfxManager.play(BUTTON_SOUND_FILE)
 
 
 func on_languageButton_item_selected(index):
@@ -61,9 +64,9 @@ func on_fullScreenButton_toggled(fullScreen):
 	Game.emit_signal("FullScreen", fullScreen)
 
 
-func on_volumeSlider_value_changed(_newValue):
-	# TODO: Sound manager autoload
-	pass
+func on_volumeSlider_value_changed(newValue):
+	SfxManager.setMasterVolumeDb(newValue)
+	SfxManager.play(SLIDER_SOUND_FILE)
 
 
 func reTranslate():
@@ -76,13 +79,17 @@ func reTranslate():
 	fullScreenLabel.text = tr("FULL-SCREEN")
 	volumeLabel.text = tr("VOLUME")
 
+
 func setDefaulValues():	
 	if Language.get_language() == "es":
 		languageButton.select(SPANISH_INDEX)
 	else:
 		languageButton.select(ENGLISH_INDEX)
-	
 	fullScreenButton.button_pressed = GameSettings.fullScreen
 	difficultyButton.select(NORMAL_INDEX)
+	volumeSlider.step = 0.0001
+	volumeSlider.min_value = 0.0001
+	volumeSlider.max_value = 1
+	volumeSlider.value = 1
 	
 

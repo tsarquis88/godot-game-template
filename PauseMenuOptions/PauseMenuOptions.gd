@@ -5,6 +5,10 @@ signal FullScreen
 signal Return
 
 
+const SLIDER_SOUND_FILE = "volumeSlider.wav"
+const BUTTON_SOUND_FILE = "button.wav"
+
+
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
 
@@ -20,13 +24,14 @@ const SPANISH_INDEX = 1
 
 
 func _ready():
+	setDefaulValues()
+	reTranslate()
 	Language.connect("ReTranslate", self.reTranslate)
 	languageButton.connect("item_selected", self.on_languageButton_item_selected)
 	fullScreenButton.connect("toggled", self.on_fullScreenButton_toggled)
-	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
 	returnButton.connect("pressed", self.on_returnButton_pressed)
-	setDefaulValues()
-	reTranslate()
+	returnButton.connect("pressed", self.on_button_pressed)
+	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
 
 
 func reTranslate():
@@ -50,8 +55,11 @@ func setDefaulValues():
 		languageButton.select(SPANISH_INDEX)
 	else:
 		languageButton.select(ENGLISH_INDEX)
-	
 	fullScreenButton.button_pressed = GameSettings.fullScreen
+	volumeSlider.step = 0.0001
+	volumeSlider.min_value = 0.0001
+	volumeSlider.max_value = 1
+	volumeSlider.value = 1
 
 
 func on_fullScreenButton_toggled(fullScreen):
@@ -62,6 +70,10 @@ func on_returnButton_pressed():
 	emit_signal("Return")
 
 
-func on_volumeSlider_value_changed(_newValue):
-	# TODO: Sound manager autoload
-	pass
+func on_button_pressed():
+	SfxManager.play(BUTTON_SOUND_FILE)
+
+
+func on_volumeSlider_value_changed(newValue):
+	SfxManager.setMasterVolumeDb(newValue)
+	SfxManager.play(SLIDER_SOUND_FILE)

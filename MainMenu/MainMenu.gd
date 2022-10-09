@@ -4,7 +4,7 @@ extends BoxContainer
 const PLAYABLE_SCENE = "res://Playable/Playable.tscn"
 const CREDITS_SCENE = "res://Credits/Credits.tscn"
 const OPTIONS_SCENE = "res://OptionsMenu/OptionsMenu.tscn"
-
+const BUTTON_SOUND = "button.wav"
 
 @onready var newGameButton = find_child("NewGameButton")
 @onready var optionsButton = find_child("OptionsButton")
@@ -19,6 +19,10 @@ func _ready():
 	optionsButton.connect("pressed", self.on_optionsButton_pressed)
 	creditsButton.connect("pressed", self.on_creditsButton_pressed)
 	exitButton.connect("pressed", self.on_exitButton_pressed)
+	newGameButton.connect("pressed", self.on_button_pressed)
+	optionsButton.connect("pressed", self.on_button_pressed)
+	creditsButton.connect("pressed", self.on_button_pressed)
+	exitButton.connect("pressed", self.on_button_pressed)
 	Language.connect("ReTranslate", self.reTranslate)
 	reTranslate()
 
@@ -37,6 +41,10 @@ func on_creditsButton_pressed():
 
 func on_exitButton_pressed():
 	Game.emit_signal("Exit")
+
+
+func on_button_pressed():
+	SfxManager.play(BUTTON_SOUND)
 
 
 func reTranslate():
