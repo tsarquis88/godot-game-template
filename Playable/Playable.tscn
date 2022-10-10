@@ -73,7 +73,6 @@ offset_bottom = 40.0
 
 [node name="PauseMenu" parent="PauseMenuControl" instance=ExtResource("5_dxwmy")]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -88,7 +87,6 @@ grow_vertical = 2
 
 [node name="PauseMenuOptions" parent="PauseMenuControl" instance=ExtResource("6_0wt76")]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

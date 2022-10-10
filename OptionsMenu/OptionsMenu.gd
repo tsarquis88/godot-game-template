@@ -34,6 +34,7 @@ func _ready():
 	difficultyButton.connect("item_selected", self.on_difficultyButton_item_selected)
 	fullScreenButton.connect("toggled", self.on_fullScreenButton_toggled)
 	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
+	volumeSlider.connect("drag_ended", self.on_volumeSlider_drag_ended)
 	Language.connect("ReTranslate", self.reTranslate)
 
 
@@ -64,9 +65,13 @@ func on_fullScreenButton_toggled(fullScreen):
 	Game.emit_signal("FullScreen", fullScreen)
 
 
-func on_volumeSlider_value_changed(newValue):
-	SfxManager.setMasterVolumeDb(newValue)
+func on_volumeSlider_value_changed(_newValue):
 	SfxManager.playSfx(SLIDER_SOUND)
+
+
+func on_volumeSlider_drag_ended(valueChanged):
+	if valueChanged:
+		SfxManager.setMasterVolumeDb(volumeSlider.value)
 
 
 func reTranslate():

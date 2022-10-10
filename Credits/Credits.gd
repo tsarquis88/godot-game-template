@@ -6,7 +6,7 @@ extends Node2D
 
 func _ready():
 	var config = ConfigFile.new()
-	var err = config.load("res://config.cfg")
+	var err = config.load(GameSettings.CONFIG_FILE_PATH)
 
 	if err != OK:
 		return
