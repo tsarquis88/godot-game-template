@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 Language="*res://Autoloads/Language.gd"
 GlobalTimer="*res://Autoloads/GlobalTimer.gd"
-GameSettings="*res://Autoloads/GameSettings.gd"
 SfxManager="*res://Autoloads/SfxManager.gd"
+GameSettings="*res://Autoloads/GameSettings.gd"
 
 [internationalization]
 

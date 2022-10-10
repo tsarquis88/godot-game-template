@@ -8,15 +8,13 @@ signal ReTranslate
 
 
 func _ready():
-	if config.load(GameSettings.CONFIG_FILE_PATH) == OK:
-		set_language(config.get_value("language", "LANGUAGE"))
+	set_language(GameSettings.getSetting("language", "LANGUAGE"))
 
 
 func set_language(value : String) -> void:
 	TranslationServer.set_locale(value)
 	emit_signal("ReTranslate")
-	config.set_value("language", "LANGUAGE", value)
-	config.save(GameSettings.CONFIG_FILE_PATH)
+	GameSettings.setSetting("language", "LANGUAGE", value)
 
 
 func get_language() -> String:

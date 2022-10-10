@@ -5,15 +5,9 @@ extends Node2D
 @onready var Game = get_parent()
 
 func _ready():
-	var config = ConfigFile.new()
-	var err = config.load(GameSettings.CONFIG_FILE_PATH)
-
-	if err != OK:
-		return
-
 	creditsLabel.text = str(tr("CREDITS"), "\n\n")
-	for credit in config.get_section_keys("credits"):
-		creditsLabel.text += str(tr(credit), " ", tr("BY"), " ", config.get_value("credits", credit), "\n")
+	for credit in GameSettings.getSectionKeys("credits"):
+		creditsLabel.text += str(tr(credit), " ", tr("BY"), " ", GameSettings.getSetting("credits", credit), "\n")
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
