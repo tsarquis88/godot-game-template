@@ -2,7 +2,6 @@ extends Node2D
 
 
 signal ChangeScene
-signal FullScreen
 signal Exit
 
 
@@ -10,24 +9,14 @@ signal Exit
 @onready var transition = find_child("Transition")
 @onready var nextScene = firstScene
 @onready var currentSceneNode = null
-@onready var fullScreenSize = DisplayServer.screen_get_size()
-@onready var startScreenSize = DisplayServer.window_get_size()
-@onready var scaleIncrement = Vector2()
-
-
-# Offset due to an unappropiate scaling
-const SCALE_INCREMENT_OFFSET = Vector2(0.065, 0.065)
 
 
 func _ready()->void:
 	connect("Exit", self.on_exit)
 	connect("ChangeScene", self.on_changeScene)
-	connect("FullScreen", self.on_fullScreen)
 	transition.connect("Transition", self.instantiateCurrentScene)
+	Resolution.connect("ReScale", self.on_resolution_reScale)
 	instantiateCurrentScene()
-	scaleIncrement.x = float(startScreenSize.x) / float(fullScreenSize.x)
-	scaleIncrement.y = float(startScreenSize.y) / float(fullScreenSize.y)
-	scaleIncrement += SCALE_INCREMENT_OFFSET
 
 
 func instantiateCurrentScene():
@@ -49,16 +38,9 @@ func on_changeScene(newScene, transitionType)->void:
 	nextScene = newScene
 
 
-func on_fullScreen(fullScreen):
-	GameSettings.fullScreen = fullScreen
-	if fullScreen:
-		scale += scaleIncrement
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		scale -= scaleIncrement
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
-
 func on_exit()->void:
 	get_tree().quit()
 
+
+func on_resolution_reScale(newScale):
+	self.scale = newScale

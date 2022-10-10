@@ -1,7 +1,6 @@
 extends Panel
 
 
-signal FullScreen
 signal Return
 
 
@@ -63,7 +62,7 @@ func setDefaulValues():
 
 
 func on_fullScreenButton_toggled(fullScreen):
-	emit_signal("FullScreen", fullScreen)
+	Resolution.setFullScreen(fullScreen)
 
 
 func on_returnButton_pressed():

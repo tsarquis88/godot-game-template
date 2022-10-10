@@ -28,7 +28,6 @@ func _ready():
 	pauseMenu.connect("Options", self.on_pauseMenu_options)
 	pauseMenu.connect("Resume", self.on_pauseMenu_resume)
 	pauseMenuOptions.connect("Return", self.on_pauseMenuOptions_return)
-	pauseMenuOptions.connect("FullScreen", self.on_pauseMenuOptions_fullScreen)
 	target.connect("body_entered", self.endGame)
 	SfxManager.playMusic(GAME_MUSIC)
 
@@ -57,7 +56,3 @@ func on_pauseMenu_options():
 func on_pauseMenuOptions_return():
 	pauseMenu.visible = true
 	pauseMenuOptions.visible = false
-
-
-func on_pauseMenuOptions_fullScreen(fullscreen):
-	Game.emit_signal("FullScreen", fullscreen)

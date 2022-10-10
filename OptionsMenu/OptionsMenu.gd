@@ -62,7 +62,7 @@ func on_difficultyButton_item_selected(index):
 
 
 func on_fullScreenButton_toggled(fullScreen):
-	Game.emit_signal("FullScreen", fullScreen)
+	Resolution.setFullScreen(fullScreen)
 
 
 func on_volumeSlider_value_changed(_newValue):

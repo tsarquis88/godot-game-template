@@ -21,6 +21,7 @@ Language="*res://Autoloads/Language.gd"
 GlobalTimer="*res://Autoloads/GlobalTimer.gd"
 SfxManager="*res://Autoloads/SfxManager.gd"
 GameSettings="*res://Autoloads/GameSettings.gd"
+Resolution="*res://Autoloads/Resolution.gd"
 
 [internationalization]
 
