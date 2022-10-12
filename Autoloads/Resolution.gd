@@ -1,27 +1,35 @@
 extends Node
 
 
-signal ReScale
+signal FullScreen
 
 
 const DEFAULT_SCALE = Vector2(1, 1)
 
 
-@onready var fullScreenSize = DisplayServer.screen_get_size()
-@onready var startScreenSize = DisplayServer.window_get_size()
-@onready var scaleIncrement = Vector2()
-
+@onready var isFullScreen = false
+@onready var blockSizeChanged = false
 
 func _ready():
-	scaleIncrement.x = float(fullScreenSize.x) / float(startScreenSize.x)
-	scaleIncrement.y = float(fullScreenSize.y) / float(startScreenSize.y)
+	get_tree().get_root().connect("size_changed", self.on_size_changed)
 
 
 func setFullScreen(fullScreen):
-	GameSettings.fullScreen = fullScreen
+	isFullScreen = fullScreen
+	blockSizeChanged = true
 	if fullScreen:
-		emit_signal("ReScale", scaleIncrement)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
-		emit_signal("ReScale", DEFAULT_SCALE)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	emit_signal("FullScreen", isFullScreen)
+	GlobalTimer.create_timeout(self.unBlockSizeChanged, 0.5)
+
+
+func unBlockSizeChanged():
+	blockSizeChanged = false
+
+
+func on_size_changed():
+	if blockSizeChanged:
+		return
+	setFullScreen(not isFullScreen)

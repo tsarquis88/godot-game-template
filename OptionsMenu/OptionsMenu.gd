@@ -28,14 +28,16 @@ const BUTTON_SOUND = "button.wav"
 
 func _ready():
 	setDefaulValues()
-	reTranslate()
+	on_reTranslate()
+	on_fullScreen(false)
 	returnButton.connect("pressed", self.on_returnButton_pressed)
 	languageButton.connect("item_selected", self.on_languageButton_item_selected)
 	difficultyButton.connect("item_selected", self.on_difficultyButton_item_selected)
 	fullScreenButton.connect("toggled", self.on_fullScreenButton_toggled)
 	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
 	volumeSlider.connect("drag_ended", self.on_volumeSlider_drag_ended)
-	Language.connect("ReTranslate", self.reTranslate)
+	Language.connect("ReTranslate", self.on_reTranslate)
+	Resolution.connect("FullScreen", self.on_fullScreen)
 
 
 func on_returnButton_pressed():
@@ -74,7 +76,7 @@ func on_volumeSlider_drag_ended(valueChanged):
 		SfxManager.setMasterVolumeDb(volumeSlider.value)
 
 
-func reTranslate():
+func on_reTranslate():
 	difficultyButton.set_item_text(EASY_INDEX, tr("EASY"))
 	difficultyButton.set_item_text(NORMAL_INDEX, tr("NORMAL"))
 	difficultyButton.set_item_text(HARD_INDEX, tr("HARD"))	
@@ -85,16 +87,17 @@ func reTranslate():
 	volumeLabel.text = tr("VOLUME")
 
 
-func setDefaulValues():	
+func setDefaulValues():
 	if Language.get_language() == "es":
 		languageButton.select(SPANISH_INDEX)
 	else:
 		languageButton.select(ENGLISH_INDEX)
-	fullScreenButton.button_pressed = GameSettings.fullScreen
 	difficultyButton.select(NORMAL_INDEX)
 	volumeSlider.step = 0.0001
 	volumeSlider.min_value = 0.0001
 	volumeSlider.max_value = 1
 	volumeSlider.value = 1
-	
 
+
+func on_fullScreen(fullScreen):
+	fullScreenButton.button_pressed = fullScreen

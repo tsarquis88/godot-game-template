@@ -24,8 +24,10 @@ const SPANISH_INDEX = 1
 
 func _ready():
 	setDefaulValues()
-	reTranslate()
-	Language.connect("ReTranslate", self.reTranslate)
+	on_reTranslate()
+	on_fullScreen(false)
+	Language.connect("ReTranslate", self.on_reTranslate)
+	Resolution.connect("FullScreen", self.on_fullScreen)
 	languageButton.connect("item_selected", self.on_languageButton_item_selected)
 	fullScreenButton.connect("toggled", self.on_fullScreenButton_toggled)
 	returnButton.connect("pressed", self.on_returnButton_pressed)
@@ -33,7 +35,7 @@ func _ready():
 	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
 
 
-func reTranslate():
+func on_reTranslate():
 	returnButton.text = tr("RETURN")
 	languageLabel.text = tr("LANGUAGE")
 	fullScreenLabel.text = tr("FULL-SCREEN")
@@ -49,12 +51,11 @@ func on_languageButton_item_selected(index):
 			Language.set_language("es")
 
 
-func setDefaulValues():	
+func setDefaulValues():
 	if Language.get_language() == "es":
 		languageButton.select(SPANISH_INDEX)
 	else:
 		languageButton.select(ENGLISH_INDEX)
-	fullScreenButton.button_pressed = GameSettings.fullScreen
 	volumeSlider.step = 0.0001
 	volumeSlider.min_value = 0.0001
 	volumeSlider.max_value = 1
@@ -76,3 +77,7 @@ func on_button_pressed():
 func on_volumeSlider_value_changed(newValue):
 	SfxManager.setMasterVolumeDb(newValue)
 	SfxManager.playSfx(SLIDER_SOUND)
+
+
+func on_fullScreen(fullScreen):
+	fullScreenButton.button_pressed = fullScreen

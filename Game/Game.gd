@@ -15,7 +15,6 @@ func _ready()->void:
 	connect("Exit", self.on_exit)
 	connect("ChangeScene", self.on_changeScene)
 	transition.connect("Transition", self.instantiateCurrentScene)
-	Resolution.connect("ReScale", self.on_resolution_reScale)
 	instantiateCurrentScene()
 
 
@@ -40,7 +39,3 @@ func on_changeScene(newScene, transitionType)->void:
 
 func on_exit()->void:
 	get_tree().quit()
-
-
-func on_resolution_reScale(newScale):
-	self.scale = newScale

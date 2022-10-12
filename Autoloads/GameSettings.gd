@@ -9,7 +9,6 @@ const CONFIG_FILE_PATH = "res://config.cfg"
 
 
 @onready var gameDifficulty = DIFFICULTY.NORMAL
-@onready var fullScreen = false
 
 
 var config

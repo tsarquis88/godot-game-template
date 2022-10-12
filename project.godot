@@ -23,6 +23,10 @@ SfxManager="*res://Autoloads/SfxManager.gd"
 GameSettings="*res://Autoloads/GameSettings.gd"
 Resolution="*res://Autoloads/Resolution.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [internationalization]
 
 locale/translations=PackedStringArray("res://Localization/Localization.en.translation", "res://Localization/Localization.es.translation")
