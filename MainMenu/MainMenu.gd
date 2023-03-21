@@ -25,6 +25,8 @@ func _ready():
 	exitButton.connect("pressed", self.on_button_pressed)
 	Language.connect("ReTranslate", self.reTranslate)
 	reTranslate()
+	
+	Logger.logDebug("MainMenu: Ready")
 
 
 func on_newGameButton_pressed():

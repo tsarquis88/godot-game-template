@@ -33,6 +33,8 @@ func _ready():
 	returnButton.connect("pressed", self.on_returnButton_pressed)
 	returnButton.connect("pressed", self.on_button_pressed)
 	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
+	
+	Logger.logDebug("PauseMenuOptions: Ready")
 
 
 func on_reTranslate():

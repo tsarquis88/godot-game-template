@@ -8,6 +8,9 @@ func _ready():
 	creditsLabel.text = str(tr("CREDITS"), "\n\n")
 	for credit in GameSettings.getSectionKeys("credits"):
 		creditsLabel.text += str(tr(credit), " ", tr("BY"), " ", GameSettings.getSetting("credits", credit), "\n")
+	
+	Logger.logDebug("Credits: Ready")
+
 
 func _input(event):
 	if event is InputEventKey and event.pressed:

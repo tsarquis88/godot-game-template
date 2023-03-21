@@ -8,6 +8,8 @@ var timer
 
 func _ready():
 	timer = GlobalTimer.create_timeout(self.finish, duration, true, true)
+	
+	Logger.logDebug("SplashScreen: Ready")
 
 
 func finish():

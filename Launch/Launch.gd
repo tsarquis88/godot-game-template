@@ -11,3 +11,5 @@ const INIT_MUSIC = "init.ogg"
 func _ready():
 	SfxManager.playMusic(INIT_MUSIC)
 	Game.emit_signal("ChangeScene", nextScene, GameSettings.TRANSITIONS.FADE_SCREEN)
+	
+	Logger.logDebug("Launch: Ready")

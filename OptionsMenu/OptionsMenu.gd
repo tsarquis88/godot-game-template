@@ -38,6 +38,8 @@ func _ready():
 	volumeSlider.connect("drag_ended", self.on_volumeSlider_drag_ended)
 	Language.connect("ReTranslate", self.on_reTranslate)
 	Resolution.connect("FullScreen", self.on_fullScreen)
+	
+	Logger.logDebug("OptionsMenu: Ready")
 
 
 func on_returnButton_pressed():

@@ -12,10 +12,14 @@ signal Exit
 
 
 func _ready()->void:
+	Logger.logInfo("Starting game")
+	
 	connect("Exit", self.on_exit)
 	connect("ChangeScene", self.on_changeScene)
 	transition.connect("Transition", self.instantiateCurrentScene)
 	instantiateCurrentScene()
+	
+	Logger.logDebug("Game ready")
 
 
 func instantiateCurrentScene():
@@ -24,6 +28,8 @@ func instantiateCurrentScene():
 	
 	currentSceneNode = load(nextScene).instantiate() 
 	add_child(currentSceneNode)
+	
+	Logger.logDebug(str("Changed to scene: ", currentSceneNode.get_name()))
 
 
 func on_changeScene(newScene, transitionType)->void:
@@ -38,4 +44,6 @@ func on_changeScene(newScene, transitionType)->void:
 
 
 func on_exit()->void:
+	Logger.logInfo("Exiting game")
+	
 	get_tree().quit()

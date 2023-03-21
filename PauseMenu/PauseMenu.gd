@@ -24,6 +24,8 @@ func _ready():
 	resumeButton.connect("pressed", self.on_button_pressed)
 	Language.connect("ReTranslate", self.reTranslate)
 	reTranslate()
+	
+	Logger.logDebug("PauseMenu: Ready")
 
 
 func on_exitButton_pressed():

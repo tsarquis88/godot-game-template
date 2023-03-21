@@ -12,6 +12,8 @@ const DEFAULT_SCALE = Vector2(1, 1)
 
 func _ready():
 	get_tree().get_root().connect("size_changed", self.on_size_changed)
+	
+	Logger.logDebug("Resolution autoload: Ready")
 
 
 func setFullScreen(fullScreen):

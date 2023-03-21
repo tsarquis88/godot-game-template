@@ -30,6 +30,8 @@ func _ready():
 	pauseMenuOptions.connect("Return", self.on_pauseMenuOptions_return)
 	target.connect("body_entered", self.endGame)
 	SfxManager.playMusic(GAME_MUSIC)
+	
+	Logger.logDebug("Playable: Ready")
 
 
 func endGame(_body):
