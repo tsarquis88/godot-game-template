@@ -16,6 +16,10 @@ const BUTTON_SOUND = "button.wav"
 
 
 func _ready():
+	var styleBox = get_theme_stylebox("panel")
+	styleBox.bg_color = Settings.MENU_BACKGROUND_COLOR
+	styleBox.border_color = Settings.MENU_BORDER_COLOR
+	
 	exitButton.connect("pressed", self.on_exitButton_pressed)
 	optionsButton.connect("pressed", self.on_optionsButton_pressed)
 	resumeButton.connect("pressed", self.on_resumeButton_pressed)

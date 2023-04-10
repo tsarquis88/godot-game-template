@@ -14,6 +14,8 @@ const SLIDER_SOUND = "volumeSlider.wav"
 const BUTTON_SOUND = "button.wav"
 
 
+@onready var panel = find_child("Panel")
+@onready var background = find_child("Background")
 @onready var returnButton = find_child("ReturnButton")
 @onready var languageButton = find_child("LanguageButton")
 @onready var difficultyButton = find_child("DifficultyButton")
@@ -30,6 +32,8 @@ func _ready():
 	setDefaulValues()
 	on_reTranslate()
 	on_fullScreen(false)
+	panel.get_theme_stylebox("panel").bg_color = Settings.MENU_PANEL_COLOR
+	background.color = Settings.MENU_BACKGROUND_COLOR
 	returnButton.connect("pressed", self.on_returnButton_pressed)
 	languageButton.connect("item_selected", self.on_languageButton_item_selected)
 	difficultyButton.connect("item_selected", self.on_difficultyButton_item_selected)

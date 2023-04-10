@@ -26,6 +26,11 @@ func _ready():
 	setDefaulValues()
 	on_reTranslate()
 	on_fullScreen(false)
+	
+	var styleBox = get_theme_stylebox("panel")
+	styleBox.bg_color = Settings.MENU_BACKGROUND_COLOR
+	styleBox.border_color = Settings.MENU_BORDER_COLOR
+	
 	Language.connect("ReTranslate", self.on_reTranslate)
 	Resolution.connect("FullScreen", self.on_fullScreen)
 	languageButton.connect("item_selected", self.on_languageButton_item_selected)

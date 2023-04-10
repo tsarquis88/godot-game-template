@@ -23,6 +23,7 @@ SfxManager="*res://Autoloads/SfxManager.gd"
 GameSettings="*res://Autoloads/GameSettings.gd"
 Resolution="*res://Autoloads/Resolution.gd"
 Logger="*res://Autoloads/Logger.gd"
+Settings="*res://Autoloads/Settings.gd"
 
 [display]
 

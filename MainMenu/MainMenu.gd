@@ -6,6 +6,7 @@ const CREDITS_SCENE = "res://Credits/Credits.tscn"
 const OPTIONS_SCENE = "res://OptionsMenu/OptionsMenu.tscn"
 const BUTTON_SOUND = "button.wav"
 
+@onready var background = find_child("Background")
 @onready var newGameButton = find_child("NewGameButton")
 @onready var optionsButton = find_child("OptionsButton")
 @onready var creditsButton = find_child("CreditsButton")
@@ -15,6 +16,7 @@ const BUTTON_SOUND = "button.wav"
 
 
 func _ready():
+	background.color = Settings.MENU_BACKGROUND_COLOR
 	newGameButton.connect("pressed", self.on_newGameButton_pressed)
 	optionsButton.connect("pressed", self.on_optionsButton_pressed)
 	creditsButton.connect("pressed", self.on_creditsButton_pressed)
