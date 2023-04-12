@@ -1,12 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://btfmpehox3ovq"]
+[gd_scene load_steps=15 format=3 uid="uid://btfmpehox3ovq"]
 
 [ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
-[ext_resource type="Texture2D" uid="uid://bipwgnvlaxrki" path="res://icon.svg" id="1_mnpbq"]
+[ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="1_mnpbq"]
 [ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
 [ext_resource type="Script" path="res://Playable/Target.gd" id="2_81ifm"]
 [ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Assets/Textures/spark.png" id="2_yx2bw"]
 [ext_resource type="PackedScene" uid="uid://cfwjwvq46xirt" path="res://PauseMenu/PauseMenu.tscn" id="5_dxwmy"]
 [ext_resource type="PackedScene" uid="uid://d8q36mc1y2fk" path="res://PauseMenuOptions/PauseMenuOptions.tscn" id="6_0wt76"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2qovn"]
+b = Vector2(0, 652)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5nrji"]
+b = Vector2(1152, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_31aac"]
+b = Vector2(0, 652)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wxkn8"]
+b = Vector2(1152, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wb6c"]
 size = Vector2(125, 125)
@@ -28,16 +40,26 @@ script = ExtResource("1_cbvvx")
 [node name="Playables" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Playables"]
-custom_minimum_size = Vector2i(1152, 648)
+custom_minimum_size = Vector2(1152, 648)
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.498039, 0.054902, 0.188235, 1)
 
 [node name="Margins" type="StaticBody2D" parent="Playables"]
 
-[node name="CollisionPolygon2d" type="CollisionPolygon2D" parent="Playables/Margins"]
-build_mode = 1
-polygon = PackedVector2Array(-1, 6, 3, 651, 3, 651, 1151, 649, 1151, 649, 1154, 3, 1154, 3, 1205, 5, 1205, 5, 1200, 709, 1200, 709, -74, 702, -74, 702, -65, 0)
+[node name="LeftMargin" type="CollisionShape2D" parent="Playables/Margins"]
+shape = SubResource("SegmentShape2D_2qovn")
+
+[node name="DownMargin" type="CollisionShape2D" parent="Playables/Margins"]
+position = Vector2(0, 652)
+shape = SubResource("SegmentShape2D_5nrji")
+
+[node name="RightMargin" type="CollisionShape2D" parent="Playables/Margins"]
+position = Vector2(1152, 0)
+shape = SubResource("SegmentShape2D_31aac")
+
+[node name="UpMargin" type="CollisionShape2D" parent="Playables/Margins"]
+shape = SubResource("SegmentShape2D_wxkn8")
 
 [node name="Target" type="Area2D" parent="Playables"]
 position = Vector2(894, 297)
@@ -49,9 +71,9 @@ shape = SubResource("RectangleShape2D_0wb6c")
 
 [node name="CpuParticles2d" type="GPUParticles2D" parent="Playables/Target"]
 amount = 50
-lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_m3yox")
 texture = ExtResource("2_yx2bw")
+lifetime = 0.3
 
 [node name="Player" type="CharacterBody2D" parent="Playables"]
 position = Vector2(126, 267)
@@ -65,7 +87,7 @@ texture = ExtResource("1_mnpbq")
 shape = SubResource("RectangleShape2D_ndh3r")
 
 [node name="PauseMenuControl" type="Control" parent="."]
-custom_minimum_size = Vector2i(1152, 648)
+custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -73,7 +95,7 @@ offset_bottom = 40.0
 
 [node name="PauseMenu" parent="PauseMenuControl" instance=ExtResource("5_dxwmy")]
 visible = false
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -87,7 +109,7 @@ grow_vertical = 2
 
 [node name="PauseMenuOptions" parent="PauseMenuControl" instance=ExtResource("6_0wt76")]
 visible = false
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

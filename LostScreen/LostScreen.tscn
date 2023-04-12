@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://jxsp0uw44qy4"]
+
+[ext_resource type="Script" path="res://LostScreen/LostScreen.gd" id="1_wrbxw"]
+[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_w3nty"]
+
+[node name="LostScreen" type="Node2D"]
+script = ExtResource("1_wrbxw")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.333333, 0.439216, 0.788235, 1)
+
+[node name="LostLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_w3nty")
+theme_override_font_sizes/font_size = 32
+text = "You've lost!"
+horizontal_alignment = 1
+vertical_alignment = 1

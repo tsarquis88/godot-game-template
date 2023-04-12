@@ -12,7 +12,7 @@ const INIT_MUSIC = "init.ogg"
 @onready var Game = get_parent()
 
 
-const nextScene = "res://MainMenu/MainMenu.tscn"
+const nextScene = "res://WonScreen/WonScreen.tscn"
 
 
 func _input(event):
