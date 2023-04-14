@@ -1,0 +1,210 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Template/OptionsMenu/OptionsMenu.gd" id="1_ihb7f"]
+[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syunc"]
+bg_color = Color(0.411765, 0.627451, 0.792157, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_offset = Vector2(4, -4)
+
+[node name="OptionsMenu" type="BoxContainer"]
+custom_minimum_size = Vector2(1152, 648)
+script = ExtResource("1_ihb7f")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+color = Color(0.333333, 0.439216, 0.788235, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 578.0
+
+[node name="Title" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(1152, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 65
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="LeftMargin" type="Control" parent="Background/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="LeftVbox" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1050, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Background/VBoxContainer/HBoxContainer/LeftVbox"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_syunc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel"]
+custom_minimum_size = Vector2(1050, 400)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="LanguageLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 34
+text = "LanguageLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 33)
+layout_mode = 2
+
+[node name="DifficultyLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 34
+text = "DifficultyLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 95)
+layout_mode = 2
+
+[node name="LanguageButton" type="OptionButton" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_j1t0p")
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Español"
+popup/item_1/id = 1
+
+[node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="DifficultyButton" type="OptionButton" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_j1t0p")
+item_count = 3
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Normal"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+
+[node name="Control3" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="FullScreenLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 34
+text = "FullScreenLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 33)
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 34
+text = "VolumeLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="FullScreenButton" type="CheckButton" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j1t0p")
+
+[node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="VolumeSlider" type="HSlider" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="ReturnButton" type="Button" parent="Background/VBoxContainer/HBoxContainer/LeftVbox"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_j1t0p")
+theme_override_font_sizes/font_size = 34
+text = "Return"
+
+[node name="MiddleMargin" type="Control" parent="Background/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2

@@ -11,19 +11,19 @@ config_version=5
 [application]
 
 config/name="godot-game-template"
-run/main_scene="res://Game/Game.tscn"
+run/main_scene="res://Template/Game/Game.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Language="*res://Autoloads/Language.gd"
-GlobalTimer="*res://Autoloads/GlobalTimer.gd"
-SfxManager="*res://Autoloads/SfxManager.gd"
-GameSettings="*res://Autoloads/GameSettings.gd"
-Resolution="*res://Autoloads/Resolution.gd"
-Logger="*res://Autoloads/Logger.gd"
-Settings="*res://Autoloads/Settings.gd"
+Language="*res://Template/Autoloads/Language.gd"
+GlobalTimer="*res://Template/Autoloads/GlobalTimer.gd"
+SfxManager="*res://Template/Autoloads/SfxManager.gd"
+GameSettings="*res://Template/Autoloads/GameSettings.gd"
+Resolution="*res://Template/Autoloads/Resolution.gd"
+Logger="*res://Template/Autoloads/Logger.gd"
+Settings="*res://Template/Autoloads/Settings.gd"
 
 [display]
 
