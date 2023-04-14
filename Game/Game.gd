@@ -12,7 +12,7 @@ signal Exit
 
 
 func _ready()->void:
-	Logger.logInfo("Starting game")
+	Logger.logInfor("Starting game")
 	
 	connect("Exit", self.on_exit)
 	connect("ChangeScene", self.on_changeScene)
@@ -44,6 +44,6 @@ func on_changeScene(newScene, transitionType)->void:
 
 
 func on_exit()->void:
-	Logger.logInfo("Exiting game")
+	Logger.logInfor("Exiting game")
 	
 	get_tree().quit()
