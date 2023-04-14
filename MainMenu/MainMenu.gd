@@ -5,54 +5,54 @@ const CREDITS_SCENE = "res://Credits/Credits.tscn"
 const OPTIONS_SCENE = "res://OptionsMenu/OptionsMenu.tscn"
 const BUTTON_SOUND = "button.wav"
 
-@onready var background = find_child("Background")
-@onready var newGameButton = find_child("NewGameButton")
-@onready var optionsButton = find_child("OptionsButton")
-@onready var creditsButton = find_child("CreditsButton")
-@onready var exitButton = find_child("ExitButton")
-@onready var madeWithLabel = find_child("MadeWithLabel")
-@onready var Game = get_parent()
+@onready var m_background = find_child("Background")
+@onready var m_new_game_button = find_child("NewGameButton")
+@onready var m_options_button = find_child("OptionsButton")
+@onready var m_credits_button = find_child("CreditsButton")
+@onready var m_exit_button = find_child("ExitButton")
+@onready var m_made_with_label = find_child("MadeWithLabel")
+@onready var m_game = get_parent()
 
 
 func _ready():
-	background.color = Settings.MENU_BACKGROUND_COLOR
-	newGameButton.connect("pressed", self.on_newGameButton_pressed)
-	optionsButton.connect("pressed", self.on_optionsButton_pressed)
-	creditsButton.connect("pressed", self.on_creditsButton_pressed)
-	exitButton.connect("pressed", self.on_exitButton_pressed)
-	newGameButton.connect("pressed", self.on_button_pressed)
-	optionsButton.connect("pressed", self.on_button_pressed)
-	creditsButton.connect("pressed", self.on_button_pressed)
-	exitButton.connect("pressed", self.on_button_pressed)
-	Language.connect("ReTranslate", self.reTranslate)
-	reTranslate()
+	m_background.color = Settings.MENU_BACKGROUND_COLOR
+	m_new_game_button.connect("pressed", self.on_new_game_button_pressed)
+	m_options_button.connect("pressed", self.on_options_button_pressed)
+	m_credits_button.connect("pressed", self.on_credits_button_pressed)
+	m_exit_button.connect("pressed", self.on_exit_button_pressed)
+	m_new_game_button.connect("pressed", self.on_button_pressed)
+	m_options_button.connect("pressed", self.on_button_pressed)
+	m_credits_button.connect("pressed", self.on_button_pressed)
+	m_exit_button.connect("pressed", self.on_button_pressed)
+	Language.connect("re_translate", self.re_translate)
+	re_translate()
 
-	Logger.logDebug("MainMenu: Ready")
-
-
-func on_newGameButton_pressed():
-	Game.emit_signal("ChangeScene", PLAYGROUND_SCENE, GameSettings.TRANSITIONS.FADE_SCREEN)
+	Logger.log_debug("MainMenu: Ready")
 
 
-func on_optionsButton_pressed():
-	Game.emit_signal("ChangeScene", OPTIONS_SCENE, GameSettings.TRANSITIONS.LEFT_RIGHT)
+func on_new_game_button_pressed():
+	m_game.emit_signal("change_scene", PLAYGROUND_SCENE, GameSettings.TRANSITIONS.FADE_SCREEN)
 
 
-func on_creditsButton_pressed():
-	Game.emit_signal("ChangeScene", CREDITS_SCENE, GameSettings.TRANSITIONS.UP_BOTTOM)
+func on_options_button_pressed():
+	m_game.emit_signal("change_scene", OPTIONS_SCENE, GameSettings.TRANSITIONS.LEFT_RIGHT)
 
 
-func on_exitButton_pressed():
-	Game.emit_signal("Exit")
+func on_credits_button_pressed():
+	m_game.emit_signal("change_scene", CREDITS_SCENE, GameSettings.TRANSITIONS.UP_BOTTOM)
+
+
+func on_exit_button_pressed():
+	m_game.emit_signal("exit")
 
 
 func on_button_pressed():
-	SfxManager.playSfx(BUTTON_SOUND)
+	SfxManager.play_sfx(BUTTON_SOUND)
 
 
-func reTranslate():
-	newGameButton.text = tr("NEW-GAME")
-	optionsButton.text = tr("OPTIONS")
-	creditsButton.text = tr("CREDITS")
-	madeWithLabel.text = str(tr("MADE-WITH"), " Godot ", Engine.get_version_info().string)
-	exitButton.text = tr("EXIT")
+func re_translate():
+	m_new_game_button.text = tr("NEW-GAME")
+	m_options_button.text = tr("OPTIONS")
+	m_credits_button.text = tr("CREDITS")
+	m_made_with_label.text = str(tr("MADE-WITH"), " Godot ", Engine.get_version_info().string)
+	m_exit_button.text = tr("EXIT")

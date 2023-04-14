@@ -1,52 +1,52 @@
 extends Panel
 
-signal ExitGame
-signal Options
-signal Resume
+signal exit_game
+signal options
+signal resume
 
 const BUTTON_SOUND = "button.wav"
 
-@onready var exitButton = find_child("ExitButton")
-@onready var optionsButton = find_child("OptionsButton")
-@onready var resumeButton = find_child("ResumeButton")
-@onready var title = find_child("Title")
+@onready var m_exit_button = find_child("ExitButton")
+@onready var m_options_button = find_child("OptionsButton")
+@onready var m_resume_button = find_child("ResumeButton")
+@onready var m_title = find_child("Title")
 
 
 func _ready():
-	var styleBox = get_theme_stylebox("panel")
-	styleBox.bg_color = Settings.MENU_BACKGROUND_COLOR
-	styleBox.border_color = Settings.MENU_BORDER_COLOR
+	var style_box = get_theme_stylebox("panel")
+	style_box.bg_color = Settings.MENU_BACKGROUND_COLOR
+	style_box.border_color = Settings.MENU_BORDER_COLOR
 
-	exitButton.connect("pressed", self.on_exitButton_pressed)
-	optionsButton.connect("pressed", self.on_optionsButton_pressed)
-	resumeButton.connect("pressed", self.on_resumeButton_pressed)
-	exitButton.connect("pressed", self.on_button_pressed)
-	optionsButton.connect("pressed", self.on_button_pressed)
-	resumeButton.connect("pressed", self.on_button_pressed)
-	Language.connect("ReTranslate", self.reTranslate)
-	reTranslate()
+	m_exit_button.connect("pressed", self.on_exit_button_pressed)
+	m_options_button.connect("pressed", self.on_options_button_pressed)
+	m_resume_button.connect("pressed", self.on_resume_button_pressed)
+	m_exit_button.connect("pressed", self.on_button_pressed)
+	m_options_button.connect("pressed", self.on_button_pressed)
+	m_resume_button.connect("pressed", self.on_button_pressed)
+	Language.connect("re_translate", self.re_translate)
+	re_translate()
 
-	Logger.logDebug("PauseMenu: Ready")
-
-
-func on_exitButton_pressed():
-	emit_signal("ExitGame")
+	Logger.log_debug("PauseMenu: Ready")
 
 
-func on_optionsButton_pressed():
-	emit_signal("Options")
+func on_exit_button_pressed():
+	emit_signal("exit_game")
 
 
-func on_resumeButton_pressed():
-	emit_signal("Resume")
+func on_options_button_pressed():
+	emit_signal("options")
+
+
+func on_resume_button_pressed():
+	emit_signal("resume")
 
 
 func on_button_pressed():
-	SfxManager.playSfx(BUTTON_SOUND)
+	SfxManager.play_sfx(BUTTON_SOUND)
 
 
-func reTranslate():
-	exitButton.text = tr("EXIT")
-	optionsButton.text = tr("OPTIONS")
-	resumeButton.text = tr("RESUME")
-	title.text = tr("GAME-PAUSED")
+func re_translate():
+	m_exit_button.text = tr("EXIT")
+	m_options_button.text = tr("OPTIONS")
+	m_resume_button.text = tr("RESUME")
+	m_title.text = tr("GAME-PAUSED")

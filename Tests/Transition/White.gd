@@ -1,14 +1,14 @@
 extends ColorRect
 
-var Game
+var m_game
 
 
 func _ready():
-	Game = get_parent()
+	m_game = get_parent()
 	GlobalTimer.create_timeout(self.changeScene, 1)
 
 
-func changeScene():
-	Game.emit_signal(
-		"ChangeScene", "res://Tests/Transition/Red.tscn", GameSettings.TRANSITIONS.FADE_SCREEN
+func change_scene():
+	m_game.emit_signal(
+		"change_scene", "res://Tests/Transition/Red.tscn", GameSettings.TRANSITIONS.FADE_SCREEN
 	)
