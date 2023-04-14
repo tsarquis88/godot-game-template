@@ -1,16 +1,12 @@
 extends Panel
 
-
 signal Return
-
 
 const SLIDER_SOUND = "volumeSlider.wav"
 const BUTTON_SOUND = "button.wav"
 
-
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
-
 
 @onready var returnButton = find_child("ReturnButton")
 @onready var languageButton = find_child("LanguageButton")
@@ -26,11 +22,11 @@ func _ready():
 	setDefaulValues()
 	on_reTranslate()
 	on_fullScreen(false)
-	
+
 	var styleBox = get_theme_stylebox("panel")
 	styleBox.bg_color = Settings.MENU_BACKGROUND_COLOR
 	styleBox.border_color = Settings.MENU_BORDER_COLOR
-	
+
 	Language.connect("ReTranslate", self.on_reTranslate)
 	Resolution.connect("FullScreen", self.on_fullScreen)
 	languageButton.connect("item_selected", self.on_languageButton_item_selected)
@@ -38,7 +34,7 @@ func _ready():
 	returnButton.connect("pressed", self.on_returnButton_pressed)
 	returnButton.connect("pressed", self.on_button_pressed)
 	volumeSlider.connect("value_changed", self.on_volumeSlider_value_changed)
-	
+
 	Logger.logDebug("PauseMenuOptions: Ready")
 
 

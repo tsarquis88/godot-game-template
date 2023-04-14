@@ -1,8 +1,6 @@
 extends BoxContainer
 
-
 signal FullScreen
-
 
 const MAINMENU_SCENE = "res://MainMenu/MainMenu.tscn"
 const ENGLISH_INDEX = 0
@@ -12,7 +10,6 @@ const NORMAL_INDEX = 1
 const HARD_INDEX = 2
 const SLIDER_SOUND = "volumeSlider.wav"
 const BUTTON_SOUND = "button.wav"
-
 
 @onready var panel = find_child("Panel")
 @onready var background = find_child("Background")
@@ -42,7 +39,7 @@ func _ready():
 	volumeSlider.connect("drag_ended", self.on_volumeSlider_drag_ended)
 	Language.connect("ReTranslate", self.on_reTranslate)
 	Resolution.connect("FullScreen", self.on_fullScreen)
-	
+
 	Logger.logDebug("OptionsMenu: Ready")
 
 
@@ -85,7 +82,7 @@ func on_volumeSlider_drag_ended(valueChanged):
 func on_reTranslate():
 	difficultyButton.set_item_text(EASY_INDEX, tr("EASY"))
 	difficultyButton.set_item_text(NORMAL_INDEX, tr("NORMAL"))
-	difficultyButton.set_item_text(HARD_INDEX, tr("HARD"))	
+	difficultyButton.set_item_text(HARD_INDEX, tr("HARD"))
 	returnButton.text = tr("RETURN")
 	languageLabel.text = tr("LANGUAGE")
 	difficultyLabel.text = tr("DIFFICULTY")

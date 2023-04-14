@@ -1,17 +1,14 @@
 extends Node
 
-
 # TODO: Fade
-
 
 const SFX_FILES_PATH = "res://Assets/SFX/"
 const MUSIC_FILES_PATH = "res://Assets/Music/"
 
-
 @onready var masterVolumeDb = 0.0
 
+var musicAudioPlayer
 
-var musicAudioPlayer 
 
 func _ready():
 	musicAudioPlayer = AudioStreamPlayer2D.new()
@@ -35,6 +32,6 @@ func playMusic(musicName):
 
 
 func setMasterVolumeDb(newValue):
-	masterVolumeDb = log(newValue) * 20 # Source: https://godotengine.org/qa/40911/best-way-to-create-a-volume-slider
+	masterVolumeDb = log(newValue) * 20  # Source: https://godotengine.org/qa/40911/best-way-to-create-a-volume-slider
 	musicAudioPlayer.set_volume_db(masterVolumeDb)
 	GameSettings.setSetting("sound", "VOLUME-DB", newValue)

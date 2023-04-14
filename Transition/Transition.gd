@@ -1,17 +1,13 @@
 extends Node2D
 
-
 signal Transition
-
 
 # This could be parametrized in init()
 const START_DURATION = 0.6
 const END_DURATION = 0.6
 const WAIT_DURATION = 0.3
 
-
 @onready var blackBG = find_child("BlackBG")
-
 
 var property
 var startFinalValue

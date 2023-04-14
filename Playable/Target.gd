@@ -1,6 +1,5 @@
 extends Area2D
 
-
 @onready var particles = find_child("CpuParticles2d")
 
 

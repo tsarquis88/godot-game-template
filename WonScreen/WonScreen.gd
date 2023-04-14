@@ -8,11 +8,12 @@ extends Node2D
 
 var timer
 
+
 func _ready():
 	background.color = Settings.MENU_BACKGROUND_COLOR
 	wonLabel.text = tr("WON-MESSAGE")
 	timer = GlobalTimer.create_timeout(self.finish, duration, true, true)
-	
+
 	Logger.logDebug("WonScreen: Ready")
 
 

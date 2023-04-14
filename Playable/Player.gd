@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
-
 
 @onready var m_pause = false
 
@@ -18,7 +16,7 @@ func setPause(pause):
 func _physics_process(delta):
 	if m_pause:
 		return
-	
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

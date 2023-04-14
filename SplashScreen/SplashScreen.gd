@@ -7,10 +7,11 @@ extends Node2D
 
 var timer
 
+
 func _ready():
 	background.color = Settings.MENU_BACKGROUND_COLOR
 	timer = GlobalTimer.create_timeout(self.finish, duration, true, true)
-	
+
 	Logger.logDebug("SplashScreen: Ready")
 
 

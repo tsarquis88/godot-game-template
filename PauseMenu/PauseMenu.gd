@@ -1,13 +1,10 @@
 extends Panel
 
-
 signal ExitGame
 signal Options
 signal Resume
 
-
 const BUTTON_SOUND = "button.wav"
-
 
 @onready var exitButton = find_child("ExitButton")
 @onready var optionsButton = find_child("OptionsButton")
@@ -19,7 +16,7 @@ func _ready():
 	var styleBox = get_theme_stylebox("panel")
 	styleBox.bg_color = Settings.MENU_BACKGROUND_COLOR
 	styleBox.border_color = Settings.MENU_BORDER_COLOR
-	
+
 	exitButton.connect("pressed", self.on_exitButton_pressed)
 	optionsButton.connect("pressed", self.on_optionsButton_pressed)
 	resumeButton.connect("pressed", self.on_resumeButton_pressed)
@@ -28,7 +25,7 @@ func _ready():
 	resumeButton.connect("pressed", self.on_button_pressed)
 	Language.connect("ReTranslate", self.reTranslate)
 	reTranslate()
-	
+
 	Logger.logDebug("PauseMenu: Ready")
 
 

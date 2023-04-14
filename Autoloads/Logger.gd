@@ -1,16 +1,13 @@
 extends Node
 
-
 # Log headers
 const DEBUG_TAG = "[DEBUG]"
-const INFOR_TAG	= "[INFOR]"
+const INFOR_TAG = "[INFOR]"
 const ERROR_TAG = "[ERROR]"
 const SEPARATOR = " "
 
-
 # Log levels allowed
-enum {DEBUG_LEVEL, INFOR_LEVEL, ERROR_LEVEL}
-
+enum { DEBUG_LEVEL, INFOR_LEVEL, ERROR_LEVEL }
 
 # Current log level
 var m_logLevel
@@ -23,26 +20,26 @@ func _init():
 
 
 # Log level setter
-func setLogLevel(logLevel : int):
+func setLogLevel(logLevel: int):
 	m_logLevel = logLevel
 
 
 # Method in charge of printing a message into the stdout
-func _log(tag : String, message : String, logLevel : int):
+func _log(tag: String, message: String, logLevel: int):
 	if logLevel >= m_logLevel:
 		print(tag, SEPARATOR, message)
 
 
 # Wrapper for _log() with DEBUG level
-func logDebug(message : String):
+func logDebug(message: String):
 	_log(DEBUG_TAG, message, DEBUG_LEVEL)
 
 
 # Wrapper for _log() with INFOR level
-func logInfor(message : String):
+func logInfor(message: String):
 	_log(INFOR_TAG, message, INFOR_LEVEL)
 
 
 # Wrapper for _log() with ERROR level
-func logError(message : String):
+func logError(message: String):
 	_log(ERROR_TAG, message, ERROR_LEVEL)

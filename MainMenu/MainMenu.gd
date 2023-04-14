@@ -1,6 +1,5 @@
 extends BoxContainer
 
-
 const PLAYGROUND_SCENE = "res://Playground/Playground.tscn"
 const CREDITS_SCENE = "res://Credits/Credits.tscn"
 const OPTIONS_SCENE = "res://OptionsMenu/OptionsMenu.tscn"
@@ -27,7 +26,7 @@ func _ready():
 	exitButton.connect("pressed", self.on_button_pressed)
 	Language.connect("ReTranslate", self.reTranslate)
 	reTranslate()
-	
+
 	Logger.logDebug("MainMenu: Ready")
 
 

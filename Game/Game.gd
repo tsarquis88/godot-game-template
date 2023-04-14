@@ -1,9 +1,7 @@
 extends Node2D
 
-
 signal ChangeScene
 signal Exit
-
 
 @export var firstScene = "res://SplashScreen/SplashScreen.tscn"
 @onready var transition = find_child("Transition")
@@ -11,28 +9,28 @@ signal Exit
 @onready var currentSceneNode = null
 
 
-func _ready()->void:
+func _ready() -> void:
 	Logger.logInfor("Starting game")
-	
+
 	connect("Exit", self.on_exit)
 	connect("ChangeScene", self.on_changeScene)
 	transition.connect("Transition", self.instantiateCurrentScene)
 	instantiateCurrentScene()
-	
+
 	Logger.logDebug("Game ready")
 
 
 func instantiateCurrentScene():
 	if currentSceneNode != null:
 		currentSceneNode.queue_free()
-	
-	currentSceneNode = load(nextScene).instantiate() 
+
+	currentSceneNode = load(nextScene).instantiate()
 	add_child(currentSceneNode)
-	
+
 	Logger.logDebug(str("Changed to scene: ", currentSceneNode.get_name()))
 
 
-func on_changeScene(newScene, transitionType)->void:
+func on_changeScene(newScene, transitionType) -> void:
 	match transitionType:
 		GameSettings.TRANSITIONS.FADE_SCREEN:
 			transition.fadeScreenTransition()
@@ -43,7 +41,7 @@ func on_changeScene(newScene, transitionType)->void:
 	nextScene = newScene
 
 
-func on_exit()->void:
+func on_exit() -> void:
 	Logger.logInfor("Exiting game")
-	
+
 	get_tree().quit()

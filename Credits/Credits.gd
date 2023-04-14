@@ -5,12 +5,15 @@ extends Node2D
 @onready var background = find_child("Background")
 @onready var Game = get_parent()
 
+
 func _ready():
 	background.color = Settings.MENU_BACKGROUND_COLOR
 	creditsLabel.text = str(tr("CREDITS"), "\n\n")
 	for credit in GameSettings.getSectionKeys("credits"):
-		creditsLabel.text += str(tr(credit), " ", tr("BY"), " ", GameSettings.getSetting("credits", credit), "\n")
-	
+		creditsLabel.text += str(
+			tr(credit), " ", tr("BY"), " ", GameSettings.getSetting("credits", credit), "\n"
+		)
+
 	Logger.logDebug("Credits: Ready")
 
 
