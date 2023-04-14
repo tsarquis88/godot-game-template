@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="1"]
+[ext_resource type="Script" path="res://Template/SplashScreen/SplashScreen.gd" id="3"]
+
+[node name="SplashScreen" type="Node2D"]
+script = ExtResource("3")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.333333, 0.439216, 0.788235, 1)
+
+[node name="Logo" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+texture = ExtResource("1")
+stretch_mode = 3

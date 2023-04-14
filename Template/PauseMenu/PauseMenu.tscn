@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Template/PauseMenu/PauseMenu.gd" id="1_5meyu"]
+[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs1th"]
+bg_color = Color(0.333333, 0.439216, 0.788235, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.411765, 0.627451, 0.792157, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 10
+shadow_offset = Vector2(5, -5)
+
+[node name="PauseMenu" type="Panel"]
+custom_minimum_size = Vector2(250, 275)
+offset_right = 250.0
+offset_bottom = 225.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_bs1th")
+script = ExtResource("1_5meyu")
+
+[node name="LeftVBox" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 150.0
+
+[node name="Control2" type="Control" parent="LeftVBox"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="LeftVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ktrah")
+theme_override_font_sizes/font_size = 24
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="LeftVBox"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="LeftVBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Options
+"
+
+[node name="Control4" type="Control" parent="LeftVBox"]
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="LeftVBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Exit"
+
+[node name="Control5" type="Control" parent="LeftVBox"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="LeftVBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume"

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Template/Launch/Launch.gd" id="1_gvgyq"]
+
+[node name="Launch" type="ColorRect"]
+custom_minimum_size = Vector2i(1152, 648)
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_gvgyq")
