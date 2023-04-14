@@ -28,21 +28,21 @@ func setLogLevel(logLevel : int):
 
 
 # Method in charge of printing a message into the stdout
-func logMessage(tag : String, message : String, logLevel : int):
+func _log(tag : String, message : String, logLevel : int):
 	if logLevel >= m_logLevel:
 		print(tag, SEPARATOR, message)
 
 
-# Wrapper for logMessage() with DEBUG level
+# Wrapper for _log() with DEBUG level
 func logDebug(message : String):
-	logMessage(DEBUG_TAG, message, DEBUG_LEVEL)
+	_log(DEBUG_TAG, message, DEBUG_LEVEL)
 
 
-# Wrapper for logMessage() with INFOR level
+# Wrapper for _log() with INFOR level
 func logInfor(message : String):
-	logMessage(INFOR_TAG, message, INFOR_LEVEL)
+	_log(INFOR_TAG, message, INFOR_LEVEL)
 
 
-# Wrapper for logMessage() with ERROR level
+# Wrapper for _log() with ERROR level
 func logError(message : String):
-	logMessage(ERROR_TAG, message, ERROR_LEVEL)
+	_log(ERROR_TAG, message, ERROR_LEVEL)
