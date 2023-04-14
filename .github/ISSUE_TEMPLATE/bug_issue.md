@@ -1,9 +1,10 @@
 ---
 name: Bug
-about: ''
+about: There is a bug in the project that should be fixed
 title: ''
-labels: 'bug'
+labels: bug
 assignees: ''
+
 ---
 
 | Component |
@@ -15,4 +16,3 @@ assignees: ''
 <!--
     Bug description. How to reproduce it? What are the expected and current behaviours?
 -->
-

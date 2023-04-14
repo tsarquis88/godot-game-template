@@ -1,9 +1,10 @@
 ---
 name: Development
-about: ''
+about: A new feature should be implemented
 title: ''
 labels: ''
 assignees: ''
+
 ---
 
 ## Description
