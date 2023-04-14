@@ -7,9 +7,9 @@ const INIT_MUSIC = "init.ogg"
 
 
 @onready var m_pause = false
-@onready var pauseMenu = find_child("PauseMenu")
-@onready var pauseMenuOptions = find_child("PauseMenuOptions")
-@onready var playable = find_child("Playable")
+@onready var m_pauseMenu = find_child("PauseMenu")
+@onready var m_pauseMenuOptions = find_child("PauseMenuOptions")
+@onready var m_playable = find_child("Playable")
 @onready var Game = get_parent()
 
 
@@ -18,22 +18,24 @@ func _input(event):
 		Logger.logDebug("Playground: Pause button pressed")
 		
 		m_pause = not m_pause
-		pauseMenu.visible = m_pause
-		pauseMenuOptions.visible = false
-		playable.setPause(m_pause)
+		m_pauseMenu.visible = m_pause
+		m_pauseMenuOptions.visible = false
+		m_playable.setPause(m_pause)
 
 
 func _ready():
-	pauseMenu.connect("ExitGame", self.on_pauseMenu_exitGame)
-	pauseMenu.connect("Options", self.on_pauseMenu_options)
-	pauseMenu.connect("Resume", self.on_pauseMenu_resume)
-	pauseMenuOptions.connect("Return", self.on_pauseMenuOptions_return)
-	playable.connect("End", self.on_playableEnd)
+	m_pauseMenu.connect("ExitGame", self.on_pauseMenu_exitGame)
+	m_pauseMenu.connect("Options", self.on_pauseMenu_options)
+	m_pauseMenu.connect("Resume", self.on_pauseMenu_resume)
+	m_pauseMenuOptions.connect("Return", self.on_pauseMenuOptions_return)
+	m_playable.connect("End", self.on_playableEnd)
 	SfxManager.playMusic(GAME_MUSIC)
 	
 	Logger.logDebug("Playground: Ready")
 
 
+# Handles the End signal from Playable, changing the scene to the WonScreen
+# or LostScreen scene depending of the game results.
 func on_playableEnd(won : bool):
 	Logger.logDebug(str("Playground: Playable ends with won = ", won))
 	
@@ -50,22 +52,27 @@ func on_playableEnd(won : bool):
 	Game.emit_signal("ChangeScene", nextScene, GameSettings.TRANSITIONS.FADE_SCREEN)
 
 
+# Handles the 'exit' button from the pause menu, returning to the MainMenu scene.
 func on_pauseMenu_exitGame():
 	Logger.logDebug("Playground: Exiting playable")
 	
 	Game.emit_signal("ChangeScene", "res://MainMenu/MainMenu.tscn", GameSettings.TRANSITIONS.FADE_SCREEN)
 
 
+# Handles the 'resume' button from the pause menu, resuming the game.
 func on_pauseMenu_resume():
-	playable.setPause(false)
-	pauseMenu.visible = false
+	m_playable.setPause(false)
+	m_pauseMenu.visible = false
 
 
+# Handles the 'options' button from the pause menu, activating the options menu.
 func on_pauseMenu_options():
-	pauseMenu.visible = false
-	pauseMenuOptions.visible = true
+	m_pauseMenu.visible = false
+	m_pauseMenuOptions.visible = true
 
 
+# Handles the 'return' button from the options menu, returning to the 
+# pause menu.
 func on_pauseMenuOptions_return():
-	pauseMenu.visible = true
-	pauseMenuOptions.visible = false
+	m_pauseMenu.visible = true
+	m_pauseMenuOptions.visible = false

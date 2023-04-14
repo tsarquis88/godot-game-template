@@ -1,7 +1,7 @@
 extends Node2D
 
 
-# Signal emitted when game finished. It should be accompanied with a boolean
+# Signal emitted when game finishes. It should be accompanied with a boolean
 # indicating if the player won (true) or lost (false).
 signal End
 
