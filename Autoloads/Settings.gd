@@ -1,6 +1,6 @@
 extends Node
 
-# For a list of all pre-defined colors, see 
+# For a list of all pre-defined colors, see
 # https://docs.godotengine.org/en/stable/classes/class_color.html
 
 # Color used for menu backgrounds

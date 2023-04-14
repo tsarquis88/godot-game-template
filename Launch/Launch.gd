@@ -1,15 +1,14 @@
 extends ColorRect
 
-
 const INIT_MUSIC = "init.ogg"
 
-
-@export var nextScene = "res://SplashScreen/SplashScreen.tscn"
-@onready var Game = get_parent()
+@export var m_next_scene = "res://SplashScreen/SplashScreen.tscn"
+@onready var m_game = get_parent()
 
 
 func _ready():
-	SfxManager.playMusic(INIT_MUSIC)
-	Game.emit_signal("ChangeScene", nextScene, GameSettings.TRANSITIONS.FADE_SCREEN)
-	
-	Logger.logDebug("Launch: Ready")
+	print("hola")
+	SfxManager.play_music(INIT_MUSIC)
+	m_game.emit_signal("change_scene", m_next_scene, GameSettings.TRANSITIONS.FADE_SCREEN)
+
+	Logger.log_debug("Launch: Ready")

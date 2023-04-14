@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://btfmpehox3ovq"]
+[gd_scene load_steps=13 format=3 uid="uid://bl8u8p2n5nvon"]
 
-[ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
-[ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="1_mnpbq"]
-[ext_resource type="Script" path="res://Playable/Player.gd" id="1_u3w0b"]
-[ext_resource type="Script" path="res://Playable/Target.gd" id="2_81ifm"]
-[ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Assets/Textures/spark.png" id="2_yx2bw"]
-[ext_resource type="PackedScene" uid="uid://cfwjwvq46xirt" path="res://PauseMenu/PauseMenu.tscn" id="5_dxwmy"]
-[ext_resource type="PackedScene" uid="uid://d8q36mc1y2fk" path="res://PauseMenuOptions/PauseMenuOptions.tscn" id="6_0wt76"]
+[ext_resource type="Script" path="res://Playable/Target.gd" id="1_8s871"]
+[ext_resource type="Script" path="res://Playable/Playable.gd" id="1_od46t"]
+[ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Assets/Textures/spark.png" id="2_xc5mq"]
+[ext_resource type="Script" path="res://Playable/Player.gd" id="3_ejrwv"]
+[ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="4_w1xs8"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2qovn"]
 b = Vector2(0, 652)
@@ -35,87 +33,51 @@ orbit_velocity_max = 0.0
 size = Vector2(125, 125)
 
 [node name="Playable" type="Node2D"]
-script = ExtResource("1_cbvvx")
+script = ExtResource("1_od46t")
 
-[node name="Playables" type="Node2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Playables"]
+[node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1152, 648)
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.498039, 0.054902, 0.188235, 1)
 
-[node name="Margins" type="StaticBody2D" parent="Playables"]
+[node name="Margins" type="StaticBody2D" parent="."]
 
-[node name="LeftMargin" type="CollisionShape2D" parent="Playables/Margins"]
+[node name="LeftMargin" type="CollisionShape2D" parent="Margins"]
 shape = SubResource("SegmentShape2D_2qovn")
 
-[node name="DownMargin" type="CollisionShape2D" parent="Playables/Margins"]
+[node name="DownMargin" type="CollisionShape2D" parent="Margins"]
 position = Vector2(0, 652)
 shape = SubResource("SegmentShape2D_5nrji")
 
-[node name="RightMargin" type="CollisionShape2D" parent="Playables/Margins"]
+[node name="RightMargin" type="CollisionShape2D" parent="Margins"]
 position = Vector2(1152, 0)
 shape = SubResource("SegmentShape2D_31aac")
 
-[node name="UpMargin" type="CollisionShape2D" parent="Playables/Margins"]
+[node name="UpMargin" type="CollisionShape2D" parent="Margins"]
 shape = SubResource("SegmentShape2D_wxkn8")
 
-[node name="Target" type="Area2D" parent="Playables"]
+[node name="Target" type="Area2D" parent="."]
 position = Vector2(894, 297)
-script = ExtResource("2_81ifm")
+script = ExtResource("1_8s871")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2d" type="CollisionShape2D" parent="Playables/Target"]
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Target"]
 shape = SubResource("RectangleShape2D_0wb6c")
 
-[node name="CpuParticles2d" type="GPUParticles2D" parent="Playables/Target"]
+[node name="CpuParticles2d" type="GPUParticles2D" parent="Target"]
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_m3yox")
-texture = ExtResource("2_yx2bw")
+texture = ExtResource("2_xc5mq")
 lifetime = 0.3
 
-[node name="Player" type="CharacterBody2D" parent="Playables"]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(126, 267)
-script = ExtResource("1_u3w0b")
+script = ExtResource("3_ejrwv")
 metadata/_edit_group_ = true
 
-[node name="Sprite2d" type="Sprite2D" parent="Playables/Player"]
-texture = ExtResource("1_mnpbq")
+[node name="Sprite2d" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_w1xs8")
 
-[node name="CollisionShape2d" type="CollisionShape2D" parent="Playables/Player"]
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_ndh3r")
-
-[node name="PauseMenuControl" type="Control" parent="."]
-custom_minimum_size = Vector2(1152, 648)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PauseMenu" parent="PauseMenuControl" instance=ExtResource("5_dxwmy")]
-visible = false
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -112.5
-offset_right = 125.0
-offset_bottom = 112.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PauseMenuOptions" parent="PauseMenuControl" instance=ExtResource("6_0wt76")]
-visible = false
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -175.0
-offset_bottom = 175.0
-grow_horizontal = 2
-grow_vertical = 2

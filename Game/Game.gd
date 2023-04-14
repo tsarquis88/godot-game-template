@@ -1,49 +1,47 @@
 extends Node2D
 
+signal change_scene
+signal exit
 
-signal ChangeScene
-signal Exit
-
-
-@export var firstScene = "res://SplashScreen/SplashScreen.tscn"
-@onready var transition = find_child("Transition")
-@onready var nextScene = firstScene
-@onready var currentSceneNode = null
+@export var m_first_scene = "res://Launch/Launch.tscn"
+@onready var m_transition = find_child("Transition")
+@onready var m_next_scene = m_first_scene
+@onready var m_current_scene_node = null
 
 
-func _ready()->void:
-	Logger.logInfor("Starting game")
-	
-	connect("Exit", self.on_exit)
-	connect("ChangeScene", self.on_changeScene)
-	transition.connect("Transition", self.instantiateCurrentScene)
-	instantiateCurrentScene()
-	
-	Logger.logDebug("Game ready")
+func _ready() -> void:
+	Logger.log_infor("Starting game")
+
+	connect("exit", self.on_exit)
+	connect("change_scene", self.on_change_scene)
+	m_transition.connect("transition", self.instantiate_current_scene)
+	instantiate_current_scene()
+
+	Logger.log_debug("Game ready")
 
 
-func instantiateCurrentScene():
-	if currentSceneNode != null:
-		currentSceneNode.queue_free()
-	
-	currentSceneNode = load(nextScene).instantiate() 
-	add_child(currentSceneNode)
-	
-	Logger.logDebug(str("Changed to scene: ", currentSceneNode.get_name()))
+func instantiate_current_scene():
+	if m_current_scene_node != null:
+		m_current_scene_node.queue_free()
+
+	m_current_scene_node = load(m_next_scene).instantiate()
+	add_child(m_current_scene_node)
+
+	Logger.log_debug(str("Changed to scene: ", m_current_scene_node.get_name()))
 
 
-func on_changeScene(newScene, transitionType)->void:
-	match transitionType:
+func on_change_scene(new_scene, transition_type) -> void:
+	match transition_type:
 		GameSettings.TRANSITIONS.FADE_SCREEN:
-			transition.fadeScreenTransition()
+			m_transition.fade_screen_transition()
 		GameSettings.TRANSITIONS.LEFT_RIGHT:
-			transition.leftRightTransition()
+			m_transition.left_right_transition()
 		GameSettings.TRANSITIONS.UP_BOTTOM:
-			transition.upBottomTransition()
-	nextScene = newScene
+			m_transition.up_bottom_transition()
+	m_next_scene = new_scene
 
 
-func on_exit()->void:
-	Logger.logInfor("Exiting game")
-	
+func on_exit() -> void:
+	Logger.log_infor("Exiting game")
+
 	get_tree().quit()

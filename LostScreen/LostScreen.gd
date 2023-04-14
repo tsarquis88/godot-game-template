@@ -1,21 +1,20 @@
 extends Node2D
 
-@export var nextScene = "res://MainMenu/MainMenu.tscn"
-@export var duration = 3
-@onready var lostLabel = find_child("LostLabel")
-@onready var background = find_child("Background")
-@onready var Game = get_parent()
+@export var m_next_scene = "res://MainMenu/MainMenu.tscn"
+@export var m_duration = 3
+@onready var m_lost_label = find_child("LostLabel")
+@onready var m_background = find_child("Background")
+@onready var m_game = get_parent()
+@onready var m_timer = GlobalTimer.create_timeout(self.finish, m_duration, true, true)
 
-var timer
 
 func _ready():
-	background.color = Settings.MENU_BACKGROUND_COLOR
-	lostLabel.text = tr("LOST-MESSAGE")
-	timer = GlobalTimer.create_timeout(self.finish, duration, true, true)
-	
-	Logger.logDebug("LostScreen: Ready")
+	m_background.color = Settings.MENU_BACKGROUND_COLOR
+	m_lost_label.text = tr("LOST-MESSAGE")
+
+	Logger.log_debug("LostScreen: Ready")
 
 
 func finish():
-	GlobalTimer.delete_timeout(timer)
-	Game.emit_signal("ChangeScene", nextScene, GameSettings.TRANSITIONS.UP_BOTTOM)
+	GlobalTimer.delete_timeout(m_timer)
+	m_game.emit_signal("change_scene", m_next_scene, GameSettings.TRANSITIONS.UP_BOTTOM)
