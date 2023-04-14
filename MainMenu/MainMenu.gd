@@ -1,7 +1,7 @@
 extends BoxContainer
 
 
-const PLAYABLE_SCENE = "res://Playable/Playable.tscn"
+const PLAYGROUND_SCENE = "res://Playground/Playground.tscn"
 const CREDITS_SCENE = "res://Credits/Credits.tscn"
 const OPTIONS_SCENE = "res://OptionsMenu/OptionsMenu.tscn"
 const BUTTON_SOUND = "button.wav"
@@ -32,7 +32,7 @@ func _ready():
 
 
 func on_newGameButton_pressed():
-	Game.emit_signal("ChangeScene", PLAYABLE_SCENE, GameSettings.TRANSITIONS.FADE_SCREEN)
+	Game.emit_signal("ChangeScene", PLAYGROUND_SCENE, GameSettings.TRANSITIONS.FADE_SCREEN)
 
 
 func on_optionsButton_pressed():
