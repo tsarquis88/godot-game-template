@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Playable/Target.gd" id="1_8s871"]
 [ext_resource type="Script" path="res://Playable/Playable.gd" id="1_od46t"]
-[ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Template/Assets/Textures/spark.png" id="2_xc5mq"]
+[ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Assets/Textures/spark.png" id="2_xc5mq"]
 [ext_resource type="Script" path="res://Playable/Player.gd" id="3_ejrwv"]
 [ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="4_w1xs8"]
 
