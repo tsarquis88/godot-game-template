@@ -28,8 +28,8 @@ const BUTTON_SOUND = "button.wav"
 func _ready():
 	set_default_values()
 	on_re_translate()
-	on_fullScreen(false)
-	m_panel.get_theme_stylebox("m_panel").bg_color = Settings.MENU_m_panel_COLOR
+	on_full_screen(false)
+	m_panel.get_theme_stylebox("panel").bg_color = Settings.MENU_PANEL_COLOR
 	m_background.color = Settings.MENU_BACKGROUND_COLOR
 	m_return_button.connect("pressed", self.on_return_button_pressed)
 	m_language_button.connect("item_selected", self.on_language_button_item_selected)
@@ -38,7 +38,7 @@ func _ready():
 	m_volume_slider.connect("value_changed", self.on_volume_slider_value_changed)
 	m_volume_slider.connect("drag_ended", self.on_volume_slider_drag_ended)
 	Language.connect("re_translate", self.on_re_translate)
-	Resolution.connect("full_screen", self.on_fullScreen)
+	Resolution.connect("full_screen", self.on_full_screen)
 
 	Logger.log_debug("OptionsMenu: Ready")
 
@@ -66,8 +66,8 @@ func on_difficulty_button_item_selected(index):
 			GameSettings.m_game_difficulty = GameSettings.DIFFICULTY.HARD
 
 
-func on_full_screen_button_toggled(full_screen):
-	Resolution.set_full_screen(full_screen)
+func on_full_screen_button_toggled(new_full_screen):
+	Resolution.set_full_screen(new_full_screen)
 
 
 func on_volume_slider_value_changed(_new_value):
@@ -102,5 +102,5 @@ func set_default_values():
 	m_volume_slider.value = 1
 
 
-func on_full_screen(full_screen):
-	m_full_screen_button.button_pressed = full_screen
+func on_full_screen(new_full_screen):
+	m_full_screen_button.button_pressed = new_full_screen

@@ -7,6 +7,7 @@ const INIT_MUSIC = "init.ogg"
 
 
 func _ready():
+	print("hola")
 	SfxManager.play_music(INIT_MUSIC)
 	m_game.emit_signal("change_scene", m_next_scene, GameSettings.TRANSITIONS.FADE_SCREEN)
 

@@ -14,10 +14,10 @@ func _ready():
 	Logger.log_debug("Resolution autoload: Ready")
 
 
-func set_full_screen(full_screen):
-	m_is_full_screen = full_screen
+func set_full_screen(new_full_screen):
+	m_is_full_screen = new_full_screen
 	m_block_size_changed = true
-	if full_screen:
+	if new_full_screen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

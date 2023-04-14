@@ -3,7 +3,7 @@ extends Node2D
 signal change_scene
 signal exit
 
-@export var m_first_scene = "res://SplashScreen/SplashScreen.tscn"
+@export var m_first_scene = "res://Launch/Launch.tscn"
 @onready var m_transition = find_child("Transition")
 @onready var m_next_scene = m_first_scene
 @onready var m_current_scene_node = null
@@ -35,9 +35,9 @@ func on_change_scene(new_scene, transition_type) -> void:
 		GameSettings.TRANSITIONS.FADE_SCREEN:
 			m_transition.fade_screen_transition()
 		GameSettings.TRANSITIONS.LEFT_RIGHT:
-			m_transition.leftRightTransition()
+			m_transition.left_right_transition()
 		GameSettings.TRANSITIONS.UP_BOTTOM:
-			m_transition.upBottomTransition()
+			m_transition.up_bottom_transition()
 	m_next_scene = new_scene
 
 
