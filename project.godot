@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GlobalTimer="*res://Autoload/GlobalTimer.gd"=======
 Language="*res://Autoloads/Language.gd"
 GlobalTimer="*res://Autoloads/GlobalTimer.gd"
 SfxManager="*res://Autoloads/SfxManager.gd"
