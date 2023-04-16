@@ -8,6 +8,7 @@ const INIT_MUSIC = "init.ogg"
 @onready var m_pause_menu = find_child("PauseMenu")
 @onready var m_pause_menu_options = find_child("PauseMenuOptions")
 @onready var m_playable = find_child("Playable")
+@onready var m_hud = find_child("HUD")
 @onready var m_game = get_parent()
 
 
@@ -19,6 +20,7 @@ func _input(event):
 		m_pause_menu.visible = m_pause
 		m_pause_menu_options.visible = false
 		m_playable.set_pause(m_pause)
+		m_hud.set_pause(m_pause)
 
 
 func _ready():
@@ -55,13 +57,16 @@ func on_pause_menu_exit_game():
 	Logger.log_debug("Playground: Exiting playable")
 
 	m_game.emit_signal(
-		"change_scene", "res://Template/MainMenu/MainMenu.tscn", GameSettings.TRANSITIONS.FADE_SCREEN
+		"change_scene",
+		"res://Template/MainMenu/MainMenu.tscn",
+		GameSettings.TRANSITIONS.FADE_SCREEN
 	)
 
 
 # Handles the 'resume' button from the pause menu, resuming the game.
 func on_pause_menu_resume():
 	m_playable.set_pause(false)
+	m_hud.set_pause(false)
 	m_pause_menu.visible = false
 
 

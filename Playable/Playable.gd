@@ -10,10 +10,15 @@ signal end
 
 func _ready():
 	m_target.connect("body_entered", on_target_body_entered)
+	GlobalTimer.create_timeout(on_timeout, 15, true, false)
 
 
 func on_target_body_entered(_body):
 	emit_signal("end", true)
+
+
+func on_timeout():
+	emit_signal("end", false)
 
 
 # Method used by the Playground node in order to set the pause. This method
