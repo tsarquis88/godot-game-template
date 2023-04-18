@@ -44,6 +44,8 @@ func start_timeout(timer: Timer) -> void:
 	if timer == null:
 		print_debug("GlobalTimer: start_timeout() called with empty timer")
 	else:
+		if timer.is_stopped():
+			timer.start()
 		timer.set_paused(false)
 
 

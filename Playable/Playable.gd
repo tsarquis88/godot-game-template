@@ -6,11 +6,11 @@ signal end
 
 @onready var m_player = find_child("Player")
 @onready var m_target = find_child("Target")
+@onready var m_end_timer = GlobalTimer.create_timeout(on_timeout, 15, true, false)
 
 
 func _ready():
 	m_target.connect("body_entered", on_target_body_entered)
-	GlobalTimer.create_timeout(on_timeout, 15, true, false)
 
 
 func on_target_body_entered(_body):
@@ -27,3 +27,7 @@ func on_timeout():
 func set_pause(pause: bool):
 	m_player.set_pause(pause)
 	m_target.set_pause(pause)
+	if pause:
+		GlobalTimer.stop_timeout(m_end_timer)
+	else:
+		GlobalTimer.start_timeout(m_end_timer)
