@@ -63,7 +63,8 @@ func on_pause_menu_exit_game():
 	)
 
 
-# Handles the 'resume' button from the pause menu, resuming the game.
+# Handles the 'resume' button from the pause menu, resuming the game by calling
+# the set_pause() method of Playable and HUD scenes.
 func on_pause_menu_resume():
 	m_playable.set_pause(false)
 	m_hud.set_pause(false)
