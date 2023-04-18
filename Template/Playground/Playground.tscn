@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dskt7m3g8uw8x"]
+[gd_scene load_steps=6 format=3 uid="uid://do4mlp18cn6bh"]
 
 [ext_resource type="Script" path="res://Template/Playground/Playground.gd" id="1_cbvvx"]
 [ext_resource type="PackedScene" path="res://Playable/Playable.tscn" id="2_re0iq"]
 [ext_resource type="PackedScene" path="res://Template/PauseMenu/PauseMenu.tscn" id="5_dxwmy"]
+[ext_resource type="PackedScene" uid="uid://n05i67vo5vpu" path="res://HUD/HUD.tscn" id="5_wdf5k"]
 [ext_resource type="PackedScene" path="res://Template/PauseMenuOptions/PauseMenuOptions.tscn" id="6_0wt76"]
 
 [node name="Playground" type="Node2D"]
@@ -44,3 +45,5 @@ offset_right = 500.0
 offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HUD" parent="." instance=ExtResource("5_wdf5k")]

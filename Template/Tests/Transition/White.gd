@@ -10,5 +10,7 @@ func _ready():
 
 func change_scene():
 	m_game.emit_signal(
-		"change_scene", "res://Template/Tests/Transition/Red.tscn", GameSettings.TRANSITIONS.FADE_SCREEN
+		"change_scene",
+		"res://Template/Tests/Transition/Red.tscn",
+		GameSettings.TRANSITIONS.FADE_SCREEN
 	)
