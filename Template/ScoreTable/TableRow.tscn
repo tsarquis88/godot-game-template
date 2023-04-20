@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0jf6py1vthv2"]
+
+[ext_resource type="Script" path="res://Template/ScoreTable/TableRow.gd" id="1_yac7y"]
+[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="1_ywfht"]
+
+[node name="TableRow" type="HBoxContainer"]
+script = ExtResource("1_yac7y")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(325, 50)
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ywfht")
+theme_override_font_sizes/font_size = 30
+text = "Player Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ywfht")
+theme_override_font_sizes/font_size = 30
+text = "Score
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="."]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2

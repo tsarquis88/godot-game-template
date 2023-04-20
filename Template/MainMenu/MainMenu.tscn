@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bjgltspq4a1gy"]
 
 [ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="1_3ka5u"]
 [ext_resource type="Script" path="res://Template/MainMenu/MainMenu.gd" id="1_ihb7f"]
@@ -55,6 +55,17 @@ text = "Options
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
+[node name="ScoreTableButton" type="Button" parent="Background/LeftVBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Score Table"
+
+[node name="Control5" type="Control" parent="Background/LeftVBox"]
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+
 [node name="CreditsButton" type="Button" parent="Background/LeftVBox"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -63,7 +74,7 @@ size_flags_vertical = 4
 text = "Credits
 "
 
-[node name="Control5" type="Control" parent="Background/LeftVBox"]
+[node name="Control6" type="Control" parent="Background/LeftVBox"]
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
@@ -74,8 +85,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit"
 
-[node name="Control6" type="Control" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(100, 110)
+[node name="Control7" type="Control" parent="Background/LeftVBox"]
+custom_minimum_size = Vector2(100, 60)
 layout_mode = 2
 
 [node name="MadeWithLabel" type="Label" parent="Background/LeftVBox"]
