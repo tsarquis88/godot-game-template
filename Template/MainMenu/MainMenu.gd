@@ -4,7 +4,6 @@ const PLAYGROUND_SCENE = "res://Template/Playground/Playground.tscn"
 const CREDITS_SCENE = "res://Template/Credits/Credits.tscn"
 const OPTIONS_SCENE = "res://Template/OptionsMenu/OptionsMenu.tscn"
 const SCORE_TABLE_SCENE = "res://Template/ScoreTable/ScoreTable.tscn"
-const BUTTON_SOUND = "button.wav"
 
 @onready var m_background = find_child("Background")
 @onready var m_new_game_button = find_child("NewGameButton")
@@ -23,11 +22,6 @@ func _ready():
 	m_score_table_button.connect("pressed", self.on_score_table_button_pressed)
 	m_credits_button.connect("pressed", self.on_credits_button_pressed)
 	m_exit_button.connect("pressed", self.on_exit_button_pressed)
-	m_new_game_button.connect("pressed", self.on_button_pressed)
-	m_options_button.connect("pressed", self.on_button_pressed)
-	m_score_table_button.connect("pressed", self.on_button_pressed)
-	m_credits_button.connect("pressed", self.on_button_pressed)
-	m_exit_button.connect("pressed", self.on_button_pressed)
 	Language.connect("re_translate", self.re_translate)
 	re_translate()
 
@@ -54,14 +48,10 @@ func on_exit_button_pressed():
 	m_game.emit_signal("exit")
 
 
-func on_button_pressed():
-	SfxManager.play_sfx(BUTTON_SOUND)
-
-
 func re_translate():
-	m_new_game_button.text = tr("NEW-GAME")
-	m_options_button.text = tr("OPTIONS")
-	m_score_table_button.text = tr("SCORE-TABLE")
-	m_credits_button.text = tr("CREDITS")
-	m_made_with_label.text = str(tr("MADE-WITH"), " Godot ", Engine.get_version_info().string)
-	m_exit_button.text = tr("EXIT")
+	m_new_game_button.set_text(tr("NEW-GAME"))
+	m_options_button.set_text(tr("OPTIONS"))
+	m_score_table_button.set_text(tr("SCORE-TABLE"))
+	m_credits_button.set_text(tr("CREDITS"))
+	m_exit_button.set_text(tr("EXIT"))
+	m_made_with_label.set_text(str(tr("MADE-WITH"), " Godot ", Engine.get_version_info().string))
