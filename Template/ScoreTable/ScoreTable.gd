@@ -19,7 +19,7 @@ func _ready():
 	m_background.color = Settings.MENU_BACKGROUND_COLOR
 	m_title.text = tr("SCORE-TABLE")
 	m_no_scores_label.text = tr("NO-SCORES")
-	m_first_table_row.set_row(tr("PLAYER-NAME"), tr("SCORE"))
+	m_first_table_row.set_row(tr("PLAYER-NAME"), tr("SCORE"), tr("DATE"))
 	m_return_button.text = tr("RETURN")
 	m_reset_button.text = tr("RESET-SCORES")
 	m_no_scores_label.visible = false
@@ -54,7 +54,7 @@ func _ready():
 		for i in MAX_SCORES_TO_SHOW:
 			var new_table_row = m_table_row_scene.instantiate()
 			m_scores_vbox.add_child(new_table_row)
-			new_table_row.set_row(scores[i][0], scores[i][1])
+			new_table_row.set_row(scores[i][0], scores[i][1], scores[i][2])
 
 	Logger.log_debug("ScoreTable: Ready")
 
