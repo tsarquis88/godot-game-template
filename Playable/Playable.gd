@@ -4,8 +4,7 @@ extends Node2D
 # indicating if the player won (true) or lost (false).
 signal end
 
-
-const GAME_SCORE = 1
+const GAME_SCORE = 0
 
 @onready var m_player = find_child("Player")
 @onready var m_target = find_child("Target")
