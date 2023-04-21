@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c1r2teqa4xsyh"]
 
 [ext_resource type="Script" path="res://Template/OptionsMenu/OptionsMenu.gd" id="1_ihb7f"]
-[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="FontFile" uid="uid://b4wyxsf25wcmx" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_u3wrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syunc"]
 bg_color = Color(0.411765, 0.627451, 0.792157, 1)
@@ -196,13 +197,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="ReturnButton" type="Button" parent="Background/VBoxContainer/HBoxContainer/LeftVbox"]
-custom_minimum_size = Vector2(200, 50)
+[node name="ReturnButton" parent="Background/VBoxContainer/HBoxContainer/LeftVbox" instance=ExtResource("3_u3wrn")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_j1t0p")
-theme_override_font_sizes/font_size = 34
+theme_override_font_sizes/font_size = 30
 text = "Return"
 
 [node name="MiddleMargin" type="Control" parent="Background/VBoxContainer/HBoxContainer"]

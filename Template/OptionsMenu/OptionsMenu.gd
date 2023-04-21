@@ -9,7 +9,6 @@ const EASY_INDEX = 0
 const NORMAL_INDEX = 1
 const HARD_INDEX = 2
 const SLIDER_SOUND = "volumeSlider.wav"
-const BUTTON_SOUND = "button.wav"
 
 @onready var m_panel = find_child("Panel")
 @onready var m_background = find_child("Background")
@@ -45,7 +44,6 @@ func _ready():
 
 func on_return_button_pressed():
 	m_game.emit_signal("change_scene", MAINMENU_SCENE, GameSettings.TRANSITIONS.UP_BOTTOM)
-	SfxManager.play_sfx(BUTTON_SOUND)
 
 
 func on_language_button_item_selected(index):
@@ -83,11 +81,11 @@ func on_re_translate():
 	m_difficulty_button.set_item_text(EASY_INDEX, tr("EASY"))
 	m_difficulty_button.set_item_text(NORMAL_INDEX, tr("NORMAL"))
 	m_difficulty_button.set_item_text(HARD_INDEX, tr("HARD"))
-	m_return_button.text = tr("RETURN")
-	m_language_label.text = tr("LANGUAGE")
-	m_difficulty_label.text = tr("DIFFICULTY")
-	m_full_screen_label.text = tr("FULL-SCREEN")
-	m_volume_label.text = tr("VOLUME")
+	m_return_button.set_text(tr("RETURN"))
+	m_language_label.set_text(tr("LANGUAGE"))
+	m_difficulty_label.set_text(tr("DIFFICULTY"))
+	m_full_screen_label.set_text(tr("FULL-SCREEN"))
+	m_volume_label.set_text(tr("VOLUME"))
 
 
 func set_default_values():
