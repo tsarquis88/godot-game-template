@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjpkcjcjmh42n"]
+[gd_scene load_steps=5 format=3 uid="uid://cjpkcjcjmh42n"]
 
 [ext_resource type="Script" path="res://Template/ScoreTable/ScoreTable.gd" id="1_nu70l"]
-[ext_resource type="FontFile" uid="uid://ff8ivguu44ja" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_sugu4"]
+[ext_resource type="FontFile" uid="uid://b4wyxsf25wcmx" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_sugu4"]
+[ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_23w1c"]
 [ext_resource type="PackedScene" uid="uid://c0jf6py1vthv2" path="res://Template/ScoreTable/TableRow.tscn" id="3_jsjfh"]
 
 [node name="ScoreTable" type="Node2D"]
@@ -36,26 +37,20 @@ custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 alignment = 1
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ResetButton" parent="VBoxContainer/HBoxContainer/ButtonsVBox" instance=ExtResource("3_23w1c")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Reset scores"
+text = "Reset"
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/ButtonsVBox"]
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
-[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ReturnButton" parent="VBoxContainer/HBoxContainer/ButtonsVBox" instance=ExtResource("3_23w1c")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Return"
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="ScoresVBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]

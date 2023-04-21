@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0ouuy5p14q2e"]
+[gd_scene load_steps=5 format=3 uid="uid://c0ouuy5p14q2e"]
 
 [ext_resource type="Script" path="res://Template/Playground/FinalPopUp/FinalPopUp.gd" id="1_2wtkg"]
-[ext_resource type="FontFile" uid="uid://bvkgr5m7idjg3" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_oeiif"]
+[ext_resource type="FontFile" uid="uid://b4wyxsf25wcmx" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_oeiif"]
+[ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_olmpg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs1th"]
 bg_color = Color(0.333333, 0.439216, 0.788235, 1)
@@ -18,7 +19,7 @@ shadow_size = 10
 shadow_offset = Vector2(5, -5)
 
 [node name="FinalPopUp" type="Panel"]
-custom_minimum_size = Vector2(500, 150)
+custom_minimum_size = Vector2(500, 250)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -68,10 +69,6 @@ placeholder_text = "Enter player's name"
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 
-[node name="AcceptButton" type="Button" parent="LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="AcceptButton" parent="LeftVBox" instance=ExtResource("3_olmpg")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Accept
-"
+text = "Accept"

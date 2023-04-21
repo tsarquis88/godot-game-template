@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6p1x71haijmj"]
+
+[ext_resource type="Script" path="res://Template/ButtonWrapper/ButtonWrapper.gd" id="1_v5du1"]
+
+[node name="ButtonWrapper" type="Button"]
+custom_minimum_size = Vector2(200, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+text = "ButtonWrapper"
+script = ExtResource("1_v5du1")

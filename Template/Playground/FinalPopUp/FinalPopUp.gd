@@ -2,7 +2,6 @@ extends Panel
 
 signal accept
 
-const BUTTON_SOUND = "button.wav"
 const SCORES_FILENAME = "res://scores.txt"
 
 @onready var m_title = find_child("Title")
@@ -15,11 +14,8 @@ func _ready():
 	var style_box = get_theme_stylebox("panel")
 	style_box.bg_color = Settings.MENU_BACKGROUND_COLOR
 	style_box.border_color = Settings.MENU_BORDER_COLOR
-
 	m_accept_button.connect("pressed", self.on_accept_button_pressed)
-	m_accept_button.connect("pressed", self.on_button_pressed)
-
-	m_accept_button.text = tr("ACCEPT")
+	m_accept_button.set_text(tr("ACCEPT"))
 	m_text_edit.placeholder_text = tr("ENTER-PLAYER-NAME")
 
 	Logger.log_debug("FinalPopUp: Ready")
@@ -46,7 +42,3 @@ func on_accept_button_pressed():
 		file.close()
 
 	emit_signal("accept")
-
-
-func on_button_pressed():
-	SfxManager.play_sfx(BUTTON_SOUND)

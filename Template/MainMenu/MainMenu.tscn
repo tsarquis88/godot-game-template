@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjgltspq4a1gy"]
+[gd_scene load_steps=5 format=3 uid="uid://bjgltspq4a1gy"]
 
-[ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="1_3ka5u"]
+[ext_resource type="Texture2D" uid="uid://7fsno7guf4og" path="res://icon.svg" id="1_3ka5u"]
 [ext_resource type="Script" path="res://Template/MainMenu/MainMenu.gd" id="1_ihb7f"]
-[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="FontFile" uid="uid://b4wyxsf25wcmx" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_qhdnb"]
 
 [node name="MainMenu" type="BoxContainer"]
 custom_minimum_size = Vector2(1152, 648)
@@ -32,57 +33,40 @@ stretch_mode = 3
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="NewGameButton" type="Button" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="NewGameButton" parent="Background/LeftVBox" instance=ExtResource("3_qhdnb")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "New Game"
 
 [node name="Control3" type="Control" parent="Background/LeftVBox"]
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
-[node name="OptionsButton" type="Button" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="OptionsButton" parent="Background/LeftVBox" instance=ExtResource("3_qhdnb")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Options
-"
+text = "Options"
 
 [node name="Control4" type="Control" parent="Background/LeftVBox"]
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
-[node name="ScoreTableButton" type="Button" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ScoreTableButton" parent="Background/LeftVBox" instance=ExtResource("3_qhdnb")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Score Table"
 
 [node name="Control5" type="Control" parent="Background/LeftVBox"]
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
-[node name="CreditsButton" type="Button" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="CreditsButton" parent="Background/LeftVBox" instance=ExtResource("3_qhdnb")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Credits
-"
+text = "Options"
 
 [node name="Control6" type="Control" parent="Background/LeftVBox"]
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
-[node name="ExitButton" type="Button" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ExitButton" parent="Background/LeftVBox" instance=ExtResource("3_qhdnb")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Exit"
 
 [node name="Control7" type="Control" parent="Background/LeftVBox"]
