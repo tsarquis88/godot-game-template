@@ -4,6 +4,9 @@ extends Node2D
 # indicating if the player won (true) or lost (false).
 signal end
 
+
+const GAME_SCORE = 1
+
 @onready var m_player = find_child("Player")
 @onready var m_target = find_child("Target")
 @onready var m_end_timer = GlobalTimer.create_timeout(on_timeout, 15, true, false)
@@ -14,11 +17,11 @@ func _ready():
 
 
 func on_target_body_entered(_body):
-	emit_signal("end", true)
+	emit_signal("end", true, GAME_SCORE)
 
 
 func on_timeout():
-	emit_signal("end", false)
+	emit_signal("end", false, GAME_SCORE)
 
 
 # Method used by the Playground node in order to set the pause. This method
