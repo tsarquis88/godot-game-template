@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjpkcjcjmh42n"]
 
 [ext_resource type="Script" path="res://Template/ScoreTable/ScoreTable.gd" id="1_nu70l"]
-[ext_resource type="FontFile" uid="uid://camjobyri6hu" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_sugu4"]
+[ext_resource type="FontFile" uid="uid://ff8ivguu44ja" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_sugu4"]
 [ext_resource type="PackedScene" uid="uid://c0jf6py1vthv2" path="res://Template/ScoreTable/TableRow.tscn" id="3_jsjfh"]
 
 [node name="ScoreTable" type="Node2D"]
