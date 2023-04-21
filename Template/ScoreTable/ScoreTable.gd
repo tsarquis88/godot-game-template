@@ -20,6 +20,8 @@ func _ready():
 	m_title.text = tr("SCORE-TABLE")
 	m_no_scores_label.text = tr("NO-SCORES")
 	m_first_table_row.set_row(tr("PLAYER-NAME"), tr("SCORE"))
+	m_return_button.text = tr("RETURN")
+	m_reset_button.text = tr("RESET-SCORES")
 	m_no_scores_label.visible = false
 	m_return_button.connect("pressed", self.on_return_button_pressed)
 	m_reset_button.connect("pressed", self.on_reset_button_pressed)
