@@ -18,19 +18,19 @@ func _ready():
 
 	m_accept_button.connect("pressed", self.on_accept_button_pressed)
 	m_accept_button.connect("pressed", self.on_button_pressed)
-	
+
 	m_accept_button.text = tr("ACCEPT")
 	m_text_edit.placeholder_text = tr("ENTER-PLAYER-NAME")
-	
+
 	Logger.log_debug("FinalPopUp: Ready")
 
 
-func set_up(won : bool, score : int):
+func set_up(won: bool, score: int):
 	if won:
 		m_title.text = tr("WON-MESSAGE")
 	else:
 		m_title.text = tr("LOST-MESSAGE")
-	
+
 	m_text_edit.visible = score > 0
 	m_score = score
 
@@ -44,8 +44,7 @@ func on_accept_button_pressed():
 		file.seek_end()
 		file.store_csv_line([m_text_edit.text, m_score, Time.get_date_string_from_system()])
 		file.close()
-		
-	
+
 	emit_signal("accept")
 
 

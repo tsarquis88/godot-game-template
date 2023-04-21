@@ -39,12 +39,12 @@ func _ready():
 
 
 # Handles the 'end' signal from Playable, showing the PopUp depending on how the game ended.
-func on_playable_end(won: bool, score : int):
+func on_playable_end(won: bool, score: int):
 	Logger.log_debug(str("Playground: Playable ends with won = ", won, " and score = ", score))
-	
+
 	m_playable.set_pause(true)
 	m_hud.set_pause(true)
-	
+
 	m_final_pop_up.set_up(won, score)
 	m_final_pop_up.visible = true
 
@@ -60,7 +60,7 @@ func on_pause_menu_exit_game():
 	)
 
 
-# Handles the 'resume' button from the pause menu, resuming the game by calling the set_pause() 
+# Handles the 'resume' button from the pause menu, resuming the game by calling the set_pause()
 # method of Playable and HUD scenes.
 func on_pause_menu_resume():
 	m_playable.set_pause(false)
