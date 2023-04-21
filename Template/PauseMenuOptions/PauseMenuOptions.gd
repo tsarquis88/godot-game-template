@@ -3,7 +3,6 @@ extends Panel
 signal back
 
 const SLIDER_SOUND = "volumeSlider.wav"
-const BUTTON_SOUND = "button.wav"
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
 
@@ -31,18 +30,17 @@ func _ready():
 	m_language_button.connect("item_selected", self.on_language_button_item_selected)
 	m_full_screen_button.connect("toggled", self.on_full_screen_button_toggled)
 	m_return_button.connect("pressed", self.on_return_button_pressed)
-	m_return_button.connect("pressed", self.on_button_pressed)
 	m_volume_slider.connect("value_changed", self.on_volume_slider_value_changed)
 
 	Logger.log_debug("PauseMenuOptions: Ready")
 
 
 func on_re_translate():
-	m_return_button.text = tr("RETURN")
-	m_language_label.text = tr("LANGUAGE")
-	m_full_screen_label.text = tr("FULL-SCREEN")
-	m_volume_label.text = tr("VOLUME")
-	m_title.text = tr("OPTIONS")
+	m_return_button.set_text(tr("RETURN"))
+	m_language_label.set_text(tr("LANGUAGE"))
+	m_full_screen_label.set_text(tr("FULL-SCREEN"))
+	m_volume_label.set_text(tr("VOLUME"))
+	m_title.set_text(tr("OPTIONS"))
 
 
 func on_language_button_item_selected(index):
@@ -70,10 +68,6 @@ func on_full_screen_button_toggled(full_screen):
 
 func on_return_button_pressed():
 	emit_signal("back")
-
-
-func on_button_pressed():
-	SfxManager.play_sfx(BUTTON_SOUND)
 
 
 func on_volume_slider_value_changed(new_value):
