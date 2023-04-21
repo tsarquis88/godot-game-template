@@ -32,3 +32,12 @@ text = "Score
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DateLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Date
+"
+horizontal_alignment = 1
+vertical_alignment = 1
