@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://vs7lh5eejlbv"]
 
 [ext_resource type="Script" path="res://Template/PauseMenu/PauseMenu.gd" id="1_5meyu"]
-[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
+[ext_resource type="FontFile" uid="uid://b4wyxsf25wcmx" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
+[ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_0kk7h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs1th"]
 bg_color = Color(0.333333, 0.439216, 0.788235, 1)
@@ -48,32 +49,22 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 
-[node name="OptionsButton" type="Button" parent="LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="OptionsButton" parent="LeftVBox" instance=ExtResource("3_0kk7h")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Options
-"
+text = "Options"
 
 [node name="Control4" type="Control" parent="LeftVBox"]
 custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 
-[node name="ExitButton" type="Button" parent="LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ExitButton" parent="LeftVBox" instance=ExtResource("3_0kk7h")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Exit"
 
 [node name="Control5" type="Control" parent="LeftVBox"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="LeftVBox"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ResumeButton" parent="LeftVBox" instance=ExtResource("3_0kk7h")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Resume"
