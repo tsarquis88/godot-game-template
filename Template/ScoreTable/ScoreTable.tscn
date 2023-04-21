@@ -50,7 +50,7 @@ layout_mode = 2
 text = "Return"
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="ScoresVBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]

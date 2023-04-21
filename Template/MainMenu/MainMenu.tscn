@@ -67,7 +67,7 @@ layout_mode = 2
 
 [node name="ExitButton" parent="Background/LeftVBox" instance=ExtResource("3_qhdnb")]
 layout_mode = 2
-text = "Options"
+text = "Exit"
 
 [node name="Control7" type="Control" parent="Background/LeftVBox"]
 custom_minimum_size = Vector2(100, 60)
