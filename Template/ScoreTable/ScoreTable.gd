@@ -51,7 +51,9 @@ func _ready():
 			scores[j] = score
 
 		# Take the scores into scene.
-		for i in MAX_SCORES_TO_SHOW:
+		for i in scores.size():
+			if i == MAX_SCORES_TO_SHOW:
+				break
 			var new_table_row = m_table_row_scene.instantiate()
 			m_scores_vbox.add_child(new_table_row)
 			new_table_row.set_row(scores[i][0], scores[i][1], scores[i][2])
