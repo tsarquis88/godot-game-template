@@ -62,6 +62,7 @@ func on_difficulty_button_item_selected(index):
 			GameSettings.m_game_difficulty = GameSettings.DIFFICULTY.NORMAL
 		HARD_INDEX:
 			GameSettings.m_game_difficulty = GameSettings.DIFFICULTY.HARD
+	set_difficulty_into_filesystem(index)
 
 
 func on_full_screen_button_toggled(new_full_screen):
@@ -93,7 +94,7 @@ func set_default_values():
 		m_language_button.select(SPANISH_INDEX)
 	else:
 		m_language_button.select(ENGLISH_INDEX)
-	m_difficulty_button.select(NORMAL_INDEX)
+	m_difficulty_button.select(get_difficulty_from_filesystem())
 	m_volume_slider.step = 0.0001
 	m_volume_slider.min_value = 0.0001
 	m_volume_slider.max_value = 1
@@ -102,3 +103,13 @@ func set_default_values():
 
 func on_full_screen(new_full_screen):
 	m_full_screen_button.button_pressed = new_full_screen
+
+
+# Returns the difficulty level from config file.
+func get_difficulty_from_filesystem() -> int:
+	return int(GameSettings.get_setting("game", "DIFFICULTY"))
+
+
+# Sets the difficulty level in the config file.
+func set_difficulty_into_filesystem(difficulty: int):
+	GameSettings.set_setting("game", "DIFFICULTY", difficulty)
