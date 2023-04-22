@@ -5,9 +5,6 @@ signal full_screen
 const MAINMENU_SCENE = "res://Template/MainMenu/MainMenu.tscn"
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
-const EASY_INDEX = 0
-const NORMAL_INDEX = 1
-const HARD_INDEX = 2
 const SLIDER_SOUND = "volumeSlider.wav"
 
 @onready var m_panel = find_child("Panel")
@@ -54,15 +51,9 @@ func on_language_button_item_selected(index):
 			Language.set_language("es")
 
 
+# Changes the current difficulty through the GameSettings autoload.
 func on_difficulty_button_item_selected(index):
-	match index:
-		EASY_INDEX:
-			GameSettings.m_game_difficulty = GameSettings.DIFFICULTY.EASY
-		NORMAL_INDEX:
-			GameSettings.m_game_difficulty = GameSettings.DIFFICULTY.NORMAL
-		HARD_INDEX:
-			GameSettings.m_game_difficulty = GameSettings.DIFFICULTY.HARD
-	set_difficulty_into_filesystem(index)
+	GameSettings.change_difficulty(index)
 
 
 func on_full_screen_button_toggled(new_full_screen):
@@ -79,9 +70,9 @@ func on_volume_slider_drag_ended(value_changed):
 
 
 func on_re_translate():
-	m_difficulty_button.set_item_text(EASY_INDEX, tr("EASY"))
-	m_difficulty_button.set_item_text(NORMAL_INDEX, tr("NORMAL"))
-	m_difficulty_button.set_item_text(HARD_INDEX, tr("HARD"))
+	m_difficulty_button.set_item_text(GameSettings.DIFFICULTY.EASY, tr("EASY"))
+	m_difficulty_button.set_item_text(GameSettings.DIFFICULTY.NORMAL, tr("NORMAL"))
+	m_difficulty_button.set_item_text(GameSettings.DIFFICULTY.HARD, tr("HARD"))
 	m_return_button.set_text(tr("RETURN"))
 	m_language_label.set_text(tr("LANGUAGE"))
 	m_difficulty_label.set_text(tr("DIFFICULTY"))
@@ -89,12 +80,15 @@ func on_re_translate():
 	m_volume_label.set_text(tr("VOLUME"))
 
 
+# Sets the scene default values.
 func set_default_values():
 	if Language.get_language() == "es":
 		m_language_button.select(SPANISH_INDEX)
 	else:
 		m_language_button.select(ENGLISH_INDEX)
-	m_difficulty_button.select(get_difficulty_from_filesystem())
+
+	m_difficulty_button.select(GameSettings.get_difficulty())
+
 	m_volume_slider.step = 0.0001
 	m_volume_slider.min_value = 0.0001
 	m_volume_slider.max_value = 1
@@ -103,13 +97,3 @@ func set_default_values():
 
 func on_full_screen(new_full_screen):
 	m_full_screen_button.button_pressed = new_full_screen
-
-
-# Returns the difficulty level from config file.
-func get_difficulty_from_filesystem() -> int:
-	return int(GameSettings.get_setting("game", "DIFFICULTY"))
-
-
-# Sets the difficulty level in the config file.
-func set_difficulty_into_filesystem(difficulty: int):
-	GameSettings.set_setting("game", "DIFFICULTY", difficulty)
