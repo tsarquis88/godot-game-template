@@ -31,4 +31,4 @@ window/stretch/mode="viewport"
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Localization/Localization.en.translation", "res://Localization/Localization.es.translation")
+locale/translations=PackedStringArray("res://Localization/Localization.en.translation", "res://Localization/Localization.es.translation", "res://Localization/Localization.fr.translation")

@@ -5,6 +5,7 @@ signal full_screen
 const MAINMENU_SCENE = "res://Template/MainMenu/MainMenu.tscn"
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
+const FRENCH_INDEX = 2
 const SLIDER_SOUND = "volumeSlider.wav"
 
 @onready var m_panel = find_child("Panel")
@@ -49,6 +50,8 @@ func on_language_button_item_selected(index):
 			Language.set_language("en")
 		SPANISH_INDEX:
 			Language.set_language("es")
+		FRENCH_INDEX:
+			Language.set_language("fr")
 
 
 # Changes the current difficulty through the GameSettings autoload.
@@ -82,10 +85,13 @@ func on_re_translate():
 
 # Sets the scene default values.
 func set_default_values():
-	if Language.get_language() == "es":
-		m_language_button.select(SPANISH_INDEX)
-	else:
-		m_language_button.select(ENGLISH_INDEX)
+	match Language.get_language():
+		"es":
+			m_language_button.select(SPANISH_INDEX)
+		"en":
+			m_language_button.select(ENGLISH_INDEX)
+		"fr":
+			m_language_button.select(FRENCH_INDEX)
 
 	m_difficulty_button.select(GameSettings.get_difficulty())
 

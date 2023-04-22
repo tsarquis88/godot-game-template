@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1r2teqa4xsyh"]
 
 [ext_resource type="Script" path="res://Template/OptionsMenu/OptionsMenu.gd" id="1_ihb7f"]
-[ext_resource type="FontFile" uid="uid://cobnomcf2cjr4" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="FontFile" uid="uid://1ttaaqva1nni" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
 [ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_u3wrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syunc"]
@@ -106,11 +106,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_j1t0p")
-item_count = 2
+item_count = 3
 popup/item_0/text = "English"
 popup/item_0/id = 0
 popup/item_1/text = "Español"
 popup/item_1/id = 1
+popup/item_2/text = "Français"
+popup/item_2/id = 2
 
 [node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 60)
