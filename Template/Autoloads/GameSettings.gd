@@ -6,8 +6,7 @@ enum DIFFICULTY { EASY, NORMAL, HARD }
 const CONFIG_FILE_PATH = "res://config.cfg"
 
 var m_config
-
-@onready var m_game_difficulty = DIFFICULTY.NORMAL
+var m_game_difficulty
 
 
 # Use of _init() in place of _ready() because the first is executed before
@@ -17,6 +16,8 @@ func _init():
 	var err = m_config.load(CONFIG_FILE_PATH)
 	if err != OK:
 		print_debug(str("Error (", err, ") loading config file."))
+	else:
+		get_difficulty_from_filesystem()
 
 
 func get_setting(section, key):
@@ -38,3 +39,20 @@ func get_section_keys(section):
 		return m_config.get_section_keys(section)
 	print_debug(str("Non existant section (", section, ") in config file."))
 	return null
+
+
+# Reads the difficulty level from config file.
+func get_difficulty_from_filesystem():
+	m_game_difficulty = get_setting("game", "DIFFICULTY")
+
+
+# Changes the current difficulty, storing its new value into the config file as well as in the
+# current game execution.
+func change_difficulty(new_difficulty: int):
+	m_game_difficulty = new_difficulty
+	set_setting("game", "DIFFICULTY", new_difficulty)
+
+
+# Difficulty getter for other scenes.
+func get_difficulty():
+	return m_game_difficulty

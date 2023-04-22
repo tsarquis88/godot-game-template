@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1r2teqa4xsyh"]
 
 [ext_resource type="Script" path="res://Template/OptionsMenu/OptionsMenu.gd" id="1_ihb7f"]
-[ext_resource type="FontFile" uid="uid://b4wyxsf25wcmx" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="FontFile" uid="uid://cobnomcf2cjr4" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
 [ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_u3wrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syunc"]
