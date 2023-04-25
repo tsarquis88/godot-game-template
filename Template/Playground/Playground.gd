@@ -18,11 +18,13 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Logger.log_debug("Playground: Pause button pressed")
 
-		m_pause = not m_pause
-		m_pause_menu.visible = m_pause
-		m_pause_menu_options.visible = false
-		m_playable.set_pause(m_pause)
-		m_hud.set_pause(m_pause)
+		# If pop-up is present, the game ended.
+		if not m_final_pop_up.visible:
+			m_pause = not m_pause
+			m_pause_menu.visible = m_pause
+			m_pause_menu_options.visible = false
+			m_playable.set_pause(m_pause)
+			m_hud.set_pause(m_pause)
 
 
 func _ready():
