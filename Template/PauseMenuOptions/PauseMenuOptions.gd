@@ -5,7 +5,6 @@ signal back
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
 
-@onready var m_slider_sound = load("res://Template/Assets/SFX/volumeSlider.wav")
 @onready var m_return_button = find_child("ReturnButton")
 @onready var m_language_button = find_child("LanguageButton")
 @onready var m_full_screen_button = find_child("FullScreenButton")
@@ -56,10 +55,7 @@ func set_default_values():
 		m_language_button.select(SPANISH_INDEX)
 	else:
 		m_language_button.select(ENGLISH_INDEX)
-	m_volume_slider.step = 0.0001
-	m_volume_slider.min_value = 0.0001
-	m_volume_slider.max_value = 1
-	m_volume_slider.value = 1
+	m_volume_slider.configure_slider(0.0001, 0.0001, 1, 1)
 
 
 func on_full_screen_button_toggled(full_screen):
@@ -72,7 +68,6 @@ func on_return_button_pressed():
 
 func on_volume_slider_value_changed(new_value):
 	SfxManager.set_master_volume_db(new_value)
-	SfxManager.play_sfx(m_slider_sound)
 
 
 func on_full_screen(full_screen):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj2u2io208rik"]
+[gd_scene load_steps=6 format=3 uid="uid://dj2u2io208rik"]
 
 [ext_resource type="Script" path="res://Template/PauseMenuOptions/PauseMenuOptions.gd" id="1_7gaeq"]
-[ext_resource type="FontFile" uid="uid://b4wyxsf25wcmx" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
+[ext_resource type="FontFile" uid="uid://dxegmqgher1gi" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
+[ext_resource type="PackedScene" uid="uid://38t704hjd7ok" path="res://Template/HSliderWrapper/HSliderWrapper.tscn" id="3_eksnr"]
 [ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_la3q5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs1th"]
@@ -133,7 +134,7 @@ theme_override_fonts/font = ExtResource("2_ktrah")
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="VolumeSlider" type="HSlider" parent="LeftVBox/HBoxContainer/VBoxContainer2"]
+[node name="VolumeSlider" parent="LeftVBox/HBoxContainer/VBoxContainer2" instance=ExtResource("3_eksnr")]
 layout_mode = 2
 
 [node name="ReturnButton" parent="LeftVBox" instance=ExtResource("3_la3q5")]

@@ -6,7 +6,6 @@ const MAINMENU_SCENE = "res://Template/MainMenu/MainMenu.tscn"
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
 
-@onready var m_slider_sound = load("res://Template/Assets/SFX/volumeSlider.wav")
 @onready var m_panel = find_child("Panel")
 @onready var m_background = find_child("Background")
 @onready var m_return_button = find_child("ReturnButton")
@@ -32,7 +31,6 @@ func _ready():
 	m_difficulty_button.connect("item_selected", self.on_difficulty_button_item_selected)
 	m_full_screen_button.connect("toggled", self.on_full_screen_button_toggled)
 	m_volume_slider.connect("value_changed", self.on_volume_slider_value_changed)
-	m_volume_slider.connect("drag_ended", self.on_volume_slider_drag_ended)
 	Language.connect("re_translate", self.on_re_translate)
 	Resolution.connect("full_screen", self.on_full_screen)
 
@@ -60,13 +58,8 @@ func on_full_screen_button_toggled(new_full_screen):
 	Resolution.set_full_screen(new_full_screen)
 
 
-func on_volume_slider_value_changed(_new_value):
-	SfxManager.play_sfx(m_slider_sound)
-
-
-func on_volume_slider_drag_ended(value_changed):
-	if value_changed:
-		SfxManager.set_master_volume_db(m_volume_slider.value)
+func on_volume_slider_value_changed(new_value):
+	SfxManager.set_master_volume_db(new_value)
 
 
 func on_re_translate():
@@ -88,11 +81,7 @@ func set_default_values():
 		m_language_button.select(ENGLISH_INDEX)
 
 	m_difficulty_button.select(GameSettings.get_difficulty())
-
-	m_volume_slider.step = 0.0001
-	m_volume_slider.min_value = 0.0001
-	m_volume_slider.max_value = 1
-	m_volume_slider.value = 1
+	m_volume_slider.configure_slider(0.0001, 0.0001, 1, 1)
 
 
 func on_full_screen(new_full_screen):
