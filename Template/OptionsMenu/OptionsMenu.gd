@@ -5,8 +5,8 @@ signal full_screen
 const MAINMENU_SCENE = "res://Template/MainMenu/MainMenu.tscn"
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
-const SLIDER_SOUND = "volumeSlider.wav"
 
+@onready var m_slider_sound = load("res://Template/Assets/SFX/volumeSlider.wav")
 @onready var m_panel = find_child("Panel")
 @onready var m_background = find_child("Background")
 @onready var m_return_button = find_child("ReturnButton")
@@ -61,7 +61,7 @@ func on_full_screen_button_toggled(new_full_screen):
 
 
 func on_volume_slider_value_changed(_new_value):
-	SfxManager.play_sfx(SLIDER_SOUND)
+	SfxManager.play_sfx(m_slider_sound)
 
 
 func on_volume_slider_drag_ended(value_changed):

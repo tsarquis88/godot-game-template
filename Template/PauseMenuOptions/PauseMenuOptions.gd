@@ -2,10 +2,10 @@ extends Panel
 
 signal back
 
-const SLIDER_SOUND = "volumeSlider.wav"
 const ENGLISH_INDEX = 0
 const SPANISH_INDEX = 1
 
+@onready var m_slider_sound = load("res://Template/Assets/SFX/volumeSlider.wav")
 @onready var m_return_button = find_child("ReturnButton")
 @onready var m_language_button = find_child("LanguageButton")
 @onready var m_full_screen_button = find_child("FullScreenButton")
@@ -72,7 +72,7 @@ func on_return_button_pressed():
 
 func on_volume_slider_value_changed(new_value):
 	SfxManager.set_master_volume_db(new_value)
-	SfxManager.play_sfx(SLIDER_SOUND)
+	SfxManager.play_sfx(m_slider_sound)
 
 
 func on_full_screen(full_screen):

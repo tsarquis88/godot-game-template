@@ -1,7 +1,6 @@
 extends Button
 
-# Name of the button sound file.
-const BUTTON_SOUND = "button.wav"
+@onready var m_button_sound = load("res://Template/Assets/SFX/button.wav")
 
 
 # Sets wrapper up.
@@ -11,4 +10,4 @@ func _ready():
 
 # Button pression handler.
 func on_pressed():
-	SfxManager.play_sfx(BUTTON_SOUND)
+	SfxManager.play_sfx(m_button_sound)
