@@ -1,10 +1,9 @@
 extends Node2D
 
-const WIN_SOUND = "win.wav"
-const GAME_MUSIC = "playable.ogg"
-const INIT_MUSIC = "init.ogg"
 const NEXT_SCENE = "res://Template/MainMenu/MainMenu.tscn"
 
+@onready var m_game_music = load("res://Template/Assets/Music/playable.ogg")
+@onready var m_init_music = load("res://Template/Assets/Music/init.ogg")
 @onready var m_pause = false
 @onready var m_pause_menu = find_child("PauseMenu")
 @onready var m_pause_menu_options = find_child("PauseMenuOptions")
@@ -35,7 +34,7 @@ func _ready():
 	m_playable.connect("end", self.on_playable_end)
 	m_final_pop_up.visible = false
 	m_final_pop_up.connect("accept", self.on_final_pop_up_accept)
-	SfxManager.play_music(GAME_MUSIC)
+	SfxManager.play_music(m_game_music)
 
 	Logger.log_debug("Playground: Ready")
 
@@ -84,5 +83,5 @@ func on_pause_menu_options_return():
 
 # Handels the 'accept' button from the pop up, returning to the main menu scene.
 func on_final_pop_up_accept():
-	SfxManager.play_music(INIT_MUSIC)
+	SfxManager.play_music(m_init_music)
 	m_game.emit_signal("change_scene", NEXT_SCENE, GameSettings.TRANSITIONS.FADE_SCREEN)

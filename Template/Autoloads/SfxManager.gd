@@ -2,9 +2,6 @@ extends Node
 
 # TODO: Fade
 
-const SFX_FILES_PATH = "res://Template/Assets/SFX/"
-const MUSIC_FILES_PATH = "res://Template/Assets/Music/"
-
 @onready var m_music_audio_player = AudioStreamPlayer2D.new()
 @onready var m_master_volume_db = 0.0
 
@@ -14,18 +11,18 @@ func _ready():
 	add_child(m_music_audio_player)
 
 
-func play_sfx(sound_name):
+func play_sfx(sound_stream: AudioStream):
 	var sfx_audio_player = AudioStreamPlayer2D.new()
-	sfx_audio_player.stream = load(str(SFX_FILES_PATH, sound_name))
+	sfx_audio_player.stream = sound_stream
 	sfx_audio_player.set_volume_db(m_master_volume_db)
 	add_child(sfx_audio_player)
 	sfx_audio_player.play()
 
 
-func play_music(music_name):
+func play_music(music_stream: AudioStream):
 	m_music_audio_player.stop()
 	m_music_audio_player.set_volume_db(m_master_volume_db)
-	m_music_audio_player.stream = load(str(MUSIC_FILES_PATH, music_name))
+	m_music_audio_player.stream = music_stream
 	m_music_audio_player.play()
 
 
