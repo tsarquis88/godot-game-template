@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1r2teqa4xsyh"]
+[gd_scene load_steps=6 format=3 uid="uid://c1r2teqa4xsyh"]
 
 [ext_resource type="Script" path="res://Template/OptionsMenu/OptionsMenu.gd" id="1_ihb7f"]
-[ext_resource type="FontFile" uid="uid://cobnomcf2cjr4" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="FontFile" uid="uid://dxegmqgher1gi" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="PackedScene" uid="uid://38t704hjd7ok" path="res://Template/HSliderWrapper/HSliderWrapper.tscn" id="3_b0ddm"]
 [ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_u3wrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syunc"]
@@ -186,7 +187,7 @@ theme_override_fonts/font = ExtResource("2_j1t0p")
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="VolumeSlider" type="HSlider" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4"]
+[node name="VolumeSlider" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer/VBoxContainer4" instance=ExtResource("3_b0ddm")]
 layout_mode = 2
 
 [node name="Control2" type="Control" parent="Background/VBoxContainer/HBoxContainer/LeftVbox/Panel/HBoxContainer"]

@@ -7,7 +7,7 @@ extends Node
 
 
 func _ready():
-	set_master_volume_db(GameSettings.get_setting("sound", "VOLUME-DB"))
+	set_volume(GameSettings.get_volume())
 	add_child(m_music_audio_player)
 
 
@@ -26,8 +26,9 @@ func play_music(music_stream: AudioStream):
 	m_music_audio_player.play()
 
 
-func set_master_volume_db(new_value):
+# Sets the overall game volume given a linear (from 0 to 1) scale.
+func set_volume(new_value: float):
 	# Source: https://godotengine.org/qa/40911/best-way-to-create-a-volume-slider
 	m_master_volume_db = log(new_value) * 20
 	m_music_audio_player.set_volume_db(m_master_volume_db)
-	GameSettings.set_setting("sound", "VOLUME-DB", new_value)
+	GameSettings.change_volume(new_value)
