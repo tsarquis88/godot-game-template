@@ -9,12 +9,14 @@ func _ready():
 
 
 # Configures the slider.
-func configure_slider(step: float, min_value: float, max_value: float, value: float):
+func configure_slider(
+	new_step: float, new_min_value: float, new_max_value: float, new_value: float
+):
 	self.disconnect("value_changed", on_value_changed)
-	self.step = step
-	self.min_value = min_value
-	self.max_value = max_value
-	self.value = value
+	self.step = new_step
+	self.min_value = new_min_value
+	self.max_value = new_max_value
+	self.value = new_value
 	self.connect("value_changed", on_value_changed)
 
 

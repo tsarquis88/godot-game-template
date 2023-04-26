@@ -7,6 +7,7 @@ const CONFIG_FILE_PATH = "res://config.cfg"
 
 var m_config
 var m_game_difficulty
+var m_volume
 
 
 # Use of _init() in place of _ready() because the first is executed before
@@ -18,6 +19,7 @@ func _init():
 		print_debug(str("Error (", err, ") loading config file."))
 	else:
 		get_difficulty_from_filesystem()
+		get_volume_from_filesystem()
 
 
 func get_setting(section, key):
@@ -56,3 +58,20 @@ func change_difficulty(new_difficulty: int):
 # Difficulty getter for other scenes.
 func get_difficulty():
 	return m_game_difficulty
+
+
+# Reads the volume scale from config file.
+func get_volume_from_filesystem():
+	m_volume = get_setting("sound", "VOLUME")
+
+
+# Changes the current volume, storing its new value into the config file as well as in the
+# current game execution.
+func change_volume(new_volume: float):
+	m_volume = new_volume
+	set_setting("sound", "VOLUME", new_volume)
+
+
+# Volume getter for other scenes.
+func get_volume():
+	return m_volume

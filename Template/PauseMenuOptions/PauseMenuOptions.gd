@@ -55,7 +55,7 @@ func set_default_values():
 		m_language_button.select(SPANISH_INDEX)
 	else:
 		m_language_button.select(ENGLISH_INDEX)
-	m_volume_slider.configure_slider(0.0001, 0.0001, 1, 1)
+	m_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_volume())
 
 
 func on_full_screen_button_toggled(full_screen):
@@ -67,7 +67,7 @@ func on_return_button_pressed():
 
 
 func on_volume_slider_value_changed(new_value):
-	SfxManager.set_master_volume_db(new_value)
+	SfxManager.set_volume(new_value)
 
 
 func on_full_screen(full_screen):
