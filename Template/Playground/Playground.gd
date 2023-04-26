@@ -53,6 +53,7 @@ func on_playable_end(won: bool, score: int):
 # Handles the 'exit' button from the pause menu, returning to the MainMenu scene.
 func on_pause_menu_exit_game():
 	Logger.log_debug("Playground: Exiting playable")
+	SfxManager.play_music(m_init_music)
 
 	m_game.emit_signal(
 		"change_scene",
