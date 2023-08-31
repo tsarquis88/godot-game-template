@@ -1,0 +1,48 @@
+# Workflow executed on pull request.
+
+name: Pull request
+run-name: Pull request ${{ github.ref_name }} by ${{ github.actor }}
+
+on:
+  pull_request:
+    types: [synchronize, opened, reopened, ready_for_review]
+
+env:
+  SEGMENT_DOWNLOAD_TIMEOUT_MINS: 1
+
+jobs:
+
+  # Static code analysis by using gdtoolkit.
+  static-code-analysis:
+    runs-on: ubuntu-22.04
+    if: github.event.pull_request.draft == false
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.10.12
+
+      - name: Cache Python environment
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles( 'rtr-requirements.txt' ) }}
+
+      - name: Install Pip dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: pip install -r rtr-requirements.txt
+
+      - name: Execute gdformat
+        run: gdformat --diff .
+
+      - name: Execute gdlint
+        run: gdlint --verbose .
+
+      - name: Execute gdparse
+        run: gdparse $(find . -name "*.gd")
