@@ -12,11 +12,13 @@ const SPANISH_INDEX = 1
 @onready var m_language_button = find_child("LanguageButton")
 @onready var m_difficulty_button = find_child("DifficultyButton")
 @onready var m_full_screen_button = find_child("FullScreenButton")
-@onready var m_volume_slider = find_child("VolumeSlider")
+@onready var m_music_volume_slider = find_child("MusicVolumeSlider")
+@onready var m_sfx_volume_slider = find_child("SfxVolumeSlider")
 @onready var m_language_label = find_child("LanguageLabel")
 @onready var m_difficulty_label = find_child("DifficultyLabel")
 @onready var m_full_screen_label = find_child("FullScreenLabel")
-@onready var m_volume_label = find_child("VolumeLabel")
+@onready var m_music_volume_label = find_child("MusicVolumeLabel")
+@onready var m_sfx_volume_label = find_child("SfxVolumeLabel")
 @onready var m_game = get_parent()
 
 
@@ -30,7 +32,8 @@ func _ready():
 	m_language_button.connect("item_selected", self.on_language_button_item_selected)
 	m_difficulty_button.connect("item_selected", self.on_difficulty_button_item_selected)
 	m_full_screen_button.connect("toggled", self.on_full_screen_button_toggled)
-	m_volume_slider.connect("value_changed", self.on_volume_slider_value_changed)
+	m_music_volume_slider.connect("value_changed", self.on_music_volume_slider_value_changed)
+	m_sfx_volume_slider.connect("value_changed", self.on_sfx_volume_slider_value_changed)
 	Language.connect("re_translate", self.on_re_translate)
 	Resolution.connect("full_screen", self.on_full_screen)
 
@@ -58,8 +61,12 @@ func on_full_screen_button_toggled(new_full_screen):
 	Resolution.set_full_screen(new_full_screen)
 
 
-func on_volume_slider_value_changed(new_value):
-	SfxManager.set_volume(new_value)
+func on_music_volume_slider_value_changed(new_value):
+	SfxManager.set_music_volume(new_value)
+
+
+func on_sfx_volume_slider_value_changed(new_value):
+	SfxManager.set_sfx_volume(new_value)
 
 
 func on_re_translate():
@@ -70,7 +77,8 @@ func on_re_translate():
 	m_language_label.set_text(tr("LANGUAGE"))
 	m_difficulty_label.set_text(tr("DIFFICULTY"))
 	m_full_screen_label.set_text(tr("FULL-SCREEN"))
-	m_volume_label.set_text(tr("VOLUME"))
+	m_music_volume_label.set_text(tr("MUSIC"))
+	m_sfx_volume_label.set_text(tr("SFX"))
 
 
 # Sets the scene default values.
@@ -81,7 +89,9 @@ func set_default_values():
 		m_language_button.select(ENGLISH_INDEX)
 
 	m_difficulty_button.select(GameSettings.get_difficulty())
-	m_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_volume())
+
+	m_music_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_music_volume())
+	m_sfx_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_sfx_volume())
 
 
 func on_full_screen(new_full_screen):
