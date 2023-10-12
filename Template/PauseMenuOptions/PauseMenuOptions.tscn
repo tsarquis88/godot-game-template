@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dj2u2io208rik"]
 
 [ext_resource type="Script" path="res://Template/PauseMenuOptions/PauseMenuOptions.gd" id="1_7gaeq"]
-[ext_resource type="FontFile" uid="uid://dxegmqgher1gi" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
+[ext_resource type="FontFile" uid="uid://palj3ekaj2d1" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_ktrah"]
 [ext_resource type="PackedScene" uid="uid://38t704hjd7ok" path="res://Template/HSliderWrapper/HSliderWrapper.tscn" id="3_eksnr"]
 [ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_la3q5"]
 
@@ -82,15 +82,27 @@ text = "FullScreenLabel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Control3" type="Control" parent="LeftVBox/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="LeftVBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ktrah")
+theme_override_font_sizes/font_size = 16
+text = "MusicVolumeLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control4" type="Control" parent="LeftVBox/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="VolumeLabel" type="Label" parent="LeftVBox/HBoxContainer/VBoxContainer"]
+[node name="SfxVolumeLabel" type="Label" parent="LeftVBox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ktrah")
 theme_override_font_sizes/font_size = 16
-text = "VolumeLabel"
+text = "SfxVolumeLabel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -130,11 +142,18 @@ layout_direction = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ktrah")
 
+[node name="Control3" type="Control" parent="LeftVBox/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="MusicVolumeSlider" parent="LeftVBox/HBoxContainer/VBoxContainer2" instance=ExtResource("3_eksnr")]
+layout_mode = 2
+
 [node name="Control4" type="Control" parent="LeftVBox/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="VolumeSlider" parent="LeftVBox/HBoxContainer/VBoxContainer2" instance=ExtResource("3_eksnr")]
+[node name="SfxVolumeSlider" parent="LeftVBox/HBoxContainer/VBoxContainer2" instance=ExtResource("3_eksnr")]
 layout_mode = 2
 
 [node name="ReturnButton" parent="LeftVBox" instance=ExtResource("3_la3q5")]
