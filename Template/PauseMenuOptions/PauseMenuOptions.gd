@@ -41,8 +41,8 @@ func on_re_translate():
 	m_return_button.set_text(tr("RETURN"))
 	m_language_label.set_text(tr("LANGUAGE"))
 	m_full_screen_label.set_text(tr("FULL-SCREEN"))
-	m_music_volume_label.set_text(tr("MUSIC-VOLUME"))
-	m_sfx_volume_label.set_text(tr("SFX-VOLUME"))
+	m_music_volume_label.set_text(tr("MUSIC"))
+	m_sfx_volume_label.set_text(tr("SFX"))
 	m_title.set_text(tr("OPTIONS"))
 
 

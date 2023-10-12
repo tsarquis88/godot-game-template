@@ -77,8 +77,8 @@ func on_re_translate():
 	m_language_label.set_text(tr("LANGUAGE"))
 	m_difficulty_label.set_text(tr("DIFFICULTY"))
 	m_full_screen_label.set_text(tr("FULL-SCREEN"))
-	m_music_volume_label.set_text(tr("MUSIC-VOLUME"))
-	m_sfx_volume_label.set_text(tr("SFX-VOLUME"))
+	m_music_volume_label.set_text(tr("MUSIC"))
+	m_sfx_volume_label.set_text(tr("SFX"))
 
 
 # Sets the scene default values.
