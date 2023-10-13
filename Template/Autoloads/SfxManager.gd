@@ -41,3 +41,9 @@ func set_sfx_volume(new_value):
 	# Source: https://godotengine.org/qa/40911/best-way-to-create-a-volume-slider
 	m_sfx_volume_db = log(new_value) * 20
 	GameSettings.set_setting("sound", "VOLUME-SFX", new_value)
+
+
+# Used to handle the close request notification.
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		m_music_audio_player.stop()

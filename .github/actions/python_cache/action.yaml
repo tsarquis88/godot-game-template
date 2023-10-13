@@ -1,5 +1,3 @@
-# Actions used to install and cache Python dependencies.
-
 name: "Python cache"
 description: "This action is used to cache the whole Python environment for the requirements file. If cache doesn't exist, packages are downloaded."
 runs:

@@ -1,7 +1,5 @@
-# Workflow executed on push to main branch.
-
-name: Push to main
-run-name: Main branch cache update
+name: Main - Python cache
+run-name: Main - Python cache
 
 on:
   push:
