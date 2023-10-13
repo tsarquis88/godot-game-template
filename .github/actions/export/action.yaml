@@ -1,0 +1,46 @@
+# Unused due to workflow being stuck at build step.
+
+name: "Export"
+description: ""
+
+inputs:
+
+  export-name:
+    required: true
+    description: "Export name"
+  
+  godot-version:
+    required: true
+    description: "Godot version"
+
+  artifact-name:
+    required: true
+    description: "Build path"
+  
+  platform:
+    required: true
+    description: "Platform"
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Setup
+      shell: bash
+      run: |
+        mkdir -v -p ~/.local/share/godot/export_templates
+        mv /root/.local/share/godot/templates/${{ inputs.godot-version }}.stable ~/.local/share/godot/export_templates/${{ inputs.godot-version }}.stable
+    
+    - name: Build
+      shell: bash
+      run: |
+        mkdir -v -p build
+        cp config.cfg scores.txt build
+        godot --export-release --headless "${{ inputs.platforms }}" build/${{ inputs.export-name }}.x86_64
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: build
+
