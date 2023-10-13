@@ -1,5 +1,5 @@
-name: Main - Python cache
-run-name: Main - Python cache
+name: Python cache
+run-name: Python cache
 
 on:
   push:
