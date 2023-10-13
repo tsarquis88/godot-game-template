@@ -1,0 +1,22 @@
+# Workflow executed on push to main branch.
+
+name: Push to main
+run-name: Main branch cache update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  # Generate the Python dependencies cache.
+  python-cache:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install and cache Python test requirements
+        uses: ./.github/actions/python_cache

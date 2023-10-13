@@ -1,0 +1,24 @@
+# Actions used to install and cache Python dependencies.
+
+name: "Python cache"
+description: "This action is used to cache the whole Python environment for the requirements file. If cache doesn't exist, packages are downloaded."
+runs:
+  using: "composite"
+  steps:
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Cache Python environment
+      uses: actions/cache@v3
+      id: cache
+      with:
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles( 'rtr-requirements.txt' ) }}
+
+    - name: Install packages with pip
+      if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: pip install -r rtr-requirements.txt
