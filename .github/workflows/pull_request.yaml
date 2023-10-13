@@ -12,7 +12,7 @@ env:
 
 jobs:
 
-  # Static code analysis by using gdtoolkit.
+  # Run static code analysis using gdtoolkit.
   static-code-analysis:
     runs-on: ubuntu-22.04
     if: github.event.pull_request.draft == false
@@ -21,22 +21,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.10'
-
-      - name: Cache Python environment
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles( 'rtr-requirements.txt' ) }}
-
-      - name: Install Pip dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        shell: bash
-        run: pip install -r rtr-requirements.txt
+      - name: Install and cache Python test requirements
+        uses: ./.github/actions/python_cache
 
       - name: Execute gdformat
         run: gdformat --diff .
