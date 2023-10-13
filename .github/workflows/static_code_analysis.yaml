@@ -1,7 +1,5 @@
-# Workflow executed on pull request.
-
-name: Pull request
-run-name: Pull request ${{ github.ref_name }} by ${{ github.actor }}
+name: Static code analysis
+run-name: Static code analysis
 
 on:
   pull_request:
@@ -14,6 +12,7 @@ jobs:
 
   # Run static code analysis using gdtoolkit.
   static-code-analysis:
+    name: Static code analysis
     runs-on: ubuntu-22.04
     if: github.event.pull_request.draft == false
     steps:
