@@ -55,17 +55,18 @@ func save_config_file(config_file: ConfigFile) -> int:
 	return OK
 
 
-# Get config value, given a section and a key.
+# Get config value, given a section and a key. If config is not found, returns
+# null.
 func get_setting(section: String, key: String) -> Variant:
 	var section_settings = get_section_settings(section)
-	if section_settings != null:
+	if not section_settings.is_empty():
 		if section_settings.has(key):
 			return section_settings.get(key)
 		print_debug(str("No such key: ", key))
 	return null
 
 
-# Get section configs.
+# Get section configs. If section is not found, returns an empty dictionary.
 func get_section_settings(section: String) -> Dictionary:
 	if m_config_map.has(section):
 		return m_config_map.get(section)
