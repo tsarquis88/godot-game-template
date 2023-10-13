@@ -9,9 +9,14 @@ extends Node2D
 func _ready():
 	m_background.color = Settings.MENU_BACKGROUND_COLOR
 	m_credits_label.text = str(tr("CREDITS"), "\n\n")
-	for credit in GameSettings.get_section_keys("credits"):
+	for credit_key in GameSettings.get_section_settings("credits"):
 		m_credits_label.text += str(
-			tr(credit), " ", tr("BY"), " ", GameSettings.get_setting("credits", credit), "\n"
+			tr(credit_key),
+			" ",
+			tr("BY"),
+			" ",
+			GameSettings.get_setting("credits", credit_key),
+			"\n"
 		)
 
 	Logger.log_debug("Credits: Ready")

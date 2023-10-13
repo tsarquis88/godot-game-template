@@ -44,4 +44,5 @@ func on_change_scene(new_scene, transition_type) -> void:
 func on_exit() -> void:
 	Logger.log_infor("Exiting game")
 
+	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()

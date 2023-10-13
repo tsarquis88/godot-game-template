@@ -5,87 +5,82 @@ enum DIFFICULTY { EASY, NORMAL, HARD }
 
 const CONFIG_FILE_PATH = "res://config.cfg"
 
-var m_config
-var m_game_difficulty
-var m_music_volume
-var m_sfx_volume
+var m_config_map
 
 
-# Use of _init() in place of _ready() because the first is executed before
-# This is needed because other autoloads use this node and it's not ready yet
+# Load setting from the config file.
+# _init() is needed in place of _ready() because other nodes need this autload.
 func _init():
-	m_config = ConfigFile.new()
-	var err = m_config.load(CONFIG_FILE_PATH)
+	print("Loading configs from filesystem")
+	load_settings_from_filesystem()
+
+
+# Load configs from the config file and store them in memory. This is intended
+# to be called just at the beginning of the execution.
+func load_settings_from_filesystem() -> void:
+	var config_file = load_config_file()
+	m_config_map = Dictionary()
+	for section in config_file.get_sections():
+		m_config_map[section] = Dictionary()
+		for key in config_file.get_section_keys(section):
+			m_config_map[section][key] = config_file.get_value(section, key)
+
+
+# Read config file.
+func load_config_file() -> ConfigFile:
+	var config = ConfigFile.new()
+	var err = config.load(CONFIG_FILE_PATH)
 	if err != OK:
 		print_debug(str("Error (", err, ") loading config file."))
-	else:
-		get_difficulty_from_filesystem()
-		get_volumes_from_filesystem()
+		return null
+	return config
 
 
-func get_setting(section, key):
-	if m_config.has_section_key(section, key):
-		return m_config.get_value(section, key)
-	print_debug(str("Non existant section/key (", section, ": ", key, ") in config file."))
-	return null
+# Dump configs into the config file. This is intended to be called just once
+# at the end of the execution.
+func write_settings_into_filesystem() -> int:
+	var config_file = load_config_file()
+	for section in m_config_map.keys():
+		for key in m_config_map.get(section).keys():
+			config_file.set_value(section, key, m_config_map.get(section).get(key))
+	return save_config_file(config_file)
 
 
-func set_setting(section, key, new_value):
-	m_config.set_value(section, key, new_value)
-	var err = m_config.save(CONFIG_FILE_PATH)
+# Save config file.
+func save_config_file(config_file: ConfigFile) -> int:
+	var err = config_file.save(CONFIG_FILE_PATH)
 	if err != OK:
 		print_debug(str("Error (", err, ") writing into config file."))
+		return FAILED
+	return OK
 
 
-func get_section_keys(section):
-	if m_config.has_section(section):
-		return m_config.get_section_keys(section)
-	print_debug(str("Non existant section (", section, ") in config file."))
+# Get config value, given a section and a key. If config is not found, returns
+# null.
+func get_setting(section: String, key: String) -> Variant:
+	var section_settings = get_section_settings(section)
+	if not section_settings.is_empty():
+		if section_settings.has(key):
+			return section_settings.get(key)
+		print_debug(str("No such key: ", key))
 	return null
 
 
-# Reads the difficulty level from config file.
-func get_difficulty_from_filesystem():
-	m_game_difficulty = get_setting("game", "DIFFICULTY")
+# Get section configs. If section is not found, returns an empty dictionary.
+func get_section_settings(section: String) -> Dictionary:
+	if m_config_map.has(section):
+		return m_config_map.get(section)
+	print_debug(str("No such section: ", section))
+	return Dictionary()
 
 
-# Changes the current difficulty, storing its new value into the config file as well as in the
-# current game execution.
-func change_difficulty(new_difficulty: int):
-	m_game_difficulty = new_difficulty
-	set_setting("game", "DIFFICULTY", new_difficulty)
+# Set setting, given a section, a key, and a new value.
+func set_setting(section: String, key: String, value: Variant) -> void:
+	m_config_map[section][key] = value
 
 
-# Difficulty getter for other scenes.
-func get_difficulty():
-	return m_game_difficulty
-
-
-# Reads the volume scales from config file.
-func get_volumes_from_filesystem():
-	m_music_volume = get_setting("sound", "VOLUME-MUSIC")
-	m_sfx_volume = get_setting("sound", "VOLUME-SFX")
-
-
-# Changes the current music volume, storing its new value into the config file as well as in the
-# current game execution.
-func change_music_volume(new_volume):
-	m_music_volume = new_volume
-	set_setting("sound", "VOLUME-MUSIC", new_volume)
-
-
-# Changes the current SFX volume, storing its new value into the config file as well as in the
-# current game execution.
-func change_sfx_volume(new_volume):
-	m_sfx_volume = new_volume
-	set_setting("sound", "VOLUME-SFX", new_volume)
-
-
-# Music volume getter for other scenes.
-func get_music_volume():
-	return m_music_volume
-
-
-# SFX volume getter for other scenes.
-func get_sfx_volume():
-	return m_sfx_volume
+# Used to handle the close request notification.
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		Logger.log_infor("Writting configs into filesystem")
+		write_settings_into_filesystem()
