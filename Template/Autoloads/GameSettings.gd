@@ -56,25 +56,25 @@ func save_config_file(config_file: ConfigFile) -> int:
 
 
 # Get config value, given a section and a key.
-func get_setting(section: String, key: String):
+func get_setting(section: String, key: String) -> Variant:
 	var section_settings = get_section_settings(section)
 	if section_settings != null:
 		if section_settings.has(key):
 			return section_settings.get(key)
 		print_debug(str("No such key: ", key))
-		return null
-
-
-# Get section configs.
-func get_section_settings(section: String):
-	if m_config_map.has(section):
-		return m_config_map.get(section)
-	print_debug(str("No such section: ", section))
 	return null
 
 
+# Get section configs.
+func get_section_settings(section: String) -> Dictionary:
+	if m_config_map.has(section):
+		return m_config_map.get(section)
+	print_debug(str("No such section: ", section))
+	return Dictionary()
+
+
 # Set setting, given a section, a key, and a new value.
-func set_setting(section: String, key: String, value: Variant):
+func set_setting(section: String, key: String, value: Variant) -> void:
 	m_config_map[section][key] = value
 
 
