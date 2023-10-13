@@ -59,8 +59,12 @@ func set_default_values():
 		m_language_button.select(SPANISH_INDEX)
 	else:
 		m_language_button.select(ENGLISH_INDEX)
-	m_music_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_music_volume())
-	m_sfx_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_sfx_volume())
+	m_music_volume_slider.configure_slider(
+		0.0001, 0.0001, 1, GameSettings.get_setting("sound", "VOLUME-MUSIC")
+	)
+	m_sfx_volume_slider.configure_slider(
+		0.0001, 0.0001, 1, GameSettings.get_setting("sound", "VOLUME-SFX")
+	)
 
 
 func on_full_screen_button_toggled(full_screen):

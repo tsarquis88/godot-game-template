@@ -54,7 +54,7 @@ func on_language_button_item_selected(index):
 
 # Changes the current difficulty through the GameSettings autoload.
 func on_difficulty_button_item_selected(index):
-	GameSettings.change_difficulty(index)
+	GameSettings.set_setting("game", "DIFFICULTY", index)
 
 
 func on_full_screen_button_toggled(new_full_screen):
@@ -88,10 +88,14 @@ func set_default_values():
 	else:
 		m_language_button.select(ENGLISH_INDEX)
 
-	m_difficulty_button.select(GameSettings.get_difficulty())
+	m_difficulty_button.select(GameSettings.get_setting("game", "DIFFICULTY"))
 
-	m_music_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_music_volume())
-	m_sfx_volume_slider.configure_slider(0.0001, 0.0001, 1, GameSettings.get_sfx_volume())
+	m_music_volume_slider.configure_slider(
+		0.0001, 0.0001, 1, GameSettings.get_setting("sound", "VOLUME-MUSIC")
+	)
+	m_sfx_volume_slider.configure_slider(
+		0.0001, 0.0001, 1, GameSettings.get_setting("sound", "VOLUME-SFX")
+	)
 
 
 func on_full_screen(new_full_screen):

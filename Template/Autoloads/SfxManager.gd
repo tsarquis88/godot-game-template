@@ -8,8 +8,8 @@ extends Node
 
 
 func _ready():
-	set_music_volume(GameSettings.get_music_volume())
-	set_sfx_volume(GameSettings.get_sfx_volume())
+	set_music_volume(GameSettings.get_setting("sound", "VOLUME-MUSIC"))
+	set_sfx_volume(GameSettings.get_setting("sound", "VOLUME-SFX"))
 	add_child(m_music_audio_player)
 
 
@@ -33,11 +33,11 @@ func set_music_volume(new_value):
 	# Source: https://godotengine.org/qa/40911/best-way-to-create-a-volume-slider
 	m_music_volume_db = log(new_value) * 20
 	m_music_audio_player.set_volume_db(m_music_volume_db)
-	GameSettings.change_music_volume(new_value)
+	GameSettings.set_setting("sound", "VOLUME-MUSIC", new_value)
 
 
 # Sets the SFX volume given a linear (from 0 to 1) scale.
 func set_sfx_volume(new_value):
 	# Source: https://godotengine.org/qa/40911/best-way-to-create-a-volume-slider
 	m_sfx_volume_db = log(new_value) * 20
-	GameSettings.change_sfx_volume(new_value)
+	GameSettings.set_setting("sound", "VOLUME-SFX", new_value)
