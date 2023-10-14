@@ -18,9 +18,6 @@ Some of the features this template offers are:
 - Clone the repository or generate a new one by [using this template](https://github.com/tsarquis88/godot-game-template/generate).
 - Put your game into the [Playable scene](https://github.com/tsarquis88/godot-game-template/tree/main/Playable). While this is a game-specific scene (that meaning you can and you should modify it), it should maintain the way it communicates with its parent ([Playground](https://github.com/tsarquis88/godot-game-template/tree/main/Template/Playground/)) scene, to handle the game's endings, the pause menu, and other stuff that are taken care of by the template.
 
-## Images
+## Video Sample
 
-### Main menu
-<p align="center">
-  <img src=https://user-images.githubusercontent.com/42682247/232309165-38a90e07-4d7a-4303-9840-3c9d901b37b8.png  width=75% height=75%>
-</p>
+https://github.com/tsarquis88/godot-game-template/assets/42682247/a173966c-7e6a-4caa-9cc0-e6fea1b07dde
