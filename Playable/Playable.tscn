@@ -1,83 +1,49 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://dx1gy7c5tq7ve"]
 
-[ext_resource type="Script" path="res://Playable/Target.gd" id="1_8s871"]
-[ext_resource type="Script" path="res://Playable/Playable.gd" id="1_od46t"]
-[ext_resource type="Texture2D" uid="uid://chh5y2kld8sfm" path="res://Assets/Textures/spark.png" id="2_xc5mq"]
-[ext_resource type="Script" path="res://Playable/Player.gd" id="3_ejrwv"]
-[ext_resource type="Texture2D" uid="uid://bd7rsee31hd3p" path="res://icon.svg" id="4_w1xs8"]
+[ext_resource type="Script" path="res://Playable/Playable.gd" id="1_cbvvx"]
+[ext_resource type="PackedScene" uid="uid://b2j4krt4hgrx6" path="res://Snake/Snake.tscn" id="2_y7d74"]
+[ext_resource type="PackedScene" uid="uid://b3jnfg4md706g" path="res://Food/Food.tscn" id="3_fm8m6"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_2qovn"]
-b = Vector2(0, 652)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_h6y7x"]
+b = Vector2(0, 648)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_5nrji"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gnu6k"]
+b = Vector2(0, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i7srv"]
+a = Vector2(1152, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pr66m"]
 b = Vector2(1152, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_31aac"]
-b = Vector2(0, 652)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_wxkn8"]
-b = Vector2(1152, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wb6c"]
-size = Vector2(125, 125)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m3yox"]
-emission_shape = 1
-emission_sphere_radius = 100.0
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndh3r"]
-size = Vector2(125, 125)
 
 [node name="Playable" type="Node2D"]
-script = ExtResource("1_od46t")
+script = ExtResource("1_cbvvx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1152, 648)
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.498039, 0.054902, 0.188235, 1)
+color = Color(0.407843, 0.435294, 0.678431, 1)
 
 [node name="Margins" type="StaticBody2D" parent="."]
 
-[node name="LeftMargin" type="CollisionShape2D" parent="Margins"]
-shape = SubResource("SegmentShape2D_2qovn")
+[node name="Left" type="CollisionShape2D" parent="Margins"]
+shape = SubResource("SegmentShape2D_h6y7x")
 
-[node name="DownMargin" type="CollisionShape2D" parent="Margins"]
-position = Vector2(0, 652)
-shape = SubResource("SegmentShape2D_5nrji")
-
-[node name="RightMargin" type="CollisionShape2D" parent="Margins"]
+[node name="Right" type="CollisionShape2D" parent="Margins"]
 position = Vector2(1152, 0)
-shape = SubResource("SegmentShape2D_31aac")
+shape = SubResource("SegmentShape2D_gnu6k")
 
-[node name="UpMargin" type="CollisionShape2D" parent="Margins"]
-shape = SubResource("SegmentShape2D_wxkn8")
+[node name="Up" type="CollisionShape2D" parent="Margins"]
+shape = SubResource("SegmentShape2D_i7srv")
 
-[node name="Target" type="Area2D" parent="."]
-position = Vector2(894, 297)
-script = ExtResource("1_8s871")
-metadata/_edit_group_ = true
+[node name="Down" type="CollisionShape2D" parent="Margins"]
+position = Vector2(0, 648)
+shape = SubResource("SegmentShape2D_pr66m")
 
-[node name="CollisionShape2d" type="CollisionShape2D" parent="Target"]
-shape = SubResource("RectangleShape2D_0wb6c")
+[node name="Snake" parent="." instance=ExtResource("2_y7d74")]
+position = Vector2(211, 325)
 
-[node name="CpuParticles2d" type="GPUParticles2D" parent="Target"]
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_m3yox")
-texture = ExtResource("2_xc5mq")
-lifetime = 0.3
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(126, 267)
-script = ExtResource("3_ejrwv")
-metadata/_edit_group_ = true
-
-[node name="Sprite2d" type="Sprite2D" parent="Player"]
-texture = ExtResource("4_w1xs8")
-
-[node name="CollisionShape2d" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_ndh3r")
+[node name="Food" parent="." instance=ExtResource("3_fm8m6")]
+position = Vector2(701, 306)

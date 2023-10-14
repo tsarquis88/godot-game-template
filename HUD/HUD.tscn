@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://n05i67vo5vpu"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_1dwwb"]
-[ext_resource type="FontFile" uid="uid://cwpvefewls5sl" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_671ua"]
+[ext_resource type="FontFile" uid="uid://p700ecdrwlhq" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_671ua"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1dwwb")
@@ -18,20 +18,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_671ua")
 theme_override_font_sizes/font_size = 50
-text = "Time:"
+text = "Size:"
 
-[node name="TimeLabel" type="Label" parent="HBoxContainer"]
+[node name="SizeLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_671ua")
 theme_override_font_sizes/font_size = 50
-text = "0"
-
-[node name="RightControl" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-
-[node name="HurryUpLabel" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_671ua")
-theme_override_font_sizes/font_size = 50
-text = "Hurry up!"
+text = "1"
