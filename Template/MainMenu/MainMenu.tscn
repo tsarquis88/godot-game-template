@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjgltspq4a1gy"]
 
-[ext_resource type="Texture2D" uid="uid://tn07t0ggedqt" path="res://icon.svg" id="1_3ka5u"]
+[ext_resource type="Texture2D" uid="uid://dedbykipswgur" path="res://icon.svg" id="1_3ka5u"]
 [ext_resource type="Script" path="res://Template/MainMenu/MainMenu.gd" id="1_ihb7f"]
-[ext_resource type="FontFile" uid="uid://dac8hxvje2teq" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
+[ext_resource type="FontFile" uid="uid://ff8ivguu44ja" path="res://Template/Assets/Fonts/ReemKufiInk-Regular.ttf" id="2_j1t0p"]
 [ext_resource type="PackedScene" uid="uid://c6p1x71haijmj" path="res://Template/ButtonWrapper/ButtonWrapper.tscn" id="3_qhdnb"]
 
 [node name="MainMenu" type="BoxContainer"]
@@ -21,7 +21,7 @@ offset_right = 384.0
 offset_bottom = 648.0
 
 [node name="Control" type="Control" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 
 [node name="Logo" type="TextureRect" parent="Background/LeftVBox"]
@@ -30,7 +30,7 @@ texture = ExtResource("1_3ka5u")
 stretch_mode = 3
 
 [node name="Control2" type="Control" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 
 [node name="NewGameButton" parent="Background/LeftVBox" instance=ExtResource("3_qhdnb")]
@@ -70,7 +70,7 @@ layout_mode = 2
 text = "Exit"
 
 [node name="Control7" type="Control" parent="Background/LeftVBox"]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 
 [node name="MadeWithLabel" type="Label" parent="Background/LeftVBox"]
