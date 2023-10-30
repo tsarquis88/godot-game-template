@@ -68,6 +68,7 @@ func on_pause_menu_resume():
 	m_playable.set_pause(false)
 	m_hud.set_pause(false)
 	m_pause_menu.visible = false
+	m_pause = false
 
 
 # Handles the 'options' button from the pause menu, activating the options menu.
